@@ -64,19 +64,51 @@
 		DBD628F41F0ED7ED00307B67 /* iRingTunes Pro */ = {
 			isa = PBXGroup;
 			children = (
+				DBED65212014A8C50078313B /* Supporting Files */,
+				DBED65202014A8950078313B /* Controllers */,
+				DBED651F2014A88B0078313B /* Views */,
+				DBED651E2014A8830078313B /* Model */,
 				DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */,
+				DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */,
+				DBD629011F0ED7EF00307B67 /* Info.plist */,
+			);
+			path = "iRingTunes Pro";
+			sourceTree = "<group>";
+		};
+		DBED651E2014A8830078313B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DBD629091F0ED8B400307B67 /* Extension.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DBED651F2014A88B0078313B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DBED65202014A8950078313B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				DBD628F71F0ED7EE00307B67 /* ViewController.swift */,
 				DBD629071F0ED88E00307B67 /* EditSongVC.swift */,
-				DBD629091F0ED8B400307B67 /* Extension.swift */,
 				DBD6290B1F0ED8E200307B67 /* RingotonesManagerVC.swift */,
 				DBD6290D1F0ED90E00307B67 /* SettingsVC.swift */,
 				DBD6290F1F0ED92200307B67 /* ShareVC.swift */,
 				DBD629111F0EE24E00307B67 /* TutorialVC.swift */,
-				DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */,
-				DBD628FE1F0ED7EF00307B67 /* LaunchScreen.storyboard */,
-				DBD629011F0ED7EF00307B67 /* Info.plist */,
 			);
-			path = "iRingTunes Pro";
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DBED65212014A8C50078313B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DBD628FE1F0ED7EF00307B67 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
