@@ -300,8 +300,8 @@ class EditSongVC: UIViewController {
                         
                         
                         
-                    case .failed(let error):
-                        print("Errore nell'esportazione a file .m4r: \(error)")
+                    case .failed:
+                        print("Errore nell'esportazione a file .m4r: NULL")
                     default:
                         print("Errore sconosciuto durante l'esportazion a file .m4r")
                     }
