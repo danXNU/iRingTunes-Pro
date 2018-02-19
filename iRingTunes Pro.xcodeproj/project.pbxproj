@@ -7,33 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB443CF82033792800AF702E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CF72033792800AF702E /* HomeVC.swift */; };
+		DB443CFA203381CC00AF702E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CF9203381CC00AF702E /* Song.swift */; };
+		DB443CFC203382CB00AF702E /* EditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CFB203382CB00AF702E /* EditorVC.swift */; };
+		DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5727202034AC3D00B42B86 /* EditorView.swift */; };
 		DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */; };
-		DBD628F81F0ED7EE00307B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD628F71F0ED7EE00307B67 /* ViewController.swift */; };
 		DBD628FD1F0ED7EE00307B67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */; };
 		DBD629001F0ED7EF00307B67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD628FE1F0ED7EF00307B67 /* LaunchScreen.storyboard */; };
-		DBD629081F0ED88E00307B67 /* EditSongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD629071F0ED88E00307B67 /* EditSongVC.swift */; };
 		DBD6290A1F0ED8B400307B67 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD629091F0ED8B400307B67 /* Extension.swift */; };
-		DBD6290C1F0ED8E200307B67 /* RingotonesManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6290B1F0ED8E200307B67 /* RingotonesManagerVC.swift */; };
-		DBD6290E1F0ED90E00307B67 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6290D1F0ED90E00307B67 /* SettingsVC.swift */; };
-		DBD629101F0ED92200307B67 /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6290F1F0ED92200307B67 /* ShareVC.swift */; };
-		DBD629121F0EE24E00307B67 /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD629111F0EE24E00307B67 /* TutorialVC.swift */; };
 		DBED65232014A9ED0078313B /* RTExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBED65222014A9ED0078313B /* RTExporter.swift */; };
+		DBF08465201DE17700654E76 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF08464201DE17700654E76 /* TestVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB443CF72033792800AF702E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		DB443CF9203381CC00AF702E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		DB443CFB203382CB00AF702E /* EditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC.swift; sourceTree = "<group>"; };
+		DB5727202034AC3D00B42B86 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		DBD628F21F0ED7ED00307B67 /* iRingTunes Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iRingTunes Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBD628F71F0ED7EE00307B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBD628FF1F0ED7EF00307B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBD629011F0ED7EF00307B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DBD629071F0ED88E00307B67 /* EditSongVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSongVC.swift; sourceTree = "<group>"; };
 		DBD629091F0ED8B400307B67 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		DBD6290B1F0ED8E200307B67 /* RingotonesManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingotonesManagerVC.swift; sourceTree = "<group>"; };
-		DBD6290D1F0ED90E00307B67 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		DBD6290F1F0ED92200307B67 /* ShareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareVC.swift; sourceTree = "<group>"; };
-		DBD629111F0EE24E00307B67 /* TutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
 		DBED65222014A9ED0078313B /* RTExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTExporter.swift; sourceTree = "<group>"; };
+		DBF08464201DE17700654E76 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +71,7 @@
 				DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */,
 				DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */,
 				DBD629011F0ED7EF00307B67 /* Info.plist */,
+				DBF08464201DE17700654E76 /* TestVC.swift */,
 			);
 			path = "iRingTunes Pro";
 			sourceTree = "<group>";
@@ -82,6 +81,7 @@
 			children = (
 				DBD629091F0ED8B400307B67 /* Extension.swift */,
 				DBED65222014A9ED0078313B /* RTExporter.swift */,
+				DB443CF9203381CC00AF702E /* Song.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,6 +89,7 @@
 		DBED651F2014A88B0078313B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DB5727202034AC3D00B42B86 /* EditorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,12 +97,8 @@
 		DBED65202014A8950078313B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DBD628F71F0ED7EE00307B67 /* ViewController.swift */,
-				DBD629071F0ED88E00307B67 /* EditSongVC.swift */,
-				DBD6290B1F0ED8E200307B67 /* RingotonesManagerVC.swift */,
-				DBD6290D1F0ED90E00307B67 /* SettingsVC.swift */,
-				DBD6290F1F0ED92200307B67 /* ShareVC.swift */,
-				DBD629111F0EE24E00307B67 /* TutorialVC.swift */,
+				DB443CF72033792800AF702E /* HomeVC.swift */,
+				DB443CFB203382CB00AF702E /* EditorVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -185,15 +182,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBD629121F0EE24E00307B67 /* TutorialVC.swift in Sources */,
+				DB443CFA203381CC00AF702E /* Song.swift in Sources */,
+				DBF08465201DE17700654E76 /* TestVC.swift in Sources */,
+				DB443CF82033792800AF702E /* HomeVC.swift in Sources */,
 				DBED65232014A9ED0078313B /* RTExporter.swift in Sources */,
-				DBD628F81F0ED7EE00307B67 /* ViewController.swift in Sources */,
-				DBD629101F0ED92200307B67 /* ShareVC.swift in Sources */,
 				DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */,
-				DBD6290C1F0ED8E200307B67 /* RingotonesManagerVC.swift in Sources */,
-				DBD629081F0ED88E00307B67 /* EditSongVC.swift in Sources */,
+				DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */,
 				DBD6290A1F0ED8B400307B67 /* Extension.swift in Sources */,
-				DBD6290E1F0ED90E00307B67 /* SettingsVC.swift in Sources */,
+				DB443CFC203382CB00AF702E /* EditorVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q5WYV8U42F;
 				INFOPLIST_FILE = "iRingTunes Pro/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DaniTox.RingTunesPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -340,7 +336,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q5WYV8U42F;
 				INFOPLIST_FILE = "iRingTunes Pro/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DaniTox.RingTunesPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
