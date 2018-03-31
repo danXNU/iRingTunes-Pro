@@ -17,8 +17,8 @@ struct SongAttributes {
 }
 
 class Song {
-    var title : String!
-    var url : URL!
+    var title : String
+    var url : URL
     
     init(title: String, url : URL) {
         self.title = title

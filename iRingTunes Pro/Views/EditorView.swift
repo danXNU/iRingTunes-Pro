@@ -81,11 +81,11 @@ extension EditorView {
 //                               size: .init(width: 0, height: 50))
         
         
-        let stackView = UIStackView(arrangedSubviews: [startTimeLabel, startTimeSlider])
-        stackView.alignment = .fill
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 0
+        let stackStartTime = UIStackView(arrangedSubviews: [startTimeLabel, startTimeSlider])
+        stackStartTime.alignment = .fill
+        stackStartTime.axis = .vertical
+        stackStartTime.distribution = .fillProportionally
+        stackStartTime.spacing = 0
         //addSubview(stackView)
         
         
@@ -98,14 +98,14 @@ extension EditorView {
         startContainerView.layer.shadowRadius = 10
         startContainerView.layer.shadowOffset = .zero
         startContainerView.layer.shadowOpacity = 1
-        startContainerView.addSubview(stackView)
+        startContainerView.addSubview(stackStartTime)
         startContainerView.anchor(top: titleLabel.bottomAnchor,
                          leading: leadingAnchor,
                          bottom: nil,
                          trailing: trailingAnchor,
                          padding: .init(top: 10, left: 20, bottom: 0, right: 20),
                          size: .init(width: 0, height: 70))
-        stackView.anchor(top: startContainerView.topAnchor,
+        stackStartTime.anchor(top: startContainerView.topAnchor,
                          leading: startContainerView.leadingAnchor,
                          bottom: startContainerView.bottomAnchor,
                          trailing: startContainerView.trailingAnchor,
@@ -113,6 +113,56 @@ extension EditorView {
                          size: .zero)
         
         startTimeLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        
+        
+        
+        let durationLabel = UILabel()
+        durationLabel.textAlignment = .center
+        durationLabel.text = "ASD2"
+        durationLabel.backgroundColor = .clear
+        addSubview(durationLabel)
+        
+        
+        durationTimeSlider = UISlider()
+        durationTimeSlider.backgroundColor = .clear
+        addSubview(durationTimeSlider)
+        
+        
+        let stackDuration = UIStackView(arrangedSubviews: [durationLabel, durationTimeSlider])
+        stackDuration.alignment = .fill
+        stackDuration.axis = .vertical
+        stackDuration.distribution = .fillProportionally
+        stackDuration.spacing = 0
+        
+        
+        let durationContainerView = UIView()
+        durationContainerView.backgroundColor = .gray
+        durationContainerView.layer.masksToBounds = true
+        durationContainerView.layer.cornerRadius = 10
+        addSubview(durationContainerView)
+        durationContainerView.layer.shadowColor = UIColor.black.cgColor
+        durationContainerView.layer.shadowRadius = 10
+        durationContainerView.layer.shadowOffset = .zero
+        durationContainerView.layer.shadowOpacity = 1
+        durationContainerView.addSubview(stackDuration)
+        durationContainerView.anchor(top: startContainerView.bottomAnchor,
+                                  leading: leadingAnchor,
+                                  bottom: nil,
+                                  trailing: trailingAnchor,
+                                  padding: .init(top: 10, left: 20, bottom: 0, right: 20),
+                                  size: .init(width: 0, height: 70))
+        stackDuration.anchor(top: durationContainerView.topAnchor,
+                              leading: durationContainerView.leadingAnchor,
+                              bottom: durationContainerView.bottomAnchor,
+                              trailing: durationContainerView.trailingAnchor,
+                              padding: .init(top: 0, left: 15, bottom: 10, right: 15),
+                              size: .zero)
+        
+        durationLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        
+        
         
     }
     

@@ -17,10 +17,10 @@ class TestVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let vc = MPMediaPickerController(mediaTypes: .anyAudio)
-//        vc.allowsPickingMultipleItems = false
-//        vc.delegate = self
-//        present(vc, animated: true)
+        let vc = MPMediaPickerController(mediaTypes: .anyAudio)
+        vc.allowsPickingMultipleItems = false
+        vc.delegate = self
+        present(vc, animated: true)
         
         
         let asd = EditorView()
@@ -49,22 +49,33 @@ extension TestVC : MPMediaPickerControllerDelegate {
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         dismiss(animated: true)
         
+        //OTTENGO LA MUSICA DALLA LIBRERIA
         let music = mediaItemCollection.items.first
+        
+        //OTTENGO L'URL DELLA MUSICA
         guard
             let url = music?.value(forProperty: MPMediaItemPropertyAssetURL) as? URL
         else {
-            print("ERRORE URL: music.value")
+            print("TestVC: music.value() == nil")
             return
         }
         
+        //OTTENGO DEI VALORI DI PROVA
         let start = CMTime(seconds: 10, preferredTimescale: 1)
         let duration = CMTime(seconds: 30, preferredTimescale: 1)
         let range = CMTimeRange(start: start, duration: duration)
+        
+        //LI SETTO NELLA CLASSE SONGATTRIBUTES
         let attributes = SongAttributes(songName: music!.title!, timeRange: range, startFade: nil, durationFade: nil)
         exporter = RTExporter(initialSong: url, fadeIn: false, songAttributes: attributes)
         
+        //MI SETTO COME DELGATE
         exporter?.delegate = self
+        
+        //PREPARO L'EXPORTER
         exporter?.prepare()
+        
+        //ESPORTO
         exporter?.export()
         
     }
