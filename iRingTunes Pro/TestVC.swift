@@ -14,26 +14,38 @@ class TestVC: UIViewController {
     var player : AVAudioPlayer?
     var exporter : RTExporter?
     
+    var bottomCon : NSLayoutConstraint!
+    
+    var asd : EditorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc = MPMediaPickerController(mediaTypes: .anyAudio)
-        vc.allowsPickingMultipleItems = false
-        vc.delegate = self
-        present(vc, animated: true)
+//        let vc = MPMediaPickerController(mediaTypes: .anyAudio)
+//        vc.allowsPickingMultipleItems = false
+//        vc.delegate = self
+//        present(vc, animated: true)
         
         
-        let asd = EditorView()
+        asd = EditorView()
         asd.layer.masksToBounds = true
         asd.layer.cornerRadius = 10
         view.addSubview(asd)
-        asd.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                   leading: view.safeAreaLayoutGuide.leadingAnchor,
-                   bottom: nil,
-                   trailing: view.safeAreaLayoutGuide.trailingAnchor,
-                   padding: .init(top: 20, left: 20, bottom: 0, right: 20),
-                   size: .init(width: 0, height: 200))
+        asd.translatesAutoresizingMaskIntoConstraints = false
+        asd.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        asd.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        asd.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        bottomCon = asd.bottomAnchor.constraint(equalTo: asd.songDurationContainer.bottomAnchor, constant: 10)
+        bottomCon.isActive = true
         
+        
+        
+        
+        let button = UIButton()
+        button.addTarget(self, action: #selector(animate), for: .touchUpInside)
+        button.backgroundColor = .green
+        view.addSubview(button)
+        button.frame = CGRect(x: 0, y: 500, width: 100, height: 100)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +53,29 @@ class TestVC: UIViewController {
     }
     
 
-
+    @objc func animate() {
+        
+        switch asd.state {
+        case .closed:
+            bottomCon.isActive = false
+            bottomCon = asd.bottomAnchor.constraint(equalTo: asd.fadeView.bottomAnchor, constant: 10)
+            bottomCon.isActive = true
+            self.asd.state = .large
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        case .large:
+            bottomCon.isActive = false
+            bottomCon = asd.bottomAnchor.constraint(equalTo: asd.songDurationContainer.bottomAnchor, constant: 10)
+            bottomCon.isActive = true
+            self.asd.state = .closed
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+        
+    }
 
 }
 

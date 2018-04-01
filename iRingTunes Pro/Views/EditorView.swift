@@ -8,24 +8,91 @@
 
 import UIKit
 
+enum EditorViewState {
+    case closed
+    case large
+}
+
 class EditorView: UIView {
     
-    weak var delegate : EditorViewDelegate!
+    //TITOLO VARS
+    var titleLabel : UILabel!                   //IL LABEL CONTENTENTE IL TITOLO DELLA CANZONE
     
-    var totalSongDuration : Float = 0 {
+    
+    //SONG VARS
+    var songStartContainer : UIView!                //VIEW CHE CONTIENE LO SLIDER INIZIO SONG E EVENTUALMENTE IL LABEL START TIME SONG
+    var songDurationContainer : UIView!             //VIEW CHE CONTIENE LO SLIDER DURATA SONG E EVENTUALMENTE IL LABEL DURARA
+    var songStartTimeSlider : UISlider!         //LO SLIDER CHE MODIFICA L'INIZIO DELLA CANZONE
+    var songDurationTimeSlider : UISlider!      //LO SLIDER CHE MODIFICA LA DURATA DELLA CANZONE
+    
+    
+    var songMaxDuration : Float = 0 {         //VAR CHE DICE/SETTA QUANTO DURA LA CANZONE INTERA (NON LA SUONERIA)
         didSet {
-            startTimeSlider.maximumValue = totalSongDuration
+            songStartTimeSlider?.maximumValue = songMaxDuration
         }
     }
     
-    private var startTimeSlider : UISlider!
-    private var durationTimeSlider : UISlider!
     
-    var titleLabel : UILabel!
+    //FADE VARS
+    var fadeView: UIView!                       //CONTIENE LE DUE CELLE DELLE IMPOSTAZIONI DEL FADE
+    var fadeSwitch : UISwitch!                  //LO SWITCH CHE ATTIVA/DISATTIVA IL FADE
+    var fadeDurationLabel : UILabel!            //IL LABEL CHE DICE QUANTO DURA IL FADE
+    var fadeDurationSlider : UISlider!          //LO SLIDER CHE MODIFICA LA DURATA DEL FADE
     
+    var currentFadeDurationValue : Int = 10 {   //VAR CHE DICE/SETTA QUANTO DURA IL FADE
+        didSet {
+            DispatchQueue.main.async {
+                print("Called")
+                self.fadeDurationSlider?.setValue(Float(self.currentFadeDurationValue), animated: true)
+                self.fadeDurationLabel?.text = "\(self.currentFadeDurationValue)s"
+            }
+        }
+    }
+    
+    
+    
+    
+    //EDITORVIEW VARS
+    
+    var state : EditorViewState = .closed {     //VAR CHE DICE IN CHE STATO è LA VIEW E MODIFICA LE SUBVIEWS IN BASE A QUELLO
+        didSet {
+            DispatchQueue.main.async {
+                switch self.state {
+                case .closed:
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.fadeView.alpha = 0
+                    })
+                case .large:
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.fadeView.alpha = 1
+                    })
+                }
+            }
+        }
+    }
+    
+    
+    //SELECTORS
+    
+    @objc func fadeDurationSliderDidMove(sender: UISlider) {            //SELECTOR CHIAMATO QUANDO LO SLIDER DURATA DEL FADE SI MUOVE
+        self.fadeDurationLabel?.text = "\(Int(sender.value))s"
+    }
+    
+    
+    @objc private func fadeSwitchDidChangeValue(sender: UISwitch) {     //USATA QUANDO SI PREMRE LO SWITCH DELL'ATTIVA/DISATTIVA FADEIN
+        
+    }
+    
+    
+    
+    
+    
+    
+    //INIT
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initViews()
+        
     }
     
     
@@ -33,149 +100,184 @@ class EditorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 extension EditorView {
     private func initViews() {
         self.backgroundColor = .red
         
-        let holdGR = UILongPressGestureRecognizer(target: self, action: #selector(holded(sender: )))
-        holdGR.minimumPressDuration = 0.3
-        addGestureRecognizer(holdGR)
         
-
         titleLabel = UILabel()
-        titleLabel.text = "Untitled"
+        titleLabel.backgroundColor = UIColor.yellow.darker(by: 15)
+        titleLabel.textColor = .darkGray
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        titleLabel.backgroundColor = .orange
+        titleLabel.text = "Test nome"
         titleLabel.layer.masksToBounds = true
         titleLabel.layer.cornerRadius = 10
         addSubview(titleLabel)
-        titleLabel.anchor(top: safeAreaLayoutGuide.topAnchor,
-                          leading: safeAreaLayoutGuide.leadingAnchor,
+        titleLabel.anchor(top: self.topAnchor,
+                          leading: self.leadingAnchor,
                           bottom: nil,
-                          trailing: safeAreaLayoutGuide.trailingAnchor,
-                          padding: .init(top: 5, left: 20, bottom: 0, right: 20),
+                          trailing: self.trailingAnchor,
+                          padding: .init(top: 10, left: 15, bottom: 0, right: 15),
                           size: .init(width: 0, height: 30))
         
-       
-        
-        let startTimeLabel = UILabel()
-        startTimeLabel.textAlignment = .center
-        startTimeLabel.text = "ASD"
-        startTimeLabel.backgroundColor = .clear
-        addSubview(startTimeLabel)
         
         
+        //  ---INIZIO CONTAINER START SONG---   \\
+        songStartContainer = UIView()
+        songStartContainer.backgroundColor = .blue
+        songStartContainer.layer.cornerRadius = 10
+        addSubview(songStartContainer)
+        songStartContainer.anchor(top: titleLabel.bottomAnchor,
+                              leading: self.leadingAnchor,
+                              bottom: nil,
+                              trailing: self.trailingAnchor,
+                              padding: .init(top: 10, left: 15, bottom: 0, right: 15),
+                              size: .init(width: 0, height: 70))
         
-        startTimeSlider = UISlider()
-        startTimeSlider.backgroundColor = .clear
-        addSubview(startTimeSlider)
-//        startTimeSlider.anchor(top: titleLabel.bottomAnchor,
-//                               leading: safeAreaLayoutGuide.leadingAnchor,
-//                               bottom: nil,
-//                               trailing: safeAreaLayoutGuide.trailingAnchor,
-//                               padding: .init(top: 7, left: 20, bottom: 0, right: 20),
-//                               size: .init(width: 0, height: 50))
-        
-        
-        let stackStartTime = UIStackView(arrangedSubviews: [startTimeLabel, startTimeSlider])
-        stackStartTime.alignment = .fill
-        stackStartTime.axis = .vertical
-        stackStartTime.distribution = .fillProportionally
-        stackStartTime.spacing = 0
-        //addSubview(stackView)
-        
-        
-        let startContainerView = UIView()
-        startContainerView.backgroundColor = .gray
-        startContainerView.layer.masksToBounds = true
-        startContainerView.layer.cornerRadius = 10
-        addSubview(startContainerView)
-        startContainerView.layer.shadowColor = UIColor.black.cgColor
-        startContainerView.layer.shadowRadius = 10
-        startContainerView.layer.shadowOffset = .zero
-        startContainerView.layer.shadowOpacity = 1
-        startContainerView.addSubview(stackStartTime)
-        startContainerView.anchor(top: titleLabel.bottomAnchor,
-                         leading: leadingAnchor,
-                         bottom: nil,
-                         trailing: trailingAnchor,
-                         padding: .init(top: 10, left: 20, bottom: 0, right: 20),
-                         size: .init(width: 0, height: 70))
-        stackStartTime.anchor(top: startContainerView.topAnchor,
-                         leading: startContainerView.leadingAnchor,
-                         bottom: startContainerView.bottomAnchor,
-                         trailing: startContainerView.trailingAnchor,
-                         padding: .init(top: 0, left: 15, bottom: 10, right: 15),
-                         size: .zero)
-        
-        startTimeLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        songStartTimeSlider = UISlider()
+        songStartTimeSlider.minimumTrackTintColor = .purple
+        songStartContainer.addSubview(songStartTimeSlider)
+        songStartTimeSlider.translatesAutoresizingMaskIntoConstraints = false
+        songStartTimeSlider.centerYAnchor.constraint(equalTo: songStartContainer.centerYAnchor).isActive = true
+        songStartTimeSlider.leadingAnchor.constraint(equalTo: songStartContainer.leadingAnchor, constant: 10).isActive = true
+        songStartTimeSlider.trailingAnchor.constraint(equalTo: songStartContainer.trailingAnchor, constant: -10).isActive = true
+        //                                      \\
+        //  ---FINE CONTAINER START SONG---     \\
         
         
         
         
-        let durationLabel = UILabel()
-        durationLabel.textAlignment = .center
-        durationLabel.text = "ASD2"
-        durationLabel.backgroundColor = .clear
-        addSubview(durationLabel)
         
         
-        durationTimeSlider = UISlider()
-        durationTimeSlider.backgroundColor = .clear
-        addSubview(durationTimeSlider)
+        //  ---INIZIO CONTAINER DURATION SONG---   \\
+        songDurationContainer = UIView()
+        songDurationContainer.backgroundColor = .purple
+        songDurationContainer.layer.cornerRadius = 10
+        addSubview(songDurationContainer)
+        songDurationContainer.anchor(top: songStartContainer.bottomAnchor,
+                                 leading: self.leadingAnchor,
+                                 bottom: nil,
+                                 trailing: self.trailingAnchor,
+                                 padding: .init(top: 10, left: 15, bottom: 0, right: 15),
+                                 size: .init(width: 0, height: 70))
         
-        
-        let stackDuration = UIStackView(arrangedSubviews: [durationLabel, durationTimeSlider])
-        stackDuration.alignment = .fill
-        stackDuration.axis = .vertical
-        stackDuration.distribution = .fillProportionally
-        stackDuration.spacing = 0
-        
-        
-        let durationContainerView = UIView()
-        durationContainerView.backgroundColor = .gray
-        durationContainerView.layer.masksToBounds = true
-        durationContainerView.layer.cornerRadius = 10
-        addSubview(durationContainerView)
-        durationContainerView.layer.shadowColor = UIColor.black.cgColor
-        durationContainerView.layer.shadowRadius = 10
-        durationContainerView.layer.shadowOffset = .zero
-        durationContainerView.layer.shadowOpacity = 1
-        durationContainerView.addSubview(stackDuration)
-        durationContainerView.anchor(top: startContainerView.bottomAnchor,
-                                  leading: leadingAnchor,
-                                  bottom: nil,
-                                  trailing: trailingAnchor,
-                                  padding: .init(top: 10, left: 20, bottom: 0, right: 20),
-                                  size: .init(width: 0, height: 70))
-        stackDuration.anchor(top: durationContainerView.topAnchor,
-                              leading: durationContainerView.leadingAnchor,
-                              bottom: durationContainerView.bottomAnchor,
-                              trailing: durationContainerView.trailingAnchor,
-                              padding: .init(top: 0, left: 15, bottom: 10, right: 15),
-                              size: .zero)
-        
-        durationLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        songDurationTimeSlider = UISlider()
+        songDurationTimeSlider.minimumTrackTintColor = .blue
+        songDurationContainer.addSubview(songDurationTimeSlider)
+        songDurationTimeSlider.translatesAutoresizingMaskIntoConstraints = false
+        songDurationTimeSlider.centerYAnchor.constraint(equalTo: songDurationContainer.centerYAnchor).isActive = true
+        songDurationTimeSlider.leadingAnchor.constraint(equalTo: songDurationContainer.leadingAnchor, constant: 10).isActive = true
+        songDurationTimeSlider.trailingAnchor.constraint(equalTo: songDurationContainer.trailingAnchor, constant: -10).isActive = true
+        //                                         \\
+        //  ---FINE CONTAINER DURATION SONG---     \\
         
         
         
         
-    }
-    
-    @objc private func holded(sender : UIGestureRecognizer) {
-        print("holding...")
-        if sender.state == .began {
-            delegate?.viewIsHolded?(view: self)
-            print("SENDING delegate msg")
-        }
+        
+        //---   INIZIO CELL ACTIVATE FADE   ----\\
+        let cellActiveFade = UIView()
+        cellActiveFade.layer.borderColor = UIColor.white.cgColor
+        cellActiveFade.layer.borderWidth = 0.4
+        self.addSubview(cellActiveFade)
+        
+        fadeSwitch = UISwitch()
+        fadeSwitch.isOn = false
+        cellActiveFade.addSubview(fadeSwitch)
+        fadeSwitch.translatesAutoresizingMaskIntoConstraints = false
+        fadeSwitch.trailingAnchor.constraint(equalTo: cellActiveFade.trailingAnchor, constant: -10).isActive = true
+        fadeSwitch.centerYAnchor.constraint(equalTo: cellActiveFade.centerYAnchor).isActive = true
+        
+        let label = UILabel()
+        label.text = "Attiva Fade-In"
+        label.textColor = .white
+        cellActiveFade.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.leadingAnchor.constraint(equalTo: cellActiveFade.leadingAnchor, constant: 10).isActive = true
+        label.trailingAnchor.constraint(equalTo: fadeSwitch.leadingAnchor, constant: -10).isActive = true
+        label.centerYAnchor.constraint(equalTo: cellActiveFade.centerYAnchor).isActive = true
+        
+        
+        //|                                    |\\
+        //---   FINE CELL ACTIVATE FADE     ----\\
+        
+        
+        
+        
+        
+        //---   INIZIO CELL DURATION FADE   ----\\
+        let cellDurationFade = UIView()
+        self.addSubview(cellDurationFade)
+        
+        
+        fadeDurationLabel = UILabel()
+        fadeDurationLabel.textAlignment = .center
+        fadeDurationLabel.font = UIFont.preferredFont(forTextStyle: .body).withSize(20)
+        fadeDurationLabel.textColor = .white
+        fadeDurationLabel.layer.borderColor = UIColor.white.cgColor
+        cellDurationFade.addSubview(fadeDurationLabel)
+        
+        fadeDurationLabel.translatesAutoresizingMaskIntoConstraints = false
+        fadeDurationLabel.topAnchor.constraint(equalTo: cellDurationFade.topAnchor).isActive = true
+        fadeDurationLabel.bottomAnchor.constraint(equalTo: cellDurationFade.bottomAnchor).isActive = true
+        fadeDurationLabel.trailingAnchor.constraint(equalTo: cellDurationFade.trailingAnchor).isActive = true
+        fadeDurationLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        
+        
+        fadeDurationSlider = UISlider()
+        fadeDurationSlider.maximumValue = 40
+        fadeDurationSlider.minimumTrackTintColor = .green
+        fadeDurationSlider.addTarget(self, action: #selector(fadeDurationSliderDidMove(sender:)), for: .valueChanged)
+        cellDurationFade.addSubview(fadeDurationSlider)
+        fadeDurationSlider.translatesAutoresizingMaskIntoConstraints = false
+        fadeDurationSlider.centerYAnchor.constraint(equalTo: cellDurationFade.centerYAnchor).isActive = true
+        fadeDurationSlider.leadingAnchor.constraint(equalTo: cellDurationFade.leadingAnchor, constant: 10).isActive = true
+        fadeDurationSlider.trailingAnchor.constraint(equalTo: fadeDurationLabel.leadingAnchor, constant: 0).isActive = true
+        //---   FINE CELL DURATION FADE ----\\
+        
+        
+        
+        
+        
+        
+        
+        
+        let stackCells = UIStackView(arrangedSubviews: [cellActiveFade, cellDurationFade])
+        stackCells.axis = .vertical
+        stackCells.alignment = .fill
+        stackCells.distribution = .fillEqually
+        //self.addSubview(stackCells)
+        
+        
+        fadeView = UIView()
+        fadeView.addSubview(stackCells)
+        fadeView.layer.borderColor = UIColor.white.cgColor
+        fadeView.layer.borderWidth = 0.5
+        addSubview(fadeView)
+        fadeView.anchor(top: songDurationContainer.bottomAnchor,
+                        leading: self.leadingAnchor,
+                        bottom: nil,
+                        trailing: self.trailingAnchor,
+                        padding: .init(top: 15, left: -1, bottom: 0, right: -1),
+                        size: .init(width: 0, height: 100))
+        stackCells.fillSuperview()
+        
+        currentFadeDurationValue = 10
         
     }
 }
 
-@objc protocol EditorViewDelegate {
-    @objc optional func viewIsHolded(view: UIView)
-}
