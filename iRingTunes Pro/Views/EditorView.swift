@@ -8,16 +8,40 @@
 
 import UIKit
 
-enum EditorViewState {
+enum EditorViewState {              //USATO PER SAPERE QUANDO LA VIEW VIENE INGRANDITA COSì DA SVOLGERE UN'ANIMAZIONE ALLE CELLE
     case closed
     case large
 }
 
+enum EditorViewSliderType {         //TIPO DI SLIDER. USATO NEI MESSAGGI AL DELEGATE
+    case songStart
+    case songDuration
+    case fadeDuration
+}
+
+enum EditorViewSwitchType {         //TIPO DI SWITCH. AL MOMENTO SOLO UNO. USATO NEI MESSAGGI AL DELEGATE
+    case fade
+}
+
+protocol EditorViewDelegate : class {            //DELEGATE CHE PARLERà CON IL CONTROLLER QUANDO GLI SLIDER VENGONO MOSSI
+    func sliderDidMoveAt(_ value : Float, sliderType : EditorViewSliderType)
+    func switchWasTouched(_ sender: UISwitch, switchType: EditorViewSwitchType)
+}
+
 class EditorView: UIView {
     
-    //TITOLO VARS
-    var titleLabel : UILabel!                       //IL LABEL CONTENTENTE IL TITOLO DELLA CANZONE
+    weak var delegate : EditorViewDelegate?         //IL DELAGATE CHE COMUNICHERà CON IL CONTROLLER
     
+    //TITOLO VARS
+    private var titleLabel : UILabel!                       //IL LABEL CONTENTENTE IL TITOLO DELLA CANZONE
+    
+    public var songName : String? {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.titleLabel?.text = self?.songName
+            }
+        }
+    }
     
     //SONG VARS
     var songStartContainer : UIView!                //VIEW CHE CONTIENE LO SLIDER INIZIO SONG E EVENTUALMENTE IL LABEL START TIME SONG
@@ -27,9 +51,28 @@ class EditorView: UIView {
     var songStartTimeLabel : UILabel!               //IL LABEL CHE MOSTRA QUANDO INZIA LA CANZONE
     var songDurationTimeLabel : UILabel!            //IL LABEL CHE MOSTRA A QUANTO è SETTATA LA DURATA DELLA SUONERIA
     
-    var songMaxDuration : Float = 0 {               //VAR CHE DICE/SETTA QUANTO DURA LA CANZONE INTERA (NON LA SUONERIA)
+    public var songMaxDuration : Float = 0 {               //VAR CHE DICE/SETTA QUANTO DURA LA CANZONE INTERA (NON LA SUONERIA)
         didSet {
             songStartTimeSlider?.maximumValue = songMaxDuration
+        }
+    }
+    
+    public var currentSongStartTime : Float = 0 {
+        didSet {
+            DispatchQueue.main.async {
+                self.songStartTimeSlider.setValue(self.currentSongStartTime, animated: true)
+                self.songStartTimeLabel.text = "00:\(Int(self.currentSongStartTime))"
+            }
+        }
+    }
+    
+    public var currentSongDurationValue : Float = 40 {
+        didSet {
+            DispatchQueue.main.async {
+                self.songDurationTimeSlider.value = self.currentSongDurationValue
+                self.songDurationTimeLabel.text = "\(Int(self.currentSongDurationValue))s"
+            }
+            
         }
     }
     
@@ -40,18 +83,22 @@ class EditorView: UIView {
     var fadeDurationLabel : UILabel!            //IL LABEL CHE DICE QUANTO DURA IL FADE
     var fadeDurationSlider : UISlider!          //LO SLIDER CHE MODIFICA LA DURATA DEL FADE
     
-    var currentFadeDurationValue : Int = 10 {   //VAR CHE DICE/SETTA QUANTO DURA IL FADE
+    var currentFadeDurationValue : Float = 10 {   //VAR CHE DICE/SETTA QUANTO DURA IL FADE
         didSet {
             DispatchQueue.main.async {
-                print("Called")
-                self.fadeDurationSlider?.setValue(Float(self.currentFadeDurationValue), animated: true)
-                self.fadeDurationLabel?.text = "\(self.currentFadeDurationValue)s"
+                self.fadeDurationSlider?.setValue(self.currentFadeDurationValue, animated: true)
+                self.fadeDurationLabel?.text = "\(Int(self.currentFadeDurationValue))s"
             }
         }
     }
     
-    
-    
+    var fadeActivated : Bool = false {          //VAR CHE DICE/SETTA SE IL FADE è ATTIVO
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.fadeSwitch?.isOn = self!.fadeActivated
+            }
+        }
+    }
     
     //EDITORVIEW VARS
     
@@ -76,19 +123,23 @@ class EditorView: UIView {
     //SELECTORS
     
     @objc private func fadeDurationSliderDidMove(sender: UISlider) {    //SELECTOR CHIAMATO QUANDO LO SLIDER DURATA DEL FADE SI MUOVE
-        self.fadeDurationLabel?.text = "\(Int(sender.value))s"
+        currentFadeDurationValue = sender.value
+        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .fadeDuration)
     }
     
     @objc private func fadeSwitchDidChangeValue(sender: UISwitch) {     //USATA QUANDO SI PREMRE LO SWITCH DELL'ATTIVA/DISATTIVA FADEIN
-        
+        fadeActivated = sender.isOn
+        self.delegate?.switchWasTouched(sender, switchType: .fade)
     }
     
     @objc private func songStartSliderDidMove(sender: UISlider) {       //USATA QUANDO LO SLIDER DELL'INIZIO SONG SI MUOVE
-        
+        currentSongStartTime = sender.value
+        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .songStart)
     }
     
     @objc private func songDurationSliderDidMove(sender: UISlider) {    //USATA QUANDO LO SLIDER DELLA SONG DURATION SI MUOVE
-        
+        currentSongDurationValue = sender.value
+        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .songDuration)
     }
     
     
@@ -153,6 +204,20 @@ extension EditorView {
                               padding: .init(top: 10, left: 15, bottom: 0, right: 15),
                               size: .init(width: 0, height: 70))
         
+        
+        let songStartTitle = UILabel()
+        songStartTitle.text = "Inizio"
+        songStartTitle.textColor = .white
+        songStartTitle.textAlignment = .center
+        songStartTitle.font = UIFont.preferredFont(forTextStyle: .body).withSize(13)
+        songStartTitle.adjustsFontSizeToFitWidth = true
+        songStartContainer.addSubview(songStartTitle)
+        songStartTitle.translatesAutoresizingMaskIntoConstraints = false
+        songStartTitle.topAnchor.constraint(equalTo: songStartContainer.topAnchor).isActive = true
+        songStartTitle.centerXAnchor.constraint(equalTo: songStartContainer.centerXAnchor).isActive = true
+        songStartTitle.widthAnchor.constraint(equalTo: songStartContainer.widthAnchor).isActive = true
+        songStartTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
         songStartTimeLabel = UILabel()
         songStartTimeLabel.textColor = .white
         songStartTimeLabel.textAlignment = .center
@@ -168,6 +233,7 @@ extension EditorView {
         
         
         songStartTimeSlider = UISlider()
+        songStartTimeSlider.addTarget(self, action: #selector(songStartSliderDidMove(sender:)), for: .valueChanged)
         songStartTimeSlider.minimumTrackTintColor = .purple
         songStartContainer.addSubview(songStartTimeSlider)
         songStartTimeSlider.translatesAutoresizingMaskIntoConstraints = false
@@ -194,13 +260,44 @@ extension EditorView {
                                  padding: .init(top: 10, left: 15, bottom: 0, right: 15),
                                  size: .init(width: 0, height: 70))
         
+        
+        let songDurationTitle = UILabel()
+        songDurationTitle.text = "Durata"
+        songDurationTitle.textColor = .white
+        songDurationTitle.textAlignment = .center
+        songDurationTitle.font = UIFont.preferredFont(forTextStyle: .body).withSize(13)
+        songDurationTitle.adjustsFontSizeToFitWidth = true
+        songDurationContainer.addSubview(songDurationTitle)
+        songDurationTitle.translatesAutoresizingMaskIntoConstraints = false
+        songDurationTitle.topAnchor.constraint(equalTo: songDurationContainer.topAnchor).isActive = true
+        songDurationTitle.centerXAnchor.constraint(equalTo: songDurationContainer.centerXAnchor).isActive = true
+        songDurationTitle.widthAnchor.constraint(equalTo: songDurationContainer.widthAnchor).isActive = true
+        songDurationTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        
+        songDurationTimeLabel = UILabel()
+        songDurationTimeLabel.textAlignment = .center
+        songDurationTimeLabel.font = UIFont.preferredFont(forTextStyle: .body).withSize(17)
+        songDurationTimeLabel.adjustsFontSizeToFitWidth = true
+        songDurationTimeLabel.text = "40s"
+        songDurationTimeLabel.textColor = .white
+        songDurationContainer.addSubview(songDurationTimeLabel)
+        songDurationTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        songDurationTimeLabel.topAnchor.constraint(equalTo: songDurationContainer.topAnchor).isActive = true
+        songDurationTimeLabel.bottomAnchor.constraint(equalTo: songDurationContainer.bottomAnchor).isActive = true
+        songDurationTimeLabel.trailingAnchor.constraint(equalTo: songDurationContainer.trailingAnchor).isActive = true
+        songDurationTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        
         songDurationTimeSlider = UISlider()
         songDurationTimeSlider.minimumTrackTintColor = .blue
+        songDurationTimeSlider.maximumValue = 40
+        songDurationTimeSlider.addTarget(self, action: #selector(songDurationSliderDidMove(sender:)), for: .valueChanged)
         songDurationContainer.addSubview(songDurationTimeSlider)
         songDurationTimeSlider.translatesAutoresizingMaskIntoConstraints = false
         songDurationTimeSlider.centerYAnchor.constraint(equalTo: songDurationContainer.centerYAnchor).isActive = true
         songDurationTimeSlider.leadingAnchor.constraint(equalTo: songDurationContainer.leadingAnchor, constant: 10).isActive = true
-        songDurationTimeSlider.trailingAnchor.constraint(equalTo: songDurationContainer.trailingAnchor, constant: -10).isActive = true
+        songDurationTimeSlider.trailingAnchor.constraint(equalTo: songDurationTimeLabel.leadingAnchor, constant: 0).isActive = true
         //                                         \\
         //  ---FINE CONTAINER DURATION SONG---     \\
         
@@ -216,6 +313,7 @@ extension EditorView {
         
         fadeSwitch = UISwitch()
         fadeSwitch.isOn = false
+        fadeSwitch.addTarget(self, action: #selector(fadeSwitchDidChangeValue(sender:)), for: .valueChanged)
         cellActiveFade.addSubview(fadeSwitch)
         fadeSwitch.translatesAutoresizingMaskIntoConstraints = false
         fadeSwitch.trailingAnchor.constraint(equalTo: cellActiveFade.trailingAnchor, constant: -10).isActive = true
@@ -259,7 +357,7 @@ extension EditorView {
         
         
         fadeDurationSlider = UISlider()
-        fadeDurationSlider.maximumValue = 40
+        fadeDurationSlider.maximumValue = 10
         fadeDurationSlider.minimumTrackTintColor = .green
         fadeDurationSlider.addTarget(self, action: #selector(fadeDurationSliderDidMove(sender:)), for: .valueChanged)
         cellDurationFade.addSubview(fadeDurationSlider)
@@ -296,7 +394,10 @@ extension EditorView {
                         size: .init(width: 0, height: 100))
         stackCells.fillSuperview()
         
+        fadeActivated = false
         currentFadeDurationValue = 3
+        currentSongDurationValue = 40
+        currentSongStartTime = 0
         
     }
 }

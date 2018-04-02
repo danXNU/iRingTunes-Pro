@@ -38,6 +38,9 @@ class TestVC: UIViewController {
         bottomCon = asd.bottomAnchor.constraint(equalTo: asd.songDurationContainer.bottomAnchor, constant: 10)
         bottomCon.isActive = true
         
+        asd.delegate = self
+        asd.songMaxDuration = 37 //ESEMPIO
+        asd.songName = "Test musica da VC"
         
         let temp = UIView()
         temp.backgroundColor = .blue
@@ -149,6 +152,28 @@ extension TestVC : ExporterDelegate {
             print(msg!)
         default:
             print("ricevuto un errore")
+        }
+    }
+    
+    
+}
+
+extension TestVC : EditorViewDelegate {
+    func sliderDidMoveAt(_ value: Float, sliderType: EditorViewSliderType) {
+        switch sliderType {
+        case .fadeDuration:
+            print("Lo slider del fade è stato messo su: \(Int(value))s")
+        case .songDuration:
+            print("Lo slider della durata della suoneria è stato messo su: \(Int(value))s")
+        case .songStart:
+            print("Lo slider dell'inizio della canzone è stato messo su: \(Int(value))")
+        }
+    }
+    
+    func switchWasTouched(_ sender: UISwitch, switchType: EditorViewSwitchType) {
+        switch switchType {
+        case .fade:
+            print("Lo switch del fade è stato messo su: \(sender.isOn ? "Acceso" : "Spento")")
         }
     }
     
