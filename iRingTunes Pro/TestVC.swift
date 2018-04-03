@@ -18,13 +18,15 @@ class TestVC: UIViewController {
     
     var asd : EditorView!
     
+    var rtplayer : RTPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let vc = MPMediaPickerController(mediaTypes: .anyAudio)
-//        vc.allowsPickingMultipleItems = false
-//        vc.delegate = self
-//        present(vc, animated: true)
+        let vc = MPMediaPickerController(mediaTypes: .anyAudio)
+        vc.allowsPickingMultipleItems = false
+        vc.delegate = self
+        present(vc, animated: true)
         
         
         asd = EditorView()
@@ -42,7 +44,7 @@ class TestVC: UIViewController {
         asd.songMaxDuration = 37 //ESEMPIO
         asd.songName = "Test musica da VC"
         
-        let temp = UIView()
+        let temp = EditorPlayerView()
         temp.backgroundColor = .blue
         temp.layer.cornerRadius = 10
         view.addSubview(temp)
@@ -51,7 +53,7 @@ class TestVC: UIViewController {
                     bottom: nil,
                     trailing: view.trailingAnchor,
                     padding: .init(top: 10, left: 20, bottom: 0, right: 20),
-                    size: .init(width: 0, height: 200))
+                    size: .init(width: 0, height: 120))
         
         
         
@@ -96,6 +98,23 @@ class TestVC: UIViewController {
 extension TestVC : MPMediaPickerControllerDelegate {
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         dismiss(animated: true)
+        
+        let musicTmp = mediaItemCollection.items.first
+        guard let url2 = musicTmp?.value(forProperty: MPMediaItemPropertyAssetURL) as? URL else { return }
+        rtplayer = RTPlayer(songURL: url2)
+        rtplayer.actionToRepeat = { (playerCurrentValue) in
+            if let playerValue = playerCurrentValue {
+                print("La musica attulamente è a \(Int(playerValue))s")
+            }
+        }
+        rtplayer.prepare { (code) in
+            print("TestVC.mediaPickerDidPick...().player.prepare() ha ritornato il codice: \(code)")
+        }
+        rtplayer.play(startingAt: 0) { (code) in
+            print("TestVC.mediaPickerDidPick...().player.play() ha ritornato il codice: \(code)")
+        }
+        
+        return
         
         //OTTENGO LA MUSICA DALLA LIBRERIA
         let music = mediaItemCollection.items.first

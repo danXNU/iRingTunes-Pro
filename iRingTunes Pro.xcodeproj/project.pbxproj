@@ -11,12 +11,14 @@
 		DB443CFA203381CC00AF702E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CF9203381CC00AF702E /* Song.swift */; };
 		DB443CFC203382CB00AF702E /* EditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CFB203382CB00AF702E /* EditorVC.swift */; };
 		DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5727202034AC3D00B42B86 /* EditorView.swift */; };
+		DB80C6D82072A8B600E21B24 /* EditorPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */; };
 		DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */; };
 		DBD628FD1F0ED7EE00307B67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */; };
 		DBD629001F0ED7EF00307B67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD628FE1F0ED7EF00307B67 /* LaunchScreen.storyboard */; };
 		DBD6290A1F0ED8B400307B67 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD629091F0ED8B400307B67 /* Extension.swift */; };
 		DBED65232014A9ED0078313B /* RTExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBED65222014A9ED0078313B /* RTExporter.swift */; };
 		DBF08465201DE17700654E76 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF08464201DE17700654E76 /* TestVC.swift */; };
+		DBF26CE720727BEC006E2431 /* RTPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF26CE620727BEC006E2431 /* RTPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		DB443CF9203381CC00AF702E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DB443CFB203382CB00AF702E /* EditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC.swift; sourceTree = "<group>"; };
 		DB5727202034AC3D00B42B86 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerView.swift; sourceTree = "<group>"; };
 		DBD628F21F0ED7ED00307B67 /* iRingTunes Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iRingTunes Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		DBD629091F0ED8B400307B67 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DBED65222014A9ED0078313B /* RTExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTExporter.swift; sourceTree = "<group>"; };
 		DBF08464201DE17700654E76 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
+		DBF26CE620727BEC006E2431 /* RTPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				DBD629091F0ED8B400307B67 /* Extension.swift */,
 				DBED65222014A9ED0078313B /* RTExporter.swift */,
 				DB443CF9203381CC00AF702E /* Song.swift */,
+				DBF26CE620727BEC006E2431 /* RTPlayer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -90,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				DB5727202034AC3D00B42B86 /* EditorView.swift */,
+				DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,9 +190,11 @@
 			files = (
 				DB443CFA203381CC00AF702E /* Song.swift in Sources */,
 				DBF08465201DE17700654E76 /* TestVC.swift in Sources */,
+				DBF26CE720727BEC006E2431 /* RTPlayer.swift in Sources */,
 				DB443CF82033792800AF702E /* HomeVC.swift in Sources */,
 				DBED65232014A9ED0078313B /* RTExporter.swift in Sources */,
 				DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */,
+				DB80C6D82072A8B600E21B24 /* EditorPlayerView.swift in Sources */,
 				DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */,
 				DBD6290A1F0ED8B400307B67 /* Extension.swift in Sources */,
 				DB443CFC203382CB00AF702E /* EditorVC.swift in Sources */,
