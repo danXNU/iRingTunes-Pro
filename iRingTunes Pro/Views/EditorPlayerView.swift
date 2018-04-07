@@ -33,6 +33,7 @@ class EditorPlayerView: UIView {
     var currentTimeLabel : UILabel!
     var maxSongTimeLabel : UILabel!
     
+    var riassuntoTimeSong : UILabel!
     
     var fullSongDuration : Double = 0 {
         didSet {
@@ -109,6 +110,7 @@ extension EditorPlayerView {
         currentTimeLabel.layer.borderColor = UIColor.white.cgColor
         currentTimeLabel.layer.borderWidth = 0
         currentTimeLabel.adjustsFontSizeToFitWidth = true
+        currentTimeLabel.text = "00:00"
         self.addSubview(currentTimeLabel)
         currentTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         currentTimeLabel.leadingAnchor.constraint(equalTo: currentTimeSlider.leadingAnchor).isActive = true
@@ -129,5 +131,20 @@ extension EditorPlayerView {
         maxSongTimeLabel.bottomAnchor.constraint(equalTo: currentTimeSlider.topAnchor).isActive = true
         maxSongTimeLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         maxSongTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        
+        riassuntoTimeSong = UILabel()
+        riassuntoTimeSong?.textColor = .white
+        riassuntoTimeSong.layer.borderColor = UIColor.white.cgColor
+        riassuntoTimeSong.layer.borderWidth = 0
+        riassuntoTimeSong.adjustsFontSizeToFitWidth = true
+        riassuntoTimeSong.text = "00:00 - 00:00"
+        riassuntoTimeSong.textAlignment = .center
+        addSubview(riassuntoTimeSong)
+        riassuntoTimeSong.translatesAutoresizingMaskIntoConstraints = false
+        riassuntoTimeSong.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        riassuntoTimeSong.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        riassuntoTimeSong.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        riassuntoTimeSong.widthAnchor.constraint(equalToConstant: 110).isActive = true
     }
 }
