@@ -16,6 +16,7 @@ class TestVC: UIViewController {
     
     var bottomCon : NSLayoutConstraint!
     
+    var expandViewButton : UIButton!
     var asd : EditorView!
     var temp : EditorPlayerView!
     
@@ -44,12 +45,26 @@ class TestVC: UIViewController {
         asd.delegate = self
         asd.songName = "Test musica da VC"
         
+        expandViewButton = UIButton()
+        expandViewButton.addTarget(self, action: #selector(animate), for: .touchUpInside)
+        expandViewButton.backgroundColor = asd.backgroundColor
+        expandViewButton.layer.cornerRadius = 5
+        expandViewButton.layer.masksToBounds = true
+        expandViewButton.setTitle("↓", for: .normal)
+        view.addSubview(expandViewButton)
+        expandViewButton.translatesAutoresizingMaskIntoConstraints = false
+        expandViewButton.topAnchor.constraint(equalTo: asd.bottomAnchor, constant: -5).isActive = true
+        expandViewButton.centerXAnchor.constraint(equalTo: asd.centerXAnchor).isActive = true
+        expandViewButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        expandViewButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        
         temp = EditorPlayerView()
         temp.backgroundColor = .blue
         temp.layer.cornerRadius = 10
         temp.delegate = self
         view.addSubview(temp)
-        temp.anchor(top: asd.bottomAnchor,
+        temp.anchor(top: expandViewButton.bottomAnchor,
                     leading: view.leadingAnchor,
                     bottom: nil,
                     trailing: view.trailingAnchor,
@@ -58,11 +73,10 @@ class TestVC: UIViewController {
         
         
         
-        let button = UIButton()
-        button.addTarget(self, action: #selector(animate), for: .touchUpInside)
-        button.backgroundColor = .green
-        view.addSubview(button)
-        button.frame = CGRect(x: 0, y: 500, width: 100, height: 100)
+        
+        
+        
+//        button.frame = CGRect(x: 0, y: 500, width: 100, height: 100)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,6 +95,7 @@ class TestVC: UIViewController {
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
+            expandViewButton.setTitle("↑", for: .normal)
         case .large:
             bottomCon.isActive = false
             bottomCon = asd.bottomAnchor.constraint(equalTo: asd.songDurationContainer.bottomAnchor, constant: 10)
@@ -89,6 +104,7 @@ class TestVC: UIViewController {
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
+            expandViewButton.setTitle("↓", for: .normal)
         }
         
         
