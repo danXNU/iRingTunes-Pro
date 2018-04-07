@@ -17,6 +17,7 @@ class TestVC: UIViewController {
     var bottomCon : NSLayoutConstraint!
     
     var asd : EditorView!
+    var temp : EditorPlayerView!
     
     var rtplayer : RTPlayer!
     
@@ -44,9 +45,10 @@ class TestVC: UIViewController {
         asd.songMaxDuration = 37 //ESEMPIO
         asd.songName = "Test musica da VC"
         
-        let temp = EditorPlayerView()
+        temp = EditorPlayerView()
         temp.backgroundColor = .blue
         temp.layer.cornerRadius = 10
+        temp.delegate = self
         view.addSubview(temp)
         temp.anchor(top: asd.bottomAnchor,
                     leading: view.leadingAnchor,
@@ -101,18 +103,24 @@ extension TestVC : MPMediaPickerControllerDelegate {
         
         let musicTmp = mediaItemCollection.items.first
         guard let url2 = musicTmp?.value(forProperty: MPMediaItemPropertyAssetURL) as? URL else { return }
+        
         rtplayer = RTPlayer(songURL: url2)
         rtplayer.actionToRepeat = { (playerCurrentValue) in
             if let playerValue = playerCurrentValue {
-                print("La musica attulamente è a \(Int(playerValue))s")
+                self.temp.setCurrentSongTime(playerValue)
             }
         }
+        
         rtplayer.prepare { (code) in
             print("TestVC.mediaPickerDidPick...().player.prepare() ha ritornato il codice: \(code)")
         }
         rtplayer.play(startingAt: 0) { (code) in
             print("TestVC.mediaPickerDidPick...().player.play() ha ritornato il codice: \(code)")
         }
+        
+        temp.fullSongDuration = rtplayer.getSongDuration()
+        asd.songMaxDuration = Float(rtplayer.getSongDuration())
+        
         
         return
         
@@ -199,5 +207,17 @@ extension TestVC : EditorViewDelegate {
     
 }
 
+
+extension TestVC : EditorPlayerViewDelegate {
+    func musicStateDidChange() {
+        if rtplayer.isPlaying() {
+            rtplayer.pause()
+        } else {
+            rtplayer.resume()
+        }
+    }
+    
+    
+}
 
 

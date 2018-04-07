@@ -8,8 +8,13 @@
 
 import UIKit
 
-class EditorPlayerView: UIView {
+protocol EditorPlayerViewDelegate : NSObjectProtocol {
+    func musicStateDidChange()
+}
 
+
+class EditorPlayerView: UIView {
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -19,9 +24,29 @@ class EditorPlayerView: UIView {
         setViews()
     }
     
+    weak var delegate : EditorPlayerViewDelegate?
+    
     var changeMusicStateButton : UIButton!
     var currentTimeSlider : UISlider!
     var restartMusicButton : UIButton!
+    
+    
+    var fullSongDuration : Double = 0 {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.currentTimeSlider?.maximumValue = Float(self!.fullSongDuration)
+            }
+        }
+    }
+    
+    public func setCurrentSongTime(_ time : Double) {
+        self.currentTimeSlider.value = Float(time)
+    }
+
+    @objc private func changeStateButtonPressed() {
+        print("ChangeStateMusic pressed")
+        delegate?.musicStateDidChange()
+    }
     
 }
 extension EditorPlayerView {
@@ -29,9 +54,11 @@ extension EditorPlayerView {
         self.backgroundColor = .blue
         
         changeMusicStateButton = UIButton()
-        changeMusicStateButton?.setTitle("Play", for: .normal)
+        changeMusicStateButton?.setTitle("", for: .normal)
+        changeMusicStateButton?.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         changeMusicStateButton.layer.borderColor = UIColor.white.cgColor
-        changeMusicStateButton.layer.borderWidth = 0.5
+        changeMusicStateButton.layer.borderWidth = 0
+        changeMusicStateButton.addTarget(self, action: #selector(changeStateButtonPressed), for: .touchUpInside)
         self.addSubview(changeMusicStateButton)
         changeMusicStateButton.translatesAutoresizingMaskIntoConstraints = false
         changeMusicStateButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -55,8 +82,9 @@ extension EditorPlayerView {
         
         
         restartMusicButton = UIButton()
-        restartMusicButton.setTitle("R", for: .normal)
-        restartMusicButton.layer.borderWidth = 0.5
+        restartMusicButton.setTitle("", for: .normal)
+        restartMusicButton.setImage(#imageLiteral(resourceName: "reload"), for: .normal)
+        restartMusicButton.layer.borderWidth = 0
         restartMusicButton.layer.borderColor = UIColor.white.cgColor
         self.addSubview(restartMusicButton)
         restartMusicButton.translatesAutoresizingMaskIntoConstraints = false

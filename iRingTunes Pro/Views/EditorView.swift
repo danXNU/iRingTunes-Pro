@@ -44,12 +44,12 @@ class EditorView: UIView {
     }
     
     //SONG VARS
-    var songStartContainer : UIView!                //VIEW CHE CONTIENE LO SLIDER INIZIO SONG E EVENTUALMENTE IL LABEL START TIME SONG
-    var songDurationContainer : UIView!             //VIEW CHE CONTIENE LO SLIDER DURATA SONG E EVENTUALMENTE IL LABEL DURARA
-    var songStartTimeSlider : UISlider!             //LO SLIDER CHE MODIFICA L'INIZIO DELLA CANZONE
-    var songDurationTimeSlider : UISlider!          //LO SLIDER CHE MODIFICA LA DURATA DELLA CANZONE
-    var songStartTimeLabel : UILabel!               //IL LABEL CHE MOSTRA QUANDO INZIA LA CANZONE
-    var songDurationTimeLabel : UILabel!            //IL LABEL CHE MOSTRA A QUANTO è SETTATA LA DURATA DELLA SUONERIA
+    fileprivate var songStartContainer : UIView!                //VIEW CHE CONTIENE LO SLIDER INIZIO SONG E EVENTUALMENTE IL LABEL START TIME SONG
+    public var songDurationContainer : UIView!             //VIEW CHE CONTIENE LO SLIDER DURATA SONG E EVENTUALMENTE IL LABEL DURARA
+    fileprivate var songStartTimeSlider : UISlider!             //LO SLIDER CHE MODIFICA L'INIZIO DELLA CANZONE
+    fileprivate var songDurationTimeSlider : UISlider!          //LO SLIDER CHE MODIFICA LA DURATA DELLA CANZONE
+    fileprivate var songStartTimeLabel : UILabel!               //IL LABEL CHE MOSTRA QUANDO INZIA LA CANZONE
+    fileprivate var songDurationTimeLabel : UILabel!            //IL LABEL CHE MOSTRA A QUANTO è SETTATA LA DURATA DELLA SUONERIA
     
     public var songMaxDuration : Float = 0 {               //VAR CHE DICE/SETTA QUANTO DURA LA CANZONE INTERA (NON LA SUONERIA)
         didSet {
@@ -57,7 +57,7 @@ class EditorView: UIView {
         }
     }
     
-    public var currentSongStartTime : Float = 0 {
+    public var currentSongStartTime : Float = 0 {       //VAR CHE DICE/SETTA L'INIZIO DELLA SUONERIA ATTUALE
         didSet {
             DispatchQueue.main.async {
                 self.songStartTimeSlider.setValue(self.currentSongStartTime, animated: true)
@@ -66,7 +66,7 @@ class EditorView: UIView {
         }
     }
     
-    public var currentSongDurationValue : Float = 40 {
+    public var currentSongDurationValue : Float = 40 {  //VAR CHE DICE/SETTA LA DURATION DELLA SUONERIA ATTUALE
         didSet {
             DispatchQueue.main.async {
                 self.songDurationTimeSlider.value = self.currentSongDurationValue
@@ -78,12 +78,12 @@ class EditorView: UIView {
     
     
     //FADE VARS
-    var fadeView: UIView!                       //CONTIENE LE DUE CELLE DELLE IMPOSTAZIONI DEL FADE
-    var fadeSwitch : UISwitch!                  //LO SWITCH CHE ATTIVA/DISATTIVA IL FADE
-    var fadeDurationLabel : UILabel!            //IL LABEL CHE DICE QUANTO DURA IL FADE
-    var fadeDurationSlider : UISlider!          //LO SLIDER CHE MODIFICA LA DURATA DEL FADE
+    public var fadeView: UIView!                       //CONTIENE LE DUE CELLE DELLE IMPOSTAZIONI DEL FADE
+    fileprivate var fadeSwitch : UISwitch!                  //LO SWITCH CHE ATTIVA/DISATTIVA IL FADE
+    fileprivate var fadeDurationLabel : UILabel!            //IL LABEL CHE DICE QUANTO DURA IL FADE
+    fileprivate var fadeDurationSlider : UISlider!          //LO SLIDER CHE MODIFICA LA DURATA DEL FADE
     
-    var currentFadeDurationValue : Float = 10 {   //VAR CHE DICE/SETTA QUANTO DURA IL FADE
+    fileprivate var currentFadeDurationValue : Float = 10 {   //VAR CHE DICE/SETTA QUANTO DURA IL FADE
         didSet {
             DispatchQueue.main.async {
                 self.fadeDurationSlider?.setValue(self.currentFadeDurationValue, animated: true)
@@ -92,7 +92,7 @@ class EditorView: UIView {
         }
     }
     
-    var fadeActivated : Bool = false {          //VAR CHE DICE/SETTA SE IL FADE è ATTIVO
+    fileprivate var fadeActivated : Bool = false {          //VAR CHE DICE/SETTA SE IL FADE è ATTIVO
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.fadeSwitch?.isOn = self!.fadeActivated
@@ -102,7 +102,7 @@ class EditorView: UIView {
     
     //EDITORVIEW VARS
     
-    var state : EditorViewState = .closed {     //VAR CHE DICE IN CHE STATO è LA VIEW E MODIFICA LE SUBVIEWS IN BASE A QUELLO
+    public var state : EditorViewState = .closed {     //VAR CHE DICE IN CHE STATO è LA VIEW E MODIFICA LE SUBVIEWS IN BASE A QUELLO
         didSet {
             DispatchQueue.main.async {
                 switch self.state {

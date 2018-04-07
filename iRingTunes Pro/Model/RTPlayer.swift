@@ -87,6 +87,17 @@ class RTPlayer {
         audioPlayerTimer = nil
     }
     
+    
+    public func isPlaying() -> Bool {
+        return audioPlayer?.isPlaying ?? false
+    }
+    
+    
+    public func getSongDuration() -> Double {
+        return audioPlayer?.duration ?? 0
+    }
+    
+    
 }
 
 

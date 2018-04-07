@@ -25,3 +25,10 @@ class Song {
         self.url = url
     }
 }
+
+
+enum SongState {
+    case paused
+    case playing
+    case stopped
+}
