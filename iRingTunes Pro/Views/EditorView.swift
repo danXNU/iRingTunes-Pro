@@ -24,7 +24,7 @@ enum EditorViewSwitchType {         //TIPO DI SWITCH. AL MOMENTO SOLO UNO. USATO
 }
 
 protocol EditorViewDelegate : class {            //DELEGATE CHE PARLERà CON IL CONTROLLER QUANDO GLI SLIDER VENGONO MOSSI
-    func sliderDidMoveAt(_ value : Float, sliderType : EditorViewSliderType)
+    func sliderDidMoveAt(_ value : Float, sliderType : EditorViewSliderType, view : UIView)
     func switchWasTouched(_ sender: UISwitch, switchType: EditorViewSwitchType)
 }
 
@@ -51,9 +51,9 @@ class EditorView: UIView {
     fileprivate var songStartTimeLabel : UILabel!               //IL LABEL CHE MOSTRA QUANDO INZIA LA CANZONE
     fileprivate var songDurationTimeLabel : UILabel!            //IL LABEL CHE MOSTRA A QUANTO è SETTATA LA DURATA DELLA SUONERIA
     
-    public var songMaxDuration : Float = 0 {               //VAR CHE DICE/SETTA QUANTO DURA LA CANZONE INTERA (NON LA SUONERIA)
+    public var songMaxDuration : Double = 0 {               //VAR CHE DICE/SETTA QUANTO DURA LA CANZONE INTERA (NON LA SUONERIA)
         didSet {
-            songStartTimeSlider?.maximumValue = songMaxDuration
+            songStartTimeSlider?.maximumValue = Float(songMaxDuration)
         }
     }
     
@@ -61,7 +61,7 @@ class EditorView: UIView {
         didSet {
             DispatchQueue.main.async {
                 self.songStartTimeSlider.setValue(self.currentSongStartTime, animated: true)
-                self.songStartTimeLabel.text = "00:\(Int(self.currentSongStartTime))"
+                self.songStartTimeLabel.text = Double(self.currentSongStartTime).playerValue
             }
         }
     }
@@ -124,7 +124,7 @@ class EditorView: UIView {
     
     @objc private func fadeDurationSliderDidMove(sender: UISlider) {    //SELECTOR CHIAMATO QUANDO LO SLIDER DURATA DEL FADE SI MUOVE
         currentFadeDurationValue = sender.value
-        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .fadeDuration)
+        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .fadeDuration, view: self)
     }
     
     @objc private func fadeSwitchDidChangeValue(sender: UISwitch) {     //USATA QUANDO SI PREMRE LO SWITCH DELL'ATTIVA/DISATTIVA FADEIN
@@ -134,12 +134,12 @@ class EditorView: UIView {
     
     @objc private func songStartSliderDidMove(sender: UISlider) {       //USATA QUANDO LO SLIDER DELL'INIZIO SONG SI MUOVE
         currentSongStartTime = sender.value
-        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .songStart)
+        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .songStart, view: self)
     }
     
     @objc private func songDurationSliderDidMove(sender: UISlider) {    //USATA QUANDO LO SLIDER DELLA SONG DURATION SI MUOVE
         currentSongDurationValue = sender.value
-        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .songDuration)
+        self.delegate?.sliderDidMoveAt(sender.value, sliderType: .songDuration, view: self)
     }
     
     
@@ -206,7 +206,7 @@ extension EditorView {
         
         
         let songStartTitle = UILabel()
-        songStartTitle.text = "Inizio"
+        songStartTitle.text = "Inizio suoneria"
         songStartTitle.textColor = .white
         songStartTitle.textAlignment = .center
         songStartTitle.font = UIFont.preferredFont(forTextStyle: .body).withSize(13)
@@ -222,8 +222,7 @@ extension EditorView {
         songStartTimeLabel.textColor = .white
         songStartTimeLabel.textAlignment = .center
         songStartTimeLabel.adjustsFontSizeToFitWidth = true
-        songStartTimeLabel.font = UIFont.preferredFont(forTextStyle: .body).withSize(17)
-        songStartTimeLabel.text = "30:57"
+        songStartTimeLabel.font = UIFont.preferredFont(forTextStyle: .body).withSize(15)
         songStartContainer.addSubview(songStartTimeLabel)
         songStartTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         songStartTimeLabel.topAnchor.constraint(equalTo: songStartContainer.topAnchor).isActive = true
@@ -233,7 +232,7 @@ extension EditorView {
         
         
         songStartTimeSlider = UISlider()
-        songStartTimeSlider.addTarget(self, action: #selector(songStartSliderDidMove(sender:)), for: .valueChanged)
+        songStartTimeSlider.addTarget(self, action: #selector(songStartSliderDidMove(sender:)), for: [.touchUpInside, .touchUpOutside])
         songStartTimeSlider.minimumTrackTintColor = .purple
         songStartContainer.addSubview(songStartTimeSlider)
         songStartTimeSlider.translatesAutoresizingMaskIntoConstraints = false
@@ -262,7 +261,7 @@ extension EditorView {
         
         
         let songDurationTitle = UILabel()
-        songDurationTitle.text = "Durata"
+        songDurationTitle.text = "Durata suoneria"
         songDurationTitle.textColor = .white
         songDurationTitle.textAlignment = .center
         songDurationTitle.font = UIFont.preferredFont(forTextStyle: .body).withSize(13)
@@ -277,7 +276,7 @@ extension EditorView {
         
         songDurationTimeLabel = UILabel()
         songDurationTimeLabel.textAlignment = .center
-        songDurationTimeLabel.font = UIFont.preferredFont(forTextStyle: .body).withSize(17)
+        songDurationTimeLabel.font = UIFont.preferredFont(forTextStyle: .body).withSize(15)
         songDurationTimeLabel.adjustsFontSizeToFitWidth = true
         songDurationTimeLabel.text = "40s"
         songDurationTimeLabel.textColor = .white
@@ -292,7 +291,7 @@ extension EditorView {
         songDurationTimeSlider = UISlider()
         songDurationTimeSlider.minimumTrackTintColor = .blue
         songDurationTimeSlider.maximumValue = 40
-        songDurationTimeSlider.addTarget(self, action: #selector(songDurationSliderDidMove(sender:)), for: .valueChanged)
+        songDurationTimeSlider.addTarget(self, action: #selector(songDurationSliderDidMove(sender:)), for: [.touchUpInside, .touchUpOutside])
         songDurationContainer.addSubview(songDurationTimeSlider)
         songDurationTimeSlider.translatesAutoresizingMaskIntoConstraints = false
         songDurationTimeSlider.centerYAnchor.constraint(equalTo: songDurationContainer.centerYAnchor).isActive = true

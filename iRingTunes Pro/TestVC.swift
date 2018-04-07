@@ -42,7 +42,6 @@ class TestVC: UIViewController {
         bottomCon.isActive = true
         
         asd.delegate = self
-        asd.songMaxDuration = 37 //ESEMPIO
         asd.songName = "Test musica da VC"
         
         temp = EditorPlayerView()
@@ -110,16 +109,28 @@ extension TestVC : MPMediaPickerControllerDelegate {
                 self.temp.setCurrentSongTime(playerValue)
             }
         }
+        rtplayer.completionStart = { [weak self] in
+            self?.temp?.changeMusicStateButton?.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        }
+        rtplayer.completionPause = { [weak self] in
+            self?.temp?.changeMusicStateButton?.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        }
         
         rtplayer.prepare { (code) in
             print("TestVC.mediaPickerDidPick...().player.prepare() ha ritornato il codice: \(code)")
         }
+        
+        rtplayer.setRingtoneTime(start: 0, duration: 40)
+        
         rtplayer.play(startingAt: 0) { (code) in
             print("TestVC.mediaPickerDidPick...().player.play() ha ritornato il codice: \(code)")
         }
         
-        temp.fullSongDuration = rtplayer.getSongDuration()
-        asd.songMaxDuration = Float(rtplayer.getSongDuration())
+        let fullSongDuration = rtplayer.getSongDuration()
+        
+        temp.fullSongDuration = fullSongDuration
+        asd.songMaxDuration = fullSongDuration
+        
         
         
         return
@@ -186,14 +197,28 @@ extension TestVC : ExporterDelegate {
 }
 
 extension TestVC : EditorViewDelegate {
-    func sliderDidMoveAt(_ value: Float, sliderType: EditorViewSliderType) {
+    func sliderDidMoveAt(_ value: Float, sliderType: EditorViewSliderType, view: UIView) {
+        let senderView = view as? EditorView
+        let durationOpt = senderView?.currentSongDurationValue
+        
         switch sliderType {
         case .fadeDuration:
             print("Lo slider del fade è stato messo su: \(Int(value))s")
+            
+            
+            
+            
         case .songDuration:
-            print("Lo slider della durata della suoneria è stato messo su: \(Int(value))s")
+            if let playerStartRingtone = rtplayer.startRingtone {
+                rtplayer.setRingtoneTime(start: playerStartRingtone, duration: Int(value))
+            }
+
+            
         case .songStart:
-            print("Lo slider dell'inizio della canzone è stato messo su: \(Int(value))")
+            if let duration = durationOpt {
+                rtplayer.setRingtoneTime(start: Double(value), duration: Int(duration))
+            }
+            rtplayer.setCurrentTime(Double(value))
         }
     }
     
@@ -217,6 +242,11 @@ extension TestVC : EditorPlayerViewDelegate {
         }
     }
     
+    
+    func reloadStateSent() {
+        let startTime = Double(self.asd.currentSongStartTime)
+        rtplayer.setCurrentTime(startTime)
+    }
     
 }
 

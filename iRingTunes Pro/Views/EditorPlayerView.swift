@@ -10,6 +10,7 @@ import UIKit
 
 protocol EditorPlayerViewDelegate : NSObjectProtocol {
     func musicStateDidChange()
+    func reloadStateSent()
 }
 
 
@@ -29,23 +30,30 @@ class EditorPlayerView: UIView {
     var changeMusicStateButton : UIButton!
     var currentTimeSlider : UISlider!
     var restartMusicButton : UIButton!
+    var currentTimeLabel : UILabel!
+    var maxSongTimeLabel : UILabel!
     
     
     var fullSongDuration : Double = 0 {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.currentTimeSlider?.maximumValue = Float(self!.fullSongDuration)
+                self?.maxSongTimeLabel?.text = self?.fullSongDuration.playerValue
             }
         }
     }
     
     public func setCurrentSongTime(_ time : Double) {
         self.currentTimeSlider.value = Float(time)
+        self.currentTimeLabel.text = time.playerValue
     }
 
     @objc private func changeStateButtonPressed() {
-        print("ChangeStateMusic pressed")
         delegate?.musicStateDidChange()
+    }
+    
+    @objc private func restartRingtone() {
+        delegate?.reloadStateSent()
     }
     
 }
@@ -53,6 +61,7 @@ extension EditorPlayerView {
     func setViews() {
         self.backgroundColor = .blue
         
+        //PLAY/PAUSE BUTTON
         changeMusicStateButton = UIButton()
         changeMusicStateButton?.setTitle("", for: .normal)
         changeMusicStateButton?.setImage(#imageLiteral(resourceName: "play"), for: .normal)
@@ -80,12 +89,13 @@ extension EditorPlayerView {
         currentTimeSlider.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         
         
-        
+        //RELOAD BUTTON
         restartMusicButton = UIButton()
         restartMusicButton.setTitle("", for: .normal)
         restartMusicButton.setImage(#imageLiteral(resourceName: "reload"), for: .normal)
         restartMusicButton.layer.borderWidth = 0
         restartMusicButton.layer.borderColor = UIColor.white.cgColor
+        restartMusicButton.addTarget(self, action: #selector(restartRingtone), for: .touchUpInside)
         self.addSubview(restartMusicButton)
         restartMusicButton.translatesAutoresizingMaskIntoConstraints = false
         restartMusicButton.centerYAnchor.constraint(equalTo: changeMusicStateButton.centerYAnchor).isActive = true
@@ -94,5 +104,30 @@ extension EditorPlayerView {
         restartMusicButton.widthAnchor.constraint(equalTo: restartMusicButton.heightAnchor).isActive = true
         
         
+        currentTimeLabel = UILabel()
+        currentTimeLabel.textColor = .white
+        currentTimeLabel.layer.borderColor = UIColor.white.cgColor
+        currentTimeLabel.layer.borderWidth = 0
+        currentTimeLabel.adjustsFontSizeToFitWidth = true
+        self.addSubview(currentTimeLabel)
+        currentTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        currentTimeLabel.leadingAnchor.constraint(equalTo: currentTimeSlider.leadingAnchor).isActive = true
+        currentTimeLabel.bottomAnchor.constraint(equalTo: currentTimeSlider.topAnchor).isActive = true
+        currentTimeLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        
+        
+        maxSongTimeLabel = UILabel()
+        maxSongTimeLabel.textColor = .white
+        maxSongTimeLabel.layer.borderColor = UIColor.white.cgColor
+        maxSongTimeLabel.layer.borderWidth = 0
+        maxSongTimeLabel.adjustsFontSizeToFitWidth = true
+        self.addSubview(maxSongTimeLabel)
+        maxSongTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        maxSongTimeLabel.trailingAnchor.constraint(equalTo: currentTimeSlider.trailingAnchor).isActive = true
+        maxSongTimeLabel.bottomAnchor.constraint(equalTo: currentTimeSlider.topAnchor).isActive = true
+        maxSongTimeLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        maxSongTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
