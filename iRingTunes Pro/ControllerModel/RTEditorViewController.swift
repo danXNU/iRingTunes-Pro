@@ -69,7 +69,7 @@ class RTEditorViewController: UIViewController {
     //VARIABILI OBBLIGATORIE
     public var isFadeInActive : Bool = false
     public var fadeDuration : Int = 3
-    
+        //VARIABILI INIZIALI
     public var songName : String = "" {
         didSet {
             editorView?.songName = self.songName
@@ -208,6 +208,7 @@ class RTEditorViewController: UIViewController {
         editorView?.titleBackgroundColor = editorViewTitleSongColor
         editorView?.startContainerColor = editorViewContainerStartSongColor
         editorView?.durationContainerColor = editorViewContainerDurationSongColor
+        expandViewButton.backgroundColor = editorViewColor
         
         editorPlayerView?.viewColor = editorPlayerViewColor
     }

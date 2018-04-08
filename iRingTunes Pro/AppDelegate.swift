@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = RTEditorViewController()
+        window?.rootViewController = HomeVC_OLD()
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         
