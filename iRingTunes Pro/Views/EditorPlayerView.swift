@@ -25,6 +25,17 @@ class EditorPlayerView: UIView {
         setViews()
     }
     
+    public var viewColor : UIColor? {
+        didSet {
+            if let color = viewColor {
+                DispatchQueue.main.async {
+                    self.backgroundColor = color
+                }
+            }
+        }
+    }
+    
+    
     weak var delegate : EditorPlayerViewDelegate?
     
     var changeMusicStateButton : UIButton!

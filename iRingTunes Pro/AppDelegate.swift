@@ -19,14 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = TestVC()
+        window?.rootViewController = RTEditorViewController()
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         
-        if launchedBefore {
-            print("It's not the frst launch")
-        }
-        else {
+        if !launchedBefore {
             print("It's the first launch so I set the Fade duration to 3 seconds")
             UserDefaults.standard.set(3, forKey: "fadeInDuration")
             print("Now i set the default of Fade Status to OFF")

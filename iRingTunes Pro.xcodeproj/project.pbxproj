@@ -17,7 +17,7 @@
 		DBD629001F0ED7EF00307B67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD628FE1F0ED7EF00307B67 /* LaunchScreen.storyboard */; };
 		DBD6290A1F0ED8B400307B67 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD629091F0ED8B400307B67 /* Extension.swift */; };
 		DBED65232014A9ED0078313B /* RTExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBED65222014A9ED0078313B /* RTExporter.swift */; };
-		DBF08465201DE17700654E76 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF08464201DE17700654E76 /* TestVC.swift */; };
+		DBF08465201DE17700654E76 /* RTEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF08464201DE17700654E76 /* RTEditorViewController.swift */; };
 		DBF26CE720727BEC006E2431 /* RTPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF26CE620727BEC006E2431 /* RTPlayer.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,7 @@
 		DBD629011F0ED7EF00307B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBD629091F0ED8B400307B67 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DBED65222014A9ED0078313B /* RTExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTExporter.swift; sourceTree = "<group>"; };
-		DBF08464201DE17700654E76 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
+		DBF08464201DE17700654E76 /* RTEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTEditorViewController.swift; sourceTree = "<group>"; };
 		DBF26CE620727BEC006E2431 /* RTPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB8536EE207A4EA100F7AD0B /* ControllerModel */ = {
+			isa = PBXGroup;
+			children = (
+				DBF08464201DE17700654E76 /* RTEditorViewController.swift */,
+			);
+			path = ControllerModel;
+			sourceTree = "<group>";
+		};
 		DBD628E91F0ED7EC00307B67 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +76,7 @@
 		DBD628F41F0ED7ED00307B67 /* iRingTunes Pro */ = {
 			isa = PBXGroup;
 			children = (
+				DB8536EE207A4EA100F7AD0B /* ControllerModel */,
 				DBED65212014A8C50078313B /* Supporting Files */,
 				DBED65202014A8950078313B /* Controllers */,
 				DBED651F2014A88B0078313B /* Views */,
@@ -75,7 +84,6 @@
 				DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */,
 				DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */,
 				DBD629011F0ED7EF00307B67 /* Info.plist */,
-				DBF08464201DE17700654E76 /* TestVC.swift */,
 			);
 			path = "iRingTunes Pro";
 			sourceTree = "<group>";
@@ -189,7 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB443CFA203381CC00AF702E /* Song.swift in Sources */,
-				DBF08465201DE17700654E76 /* TestVC.swift in Sources */,
+				DBF08465201DE17700654E76 /* RTEditorViewController.swift in Sources */,
 				DBF26CE720727BEC006E2431 /* RTPlayer.swift in Sources */,
 				DB443CF82033792800AF702E /* HomeVC.swift in Sources */,
 				DBED65232014A9ED0078313B /* RTExporter.swift in Sources */,

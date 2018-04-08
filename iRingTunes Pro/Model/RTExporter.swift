@@ -9,13 +9,8 @@
 import Foundation
 import MediaPlayer
 
-protocol ExporterDelegate {
-    func exportDidFinish(withCode code: Int, andMsg msg: String?)
-}
 
 class RTExporter {
-    
-    var delegate : ExporterDelegate?
     
     
     var initialSong : URL               //L'URL DELLA CANZONE DA CUI PARTIRE    ---     SETTATA ALL'INIT
@@ -85,7 +80,7 @@ class RTExporter {
         self.exporterPrepared = true
     }
     
-    func export() {
+    func export(completion: ((Int, String?) -> Void)?) {
         //CONTROLLO CHE IO SIA STATO PRIMA PREPARATO
         if self.exporterPrepared == false { print("RTExporter Error: You have to call prepare() before export()"); return }
         
@@ -104,14 +99,15 @@ class RTExporter {
             guard let status = self.exportSession?.status else { return }
             switch status {
             case .completed:
-                print (status.rawValue)
-                self.delegate?.exportDidFinish(withCode: 0, andMsg: nil)
+                completion?(0, nil)
             case .exporting:
-                print("exporting...")
-            case .failed:
-                print("RTEXpoert.export().failed")
-                self.delegate?.exportDidFinish(withCode: 1, andMsg: "\(self.exportSession?.error ?? "nomsg" as! Error)")
+                completion?(2, "Still exporting")
+            case .failed, .cancelled:
+                let errorMessage = self.exportSession?.error?.localizedDescription
+                completion?(-1, errorMessage)
+                
             default:
+                completion?(1, "Generic error")
                 print("RTExporter.export(): È usito default nello switch del risultato dell'export. Errore")
             }
             

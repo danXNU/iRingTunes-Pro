@@ -160,9 +160,46 @@ class EditorView: UIView {
     
     
     
+    //CUSTOM COLORS
+    public var viewColor : UIColor? {
+        didSet {
+            if let color = viewColor {
+                DispatchQueue.main.async {
+                    self.backgroundColor = color
+                }
+            }
+        }
+    }
     
+    public var startContainerColor : UIColor? {
+        didSet {
+            if let color = startContainerColor {
+                DispatchQueue.main.async {
+                    self.songStartContainer.backgroundColor = color
+                }
+            }
+        }
+    }
     
+    public var durationContainerColor : UIColor? {
+        didSet {
+            if let color = durationContainerColor {
+                DispatchQueue.main.async {
+                    self.songDurationContainer.backgroundColor = color
+                }
+            }
+        }
+    }
     
+    public var titleBackgroundColor : UIColor? {
+        didSet {
+            if let color = titleBackgroundColor {
+                DispatchQueue.main.async {
+                    self.titleLabel.backgroundColor = color
+                }                
+            }
+        }
+    }
     
     
     
