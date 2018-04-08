@@ -342,7 +342,10 @@ extension RTEditorViewController {
         exportButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         exportButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         exportButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        exportButton.centerYAnchor.constraint(equalTo: tempView.centerYAnchor).isActive = true
+        let exportYAnchor = exportButton.centerYAnchor.constraint(equalTo: tempView.centerYAnchor)
+        exportYAnchor.priority = .defaultLow
+        exportYAnchor.isActive = true
+        exportButton.topAnchor.constraint(greaterThanOrEqualTo: editorPlayerView.bottomAnchor, constant: 10).isActive = true
         
         view.addSubview(indicatorView)
         indicatorView.centerYAnchor.constraint(equalTo: exportButton.centerYAnchor).isActive = true
