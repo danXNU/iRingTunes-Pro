@@ -134,9 +134,12 @@ class RTEditorViewController: UIViewController {
             print("TestVC.mediaPickerDidPick...().player.prepare() ha ritornato il codice: \(code)")
         }
         
-        rtPlayer?.setRingtoneTime(start: 0, duration: 40)
+        rtPlayer?.timeValuesChanged = { [weak self] (start, stop, duration) in
+            self?.editorPlayerView?.riassuntoTimeSong.text = "\(start.playerValue) - \(stop.playerValue)"
+        }
         
-        editorPlayerView?.riassuntoTimeSong.text = "\(0.0.playerValue) - \(40.0.playerValue)"
+        rtPlayer?.setRingtoneTime(start: 0, ringtoneDuration: 40)
+        
         
         rtPlayer?.play(startingAt: 0) { (code) in
             print("TestVC.mediaPickerDidPick...().player.play() ha ritornato il codice: \(code)")
@@ -190,6 +193,7 @@ class RTEditorViewController: UIViewController {
             case 0:
                 print("Export success")
                 self?.isLoading = false
+        
             case 1:
                 print("Generic error/warning: \(message ?? "no message")")
             case -1:
@@ -255,15 +259,13 @@ extension RTEditorViewController : EditorViewDelegate, EditorPlayerViewDelegate 
             
         case .songDuration:
             if let playerStartRingtone = rtPlayer?.startRingtone {
-                rtPlayer?.setRingtoneTime(start: playerStartRingtone, duration: Int(value))
-                editorPlayerView?.riassuntoTimeSong?.text = "\(playerStartRingtone.playerValue) - \((playerStartRingtone + Double(value)).playerValue)"
+                rtPlayer?.setRingtoneTime(start: playerStartRingtone, ringtoneDuration: Int(value))
             }
 
             
         case .songStart:
             if let duration = durationOpt {
-                rtPlayer?.setRingtoneTime(start: Double(value), duration: Int(duration))
-                editorPlayerView?.riassuntoTimeSong?.text = "\(Double(value).playerValue) - \(Double(value + duration).playerValue)"
+                rtPlayer?.setRingtoneTime(start: Double(value), ringtoneDuration: Int(duration))
             }
             rtPlayer?.setCurrentTime(Double(value))
         }

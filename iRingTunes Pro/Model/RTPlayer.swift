@@ -21,6 +21,8 @@ class RTPlayer {
     public var completionPause : (() -> Void)?
     public var completionStart : (() -> Void)?
     
+    public var timeValuesChanged : ((Double, Double, Double) -> Void)?
+    
     private var audioSession : AVAudioSession?
     
     public var startRingtone : Double?
@@ -139,26 +141,56 @@ class RTPlayer {
         audioPlayer?.currentTime = time
     }
     
-    public func setRingtoneTime(start : Double, duration : Int) {
+    public func setRingtoneTime(start : Double, ringtoneDuration : Int) {
         if self.prepared == false {
             print("RTPlayer.setRingtoneTime(): self.prepared == false. Questo vuol dire che non è stato ancora creato un player da cui prendere la durata della canzone intera")
         }
         
         self.startRingtone = start // default to 0
-        self.duration = duration //default to 40s
         
         
-        let stop = start + Double(duration)
         
-        if let playerDuration = audioPlayer?.duration {
-            if stop > playerDuration {
-                self.stopRingtone = audioPlayer?.duration
+        
+        if let songTotalDuration = audioPlayer?.duration {
+            
+            if songTotalDuration < Double(ringtoneDuration) {
+                self.duration = Int(songTotalDuration)
             } else {
-                print("RTPlayer.stopRingtone = \(stop.playerValue)")
+                self.duration = ringtoneDuration
+            }
+            
+            if let ringtoneDuration = self.duration {
+                var stop = start + Double(ringtoneDuration)
+                
+                if stop > songTotalDuration {
+                    stop = songTotalDuration
+                }
+                
                 self.stopRingtone = stop
+                timeValuesChanged?(start, stop, Double(ringtoneDuration))
             }
 
         }
+        
+        
+        
+        
+        
+//        self.duration = duration //default to 40s
+        
+        
+//        let stop = start + Double(duration)
+//
+//        if let playerDuration = audioPlayer?.duration {
+//            if stop > playerDuration {
+//                self.stopRingtone = audioPlayer?.duration
+//                self.duration = Int(playerDuration)
+//            } else {
+//                print("RTPlayer.stopRingtone = \(stop.playerValue)")
+//                self.stopRingtone = stop
+//            }
+//
+//        }
         
         
     }
