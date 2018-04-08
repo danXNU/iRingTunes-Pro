@@ -6,6 +6,7 @@
 //  Copyright © 2018 Dani Tox. All rights reserved.
 //
 
+/*
 import UIKit
 import MediaPlayer
 
@@ -34,7 +35,11 @@ extension HomeVC_OLD : MPMediaPickerControllerDelegate {
         songSelected = Song(title: nameSong, url: url)
         dismiss(animated: true) {
             DispatchQueue.main.async {
-                let vc = EditorVC_OLD()
+                if #available(iOS 10.0, *) {
+                    let vc = EditorVC_OLD()
+                } else {
+                    // Fallback on earlier versions
+                }
                 let navigationVC = UINavigationController(rootViewController: vc)
                 self.present(navigationVC, animated: true, completion: nil)
             }
@@ -112,3 +117,4 @@ extension HomeVC_OLD {
         present(mediaPicker, animated: true)
     }
 }
+*/

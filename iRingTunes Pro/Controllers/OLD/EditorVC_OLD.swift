@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 10.0, *)
 class EditorVC_OLD: UIViewController {
     
     var heightContainer : NSLayoutConstraint!
@@ -34,6 +35,7 @@ class EditorVC_OLD: UIViewController {
 
 }
 
+@available(iOS 10.0, *)
 extension EditorVC_OLD {
     
     @available(iOS 11.0, *)
@@ -85,7 +87,11 @@ extension EditorVC_OLD {
     
     @objc private func holdView() {
         heightContainer.isActive = false
-        heightContainer = containerView.heightAnchor.constraint(equalToConstant: view.safeAreaLayoutGuide.layoutFrame.height - 80)
+        if #available(iOS 11.0, *) {
+            heightContainer = containerView.heightAnchor.constraint(equalToConstant: view.safeAreaLayoutGuide.layoutFrame.height - 80)
+        } else {
+            // Fallback on earlier versions
+        }
         heightContainer.isActive = true
         
         vibrate()

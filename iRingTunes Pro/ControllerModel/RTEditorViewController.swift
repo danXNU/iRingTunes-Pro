@@ -78,9 +78,9 @@ class RTEditorViewController: UIViewController {
     
     public var selectedSongUrl : URL? {
         didSet {
-            if let url = selectedSongUrl {
-                self.loadPlayerAndUIWith(url)
-            }
+//            if let url = selectedSongUrl {
+//                self.loadPlayerAndUIWith(url)
+//            }
         }
     }
     
@@ -91,7 +91,11 @@ class RTEditorViewController: UIViewController {
         
         //SET UP WITH CUSTOM COLORS
         editorView?.backgroundColor = editorViewColor
+        print("LOADED")
         
+        if let url = selectedSongUrl {
+            self.loadPlayerAndUIWith(url)
+        }
         
     }
 
@@ -100,7 +104,7 @@ class RTEditorViewController: UIViewController {
         rtPlayer = RTPlayer(songURL: url)
         rtPlayer?.actionToRepeat = { (playerCurrentValue) in
             if let playerValue = playerCurrentValue {
-                self.editorPlayerView.setCurrentSongTime(playerValue)
+                self.editorPlayerView?.setCurrentSongTime(playerValue)
             }
         }
         rtPlayer?.completionStart = { [weak self] in
@@ -123,8 +127,8 @@ class RTEditorViewController: UIViewController {
         
         let fullSongDuration = rtPlayer.getSongDuration()
         
-        editorPlayerView.fullSongDuration = fullSongDuration
-        editorView.songMaxDuration = fullSongDuration
+        editorPlayerView?.fullSongDuration = fullSongDuration
+        editorView?.songMaxDuration = fullSongDuration
     }
     
 
@@ -275,6 +279,8 @@ extension RTEditorViewController : EditorViewDelegate, EditorPlayerViewDelegate 
 
 extension RTEditorViewController {
     fileprivate func loadInitialUI() {
+        navigationItem.title = "Editor"
+        
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.black.cgColor, UIColor.darkGray.darker(by: 15)!.cgColor]
         gradient.frame = view.frame
@@ -287,7 +293,15 @@ extension RTEditorViewController {
         editorView.viewColor = editorViewColor
         view.addSubview(editorView)
         editorView.translatesAutoresizingMaskIntoConstraints = false
-        editorView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        
+        if #available(iOS 11.0, *) {
+            editorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        } else {
+            let topBarHeight = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.height ?? 0.0)
+            editorView.topAnchor.constraint(equalTo: view.topAnchor, constant: topBarHeight + 15).isActive = true
+            print("OLEEEE: \(topBarHeight)")
+            
+        }
         editorView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         editorView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         bottomCon = editorView.bottomAnchor.constraint(equalTo: editorView.songDurationContainer.bottomAnchor, constant: 10)

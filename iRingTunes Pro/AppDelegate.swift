@@ -19,18 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = HomeVC_OLD()
+        window?.rootViewController = HomeVC()
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        
-        if !launchedBefore {
-            print("It's the first launch so I set the Fade duration to 3 seconds")
-            UserDefaults.standard.set(3, forKey: "fadeInDuration")
-            print("Now i set the default of Fade Status to OFF")
-            UserDefaults.standard.set(false, forKey: "isFadeInActivated")
-            print("Now I set that the first launch is done. So next time this won't happen again.")
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-        }
         
         return true
     }
