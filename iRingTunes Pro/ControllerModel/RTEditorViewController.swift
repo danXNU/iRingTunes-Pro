@@ -46,8 +46,8 @@ class RTEditorViewController: UIViewController {
         return v
     }()
     
-    lazy var exportButton : UIButton = {
-        let button = UIButton()
+    lazy var exportButton : UIBouncyButton = {
+        let button = UIBouncyButton()
         button.setTitle("Export", for: .normal)
         button.addTarget(self, action: #selector(export), for: .touchUpInside)
         button.layer.masksToBounds = true
@@ -83,6 +83,20 @@ class RTEditorViewController: UIViewController {
 //            }
         }
     }
+    
+    
+    var isLoading : Bool = false {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                if self?.isLoading ?? false {
+                    self?.indicatorView.startAnimating()
+                } else {
+                    self?.indicatorView.stopAnimating()
+                }
+            }
+        }
+    }
+    
     
     //STARTING POINT
     override func viewDidLoad() {
@@ -170,11 +184,12 @@ class RTEditorViewController: UIViewController {
         exporter?.prepare()
         
         //ESPORTO
+        isLoading = true
         exporter?.export() { [weak self] (code, message) in
             switch code {
             case 0:
                 print("Export success")
-                
+                self?.isLoading = false
             case 1:
                 print("Generic error/warning: \(message ?? "no message")")
             case -1:

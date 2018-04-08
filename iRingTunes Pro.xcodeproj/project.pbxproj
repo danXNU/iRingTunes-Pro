@@ -14,6 +14,7 @@
 		DB80C6D82072A8B600E21B24 /* EditorPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */; };
 		DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F1207A503300F7AD0B /* EditorVC.swift */; };
 		DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F4207A524F00F7AD0B /* HomeVC.swift */; };
+		DBA74EB6207AA02F00842665 /* UIBouncyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA74EB5207AA02F00842665 /* UIBouncyButton.swift */; };
 		DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */; };
 		DBD628FD1F0ED7EE00307B67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */; };
 		DBD629001F0ED7EF00307B67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD628FE1F0ED7EF00307B67 /* LaunchScreen.storyboard */; };
@@ -31,6 +32,7 @@
 		DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerView.swift; sourceTree = "<group>"; };
 		DB8536F1207A503300F7AD0B /* EditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC.swift; sourceTree = "<group>"; };
 		DB8536F4207A524F00F7AD0B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		DBA74EB5207AA02F00842665 /* UIBouncyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBouncyButton.swift; sourceTree = "<group>"; };
 		DBD628F21F0ED7ED00307B67 /* iRingTunes Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iRingTunes Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD628FC1F0ED7EE00307B67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		DBED651F2014A88B0078313B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DBA74EB5207AA02F00842665 /* UIBouncyButton.swift */,
 				DB5727202034AC3D00B42B86 /* EditorView.swift */,
 				DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */,
 			);
@@ -220,6 +223,7 @@
 				DB80C6D82072A8B600E21B24 /* EditorPlayerView.swift in Sources */,
 				DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */,
 				DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */,
+				DBA74EB6207AA02F00842665 /* UIBouncyButton.swift in Sources */,
 				DBD6290A1F0ED8B400307B67 /* Extension.swift in Sources */,
 				DB443CFC203382CB00AF702E /* EditorVC_OLD.swift in Sources */,
 			);
