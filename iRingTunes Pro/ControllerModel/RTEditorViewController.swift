@@ -98,13 +98,16 @@ class RTEditorViewController: UIViewController {
         }
         
     }
-
+    deinit {
+        rtPlayer?.destructTimer()
+        print("RTEditorViewController deinitialized")
+    }
     
     private func loadPlayerAndUIWith(_ url : URL) {
         rtPlayer = RTPlayer(songURL: url)
-        rtPlayer?.actionToRepeat = { (playerCurrentValue) in
+        rtPlayer?.actionToRepeat = { [weak self] (playerCurrentValue) in
             if let playerValue = playerCurrentValue {
-                self.editorPlayerView?.setCurrentSongTime(playerValue)
+                self?.editorPlayerView?.setCurrentSongTime(playerValue)
             }
         }
         rtPlayer?.completionStart = { [weak self] in
@@ -125,10 +128,12 @@ class RTEditorViewController: UIViewController {
             print("TestVC.mediaPickerDidPick...().player.play() ha ritornato il codice: \(code)")
         }
         
-        let fullSongDuration = rtPlayer.getSongDuration()
+        if let fullSongDuration = rtPlayer?.getSongDuration() {
+            editorPlayerView?.fullSongDuration = fullSongDuration
+            editorView?.songMaxDuration = fullSongDuration
+        }
         
-        editorPlayerView?.fullSongDuration = fullSongDuration
-        editorView?.songMaxDuration = fullSongDuration
+        
     }
     
 

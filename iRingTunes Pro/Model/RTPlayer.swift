@@ -120,7 +120,7 @@ class RTPlayer {
         
     }
     
-    private func destructTimer() {
+    public func destructTimer() {
         audioPlayerTimer?.invalidate()
         audioPlayerTimer = nil
     }

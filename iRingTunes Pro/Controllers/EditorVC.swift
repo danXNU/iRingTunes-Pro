@@ -10,9 +10,19 @@ import UIKit
 
 class EditorVC : RTEditorViewController {
     
+    lazy var backButton : UIBarButtonItem = {
+        let b = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(dismissVC))
+        return b
+    }()
+    
+    @objc private func dismissVC() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.setLeftBarButton(backButton, animated: true)
         
     }
 }
