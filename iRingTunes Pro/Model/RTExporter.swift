@@ -44,13 +44,19 @@ class RTExporter {
         guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return }
         
         //CREO LA PATH STRINGA COMPLETA DI NOME DEL FILE.ESTENSIONE
-        let exportString = path.appending("/\(nameSong).m4r")
+        var exportString : String? = path.appending("/\(nameSong).m4r")
         
         //ELIMINO L'EVENTUALE FILE SE PRESENTE
-        deleteFile(atPath: exportString)
+        //deleteFile(atPath: exportString)
+        exportString = createNewNameIfFileAlreadyExist(origName: nameSong)
+        if exportString == nil {
+            print("RTExporter.prepare(): Stringa ritornata da createNewName... == nil")
+            return
+        }
+        
         
         //SETTO L'EXPORTER (NON LA SESSIONE) OUTPUTH PATH IN FORMATO URL. È NIL ALTRIMENTI VISTO CHE NESSUNO L'HA ANCORA SETTATA
-        self.exportPath = URL(fileURLWithPath: exportString)
+        self.exportPath = URL(fileURLWithPath: exportString!)
 
         //CONTROLLO SE è NIL (INUTILE VISTO CHE L'HO APPENA SETTATA)
         if self.exportPath == nil {
@@ -58,7 +64,7 @@ class RTExporter {
             return
         }
         
-        print("PATH: \(exportString)")
+        print("PATH: \(exportString!)")
         print("URL: \(self.exportPath!)")
         
         //CHECK PER VEDERE SE L'EXPORTER (EXPOSRTSESSION) È NIL
@@ -154,6 +160,22 @@ class RTExporter {
                 print("RTExporter.deleteFile(atPath): ERRORE ELIMINAZIONE:\n\(error)\nFine error of RTExporter.deleteFile(atPath)")
             }
         }
+    }
+    
+    //TROVA UN PERCORSO FILE UNIVOCO
+    private func createNewNameIfFileAlreadyExist(origName : String) -> String? {
+        let fl = FileManager.default
+        
+        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
+        var newPath = path.appending("/\(origName).m4r")
+        
+        var i = 1
+        while fl.fileExists(atPath: newPath) {
+            newPath = path.appending("/\(origName)\(i).m4r")
+            i += 1
+        }
+        
+        return newPath
     }
     
     

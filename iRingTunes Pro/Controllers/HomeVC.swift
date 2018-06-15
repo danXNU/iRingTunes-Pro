@@ -11,32 +11,22 @@ import MediaPlayer
 
 class HomeVC: UIViewController {
 
-    
-    lazy var createButton : UIButton = {
-        let b = UIButton()
-        b.backgroundColor = UIColor.darkGray.darker(by: 15)
-        b.setTitle("Create", for: .normal)
-        b.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        b.titleLabel?.textColor = .white
-        b.translatesAutoresizingMaskIntoConstraints = false
-        b.layer.masksToBounds = true
-        b.layer.cornerRadius = 10
-        b.addTarget(self, action: #selector(createRingtone), for: .touchUpInside)
-        return b
-    }()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
-        
-        view.addSubview(createButton)
-        [ createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-          createButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-          createButton.widthAnchor.constraint(equalToConstant: 120),
-          createButton.heightAnchor.constraint(equalToConstant: 60) ].forEach({ $0.isActive = true })
+        homeView.createButton?.addTarget(self, action: #selector(createRingtone), for: .touchUpInside)
+        homeView.managerButton?.addTarget(self, action: #selector(openManager), for: .touchUpInside)
     }
 
+    var homeView = HomeView()
+    override func loadView() {
+        super.loadView()
+        self.view = self.homeView
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
     
     @objc private func createRingtone() {
         let picker = MPMediaPickerController(mediaTypes: .anyAudio)
@@ -45,6 +35,12 @@ class HomeVC: UIViewController {
         present(picker, animated: true, completion: nil)
     }
 
+    @objc private func openManager() {
+        let vc = RTManagerVC()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
+    }
+    
 }
 
 extension HomeVC: MPMediaPickerControllerDelegate {

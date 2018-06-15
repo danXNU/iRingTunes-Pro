@@ -11,6 +11,10 @@
 		DB443CFA203381CC00AF702E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CF9203381CC00AF702E /* Song.swift */; };
 		DB443CFC203382CB00AF702E /* EditorVC_OLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CFB203382CB00AF702E /* EditorVC_OLD.swift */; };
 		DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5727202034AC3D00B42B86 /* EditorView.swift */; };
+		DB7751FE20D41FF800B34F9C /* RTManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7751FD20D41FF800B34F9C /* RTManagerVC.swift */; };
+		DB77520020D4205900B34F9C /* RTBlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7751FF20D4205900B34F9C /* RTBlackView.swift */; };
+		DB77520220D4212B00B34F9C /* RTManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520120D4212B00B34F9C /* RTManagerView.swift */; };
+		DB77520520D426CA00B34F9C /* RTGenericModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520420D426CA00B34F9C /* RTGenericModel.swift */; };
 		DB80C6D82072A8B600E21B24 /* EditorPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */; };
 		DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F1207A503300F7AD0B /* EditorVC.swift */; };
 		DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F4207A524F00F7AD0B /* HomeVC.swift */; };
@@ -22,6 +26,7 @@
 		DBED65232014A9ED0078313B /* RTExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBED65222014A9ED0078313B /* RTExporter.swift */; };
 		DBF08465201DE17700654E76 /* RTEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF08464201DE17700654E76 /* RTEditorViewController.swift */; };
 		DBF26CE720727BEC006E2431 /* RTPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF26CE620727BEC006E2431 /* RTPlayer.swift */; };
+		DBF3A04920D2F66E0051BD97 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF3A04820D2F66E0051BD97 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,10 @@
 		DB443CF9203381CC00AF702E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DB443CFB203382CB00AF702E /* EditorVC_OLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC_OLD.swift; sourceTree = "<group>"; };
 		DB5727202034AC3D00B42B86 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		DB7751FD20D41FF800B34F9C /* RTManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTManagerVC.swift; sourceTree = "<group>"; };
+		DB7751FF20D4205900B34F9C /* RTBlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTBlackView.swift; sourceTree = "<group>"; };
+		DB77520120D4212B00B34F9C /* RTManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTManagerView.swift; sourceTree = "<group>"; };
+		DB77520420D426CA00B34F9C /* RTGenericModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTGenericModel.swift; sourceTree = "<group>"; };
 		DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerView.swift; sourceTree = "<group>"; };
 		DB8536F1207A503300F7AD0B /* EditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC.swift; sourceTree = "<group>"; };
 		DB8536F4207A524F00F7AD0B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -42,6 +51,7 @@
 		DBED65222014A9ED0078313B /* RTExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTExporter.swift; sourceTree = "<group>"; };
 		DBF08464201DE17700654E76 /* RTEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTEditorViewController.swift; sourceTree = "<group>"; };
 		DBF26CE620727BEC006E2431 /* RTPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayer.swift; sourceTree = "<group>"; };
+		DBF3A04820D2F66E0051BD97 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +65,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB7751FC20D41F9C00B34F9C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DB7751FD20D41FF800B34F9C /* RTManagerVC.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		DB8536EE207A4EA100F7AD0B /* ControllerModel */ = {
 			isa = PBXGroup;
 			children = (
 				DBF08464201DE17700654E76 /* RTEditorViewController.swift */,
+				DB7751FF20D4205900B34F9C /* RTBlackView.swift */,
 			);
 			path = ControllerModel;
 			sourceTree = "<group>";
@@ -110,6 +129,7 @@
 				DBED65222014A9ED0078313B /* RTExporter.swift */,
 				DB443CF9203381CC00AF702E /* Song.swift */,
 				DBF26CE620727BEC006E2431 /* RTPlayer.swift */,
+				DB77520420D426CA00B34F9C /* RTGenericModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +140,8 @@
 				DBA74EB5207AA02F00842665 /* UIBouncyButton.swift */,
 				DB5727202034AC3D00B42B86 /* EditorView.swift */,
 				DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */,
+				DBF3A04820D2F66E0051BD97 /* HomeView.swift */,
+				DB77520120D4212B00B34F9C /* RTManagerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +149,7 @@
 		DBED65202014A8950078313B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB7751FC20D41F9C00B34F9C /* Manager */,
 				DB8536F3207A521000F7AD0B /* OLD */,
 				DB8536F4207A524F00F7AD0B /* HomeVC.swift */,
 				DB8536F1207A503300F7AD0B /* EditorVC.swift */,
@@ -169,7 +192,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Dani Tox";
 				TargetAttributes = {
 					DBD628F11F0ED7ED00307B67 = {
@@ -214,17 +237,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB443CFA203381CC00AF702E /* Song.swift in Sources */,
+				DBF3A04920D2F66E0051BD97 /* HomeView.swift in Sources */,
 				DBF08465201DE17700654E76 /* RTEditorViewController.swift in Sources */,
 				DBF26CE720727BEC006E2431 /* RTPlayer.swift in Sources */,
 				DB443CF82033792800AF702E /* HomeVC_OLD.swift in Sources */,
 				DBED65232014A9ED0078313B /* RTExporter.swift in Sources */,
+				DB77520220D4212B00B34F9C /* RTManagerView.swift in Sources */,
 				DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */,
 				DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */,
 				DB80C6D82072A8B600E21B24 /* EditorPlayerView.swift in Sources */,
 				DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */,
+				DB77520020D4205900B34F9C /* RTBlackView.swift in Sources */,
 				DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */,
 				DBA74EB6207AA02F00842665 /* UIBouncyButton.swift in Sources */,
 				DBD6290A1F0ED8B400307B67 /* Extension.swift in Sources */,
+				DB77520520D426CA00B34F9C /* RTGenericModel.swift in Sources */,
+				DB7751FE20D41FF800B34F9C /* RTManagerVC.swift in Sources */,
 				DB443CFC203382CB00AF702E /* EditorVC_OLD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +285,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -264,6 +293,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -314,6 +344,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -321,6 +352,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -360,7 +392,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DaniTox.RingTunesPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -376,7 +408,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DaniTox.RingTunesPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

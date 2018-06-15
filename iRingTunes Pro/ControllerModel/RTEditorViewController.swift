@@ -109,6 +109,7 @@ class RTEditorViewController: UIViewController {
         
         if let url = selectedSongUrl {
             self.loadPlayerAndUIWith(url)
+            editorView.songName = songName
         }
         
     }
