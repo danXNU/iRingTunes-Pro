@@ -13,8 +13,21 @@ protocol EditorPlayerViewDelegate : NSObjectProtocol {
     func reloadStateSent()
 }
 
+class RTPlayerSong {
+    var duration : Double
+    var title : String
+    var path : String
+    
+    init(duration: Double, title: String) {
+        self.duration = duration
+        self.title = title
+        
+        let offset = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        self.path = offset.appending("/\(title)")
+    }
+}
 
-class EditorPlayerView: UIView {
+class RTPlayerView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,6 +48,19 @@ class EditorPlayerView: UIView {
         }
     }
     
+    var song : RTPlayerSong? {
+        didSet {
+            DispatchQueue.main.async {
+                self.loadViewWithSongComponents()
+            }
+        }
+    }
+    public func loadViewWithSongComponents() {
+        if let song = self.song {
+            self.fullSongDuration = song.duration
+            self.titleLabel.text = song.title
+        }
+    }
     
     weak var delegate : EditorPlayerViewDelegate?
     
@@ -44,7 +70,7 @@ class EditorPlayerView: UIView {
     var currentTimeLabel : UILabel!
     var maxSongTimeLabel : UILabel!
     
-    var riassuntoTimeSong : UILabel!
+    var titleLabel : UILabel!
     
     var fullSongDuration : Double = 0 {
         didSet {
@@ -69,7 +95,7 @@ class EditorPlayerView: UIView {
     }
     
 }
-extension EditorPlayerView {
+extension RTPlayerView {
     func setViews() {
         self.backgroundColor = .blue
         
@@ -144,18 +170,19 @@ extension EditorPlayerView {
         maxSongTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         
-        riassuntoTimeSong = UILabel()
-        riassuntoTimeSong?.textColor = .white
-        riassuntoTimeSong.layer.borderColor = UIColor.white.cgColor
-        riassuntoTimeSong.layer.borderWidth = 0
-        riassuntoTimeSong.adjustsFontSizeToFitWidth = true
-        riassuntoTimeSong.text = "00:00 - 00:00"
-        riassuntoTimeSong.textAlignment = .center
-        addSubview(riassuntoTimeSong)
-        riassuntoTimeSong.translatesAutoresizingMaskIntoConstraints = false
-        riassuntoTimeSong.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        riassuntoTimeSong.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        riassuntoTimeSong.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        riassuntoTimeSong.widthAnchor.constraint(equalToConstant: 110).isActive = true
+        titleLabel = UILabel()
+        titleLabel?.textColor = .white
+        titleLabel.layer.borderColor = UIColor.white.cgColor
+        titleLabel.layer.borderWidth = 0
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.text = "00:00 - 00:00"
+        titleLabel.textAlignment = .center
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
     }
 }

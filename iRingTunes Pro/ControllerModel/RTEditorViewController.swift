@@ -28,7 +28,7 @@ class RTEditorViewController: UIViewController {
     
     //VIEWS
     private var editorView : EditorView!
-    private var editorPlayerView : EditorPlayerView!
+    private var editorPlayerView : RTPlayerView!
     
     lazy private var expandViewButton : UIButton = {
         let b =  UIButton()
@@ -136,7 +136,7 @@ class RTEditorViewController: UIViewController {
         }
         
         rtPlayer?.timeValuesChanged = { [weak self] (start, stop, duration) in
-            self?.editorPlayerView?.riassuntoTimeSong.text = "\(start.playerValue) - \(stop.playerValue)"
+            self?.editorPlayerView?.titleLabel.text = "\(start.playerValue) - \(stop.playerValue)"
         }
         
         rtPlayer?.setRingtoneTime(start: 0, ringtoneDuration: 40)
@@ -342,7 +342,7 @@ extension RTEditorViewController {
         expandViewButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         
-        editorPlayerView = EditorPlayerView()
+        editorPlayerView = RTPlayerView()
         editorPlayerView.backgroundColor = .blue
         editorPlayerView.layer.cornerRadius = 10
         editorPlayerView.delegate = self

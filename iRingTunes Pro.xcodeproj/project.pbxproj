@@ -15,7 +15,9 @@
 		DB77520020D4205900B34F9C /* RTBlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7751FF20D4205900B34F9C /* RTBlackView.swift */; };
 		DB77520220D4212B00B34F9C /* RTManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520120D4212B00B34F9C /* RTManagerView.swift */; };
 		DB77520520D426CA00B34F9C /* RTGenericModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520420D426CA00B34F9C /* RTGenericModel.swift */; };
-		DB80C6D82072A8B600E21B24 /* EditorPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */; };
+		DB77520720D4465500B34F9C /* RTManagerSongInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520620D4465500B34F9C /* RTManagerSongInfoVC.swift */; };
+		DB77520920D4468700B34F9C /* RTManagerSongInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520820D4468700B34F9C /* RTManagerSongInfoView.swift */; };
+		DB80C6D82072A8B600E21B24 /* RTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */; };
 		DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F1207A503300F7AD0B /* EditorVC.swift */; };
 		DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F4207A524F00F7AD0B /* HomeVC.swift */; };
 		DBA74EB6207AA02F00842665 /* UIBouncyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA74EB5207AA02F00842665 /* UIBouncyButton.swift */; };
@@ -38,7 +40,9 @@
 		DB7751FF20D4205900B34F9C /* RTBlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTBlackView.swift; sourceTree = "<group>"; };
 		DB77520120D4212B00B34F9C /* RTManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTManagerView.swift; sourceTree = "<group>"; };
 		DB77520420D426CA00B34F9C /* RTGenericModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTGenericModel.swift; sourceTree = "<group>"; };
-		DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerView.swift; sourceTree = "<group>"; };
+		DB77520620D4465500B34F9C /* RTManagerSongInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTManagerSongInfoVC.swift; sourceTree = "<group>"; };
+		DB77520820D4468700B34F9C /* RTManagerSongInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTManagerSongInfoView.swift; sourceTree = "<group>"; };
+		DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayerView.swift; sourceTree = "<group>"; };
 		DB8536F1207A503300F7AD0B /* EditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC.swift; sourceTree = "<group>"; };
 		DB8536F4207A524F00F7AD0B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		DBA74EB5207AA02F00842665 /* UIBouncyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBouncyButton.swift; sourceTree = "<group>"; };
@@ -69,6 +73,9 @@
 			isa = PBXGroup;
 			children = (
 				DB7751FD20D41FF800B34F9C /* RTManagerVC.swift */,
+				DB77520120D4212B00B34F9C /* RTManagerView.swift */,
+				DB77520620D4465500B34F9C /* RTManagerSongInfoVC.swift */,
+				DB77520820D4468700B34F9C /* RTManagerSongInfoView.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -138,10 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				DBA74EB5207AA02F00842665 /* UIBouncyButton.swift */,
-				DB5727202034AC3D00B42B86 /* EditorView.swift */,
-				DB80C6D72072A8B600E21B24 /* EditorPlayerView.swift */,
 				DBF3A04820D2F66E0051BD97 /* HomeView.swift */,
-				DB77520120D4212B00B34F9C /* RTManagerView.swift */,
+				DB5727202034AC3D00B42B86 /* EditorView.swift */,
+				DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,10 +155,10 @@
 		DBED65202014A8950078313B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DB7751FC20D41F9C00B34F9C /* Manager */,
-				DB8536F3207A521000F7AD0B /* OLD */,
 				DB8536F4207A524F00F7AD0B /* HomeVC.swift */,
 				DB8536F1207A503300F7AD0B /* EditorVC.swift */,
+				DB7751FC20D41F9C00B34F9C /* Manager */,
+				DB8536F3207A521000F7AD0B /* OLD */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -241,14 +247,16 @@
 				DBF08465201DE17700654E76 /* RTEditorViewController.swift in Sources */,
 				DBF26CE720727BEC006E2431 /* RTPlayer.swift in Sources */,
 				DB443CF82033792800AF702E /* HomeVC_OLD.swift in Sources */,
+				DB77520920D4468700B34F9C /* RTManagerSongInfoView.swift in Sources */,
 				DBED65232014A9ED0078313B /* RTExporter.swift in Sources */,
 				DB77520220D4212B00B34F9C /* RTManagerView.swift in Sources */,
 				DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */,
 				DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */,
-				DB80C6D82072A8B600E21B24 /* EditorPlayerView.swift in Sources */,
+				DB80C6D82072A8B600E21B24 /* RTPlayerView.swift in Sources */,
 				DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */,
 				DB77520020D4205900B34F9C /* RTBlackView.swift in Sources */,
 				DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */,
+				DB77520720D4465500B34F9C /* RTManagerSongInfoVC.swift in Sources */,
 				DBA74EB6207AA02F00842665 /* UIBouncyButton.swift in Sources */,
 				DBD6290A1F0ED8B400307B67 /* Extension.swift in Sources */,
 				DB77520520D426CA00B34F9C /* RTGenericModel.swift in Sources */,

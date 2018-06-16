@@ -22,7 +22,7 @@ class RTBlackView: UIView {
     }
     
     public func reloadGradient() {
-        gradient.colors = [UIColor.black.cgColor, UIColor.darkGray.darker(by: 15)!.cgColor]
+        gradient.colors = [UIColor.darkGray.darker(by: 25)!.cgColor, UIColor.darkGray.darker(by: 15)!.cgColor]
         gradient.frame = self.frame
     }
     

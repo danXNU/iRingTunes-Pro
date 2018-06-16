@@ -8,33 +8,33 @@
 
 import UIKit
 
-class HomeView: UIView {
+class HomeView: RTBlackView {
     
-    var createButton : UIButton?
-    var managerButton : UIButton?
+    var createButton : UIBouncyButton?
+    var managerButton : UIBouncyButton?
     var titleLabel : UILabel?
     
-    let gradient = CAGradientLayer()
+//    let gradient = CAGradientLayer()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        gradient.colors = [UIColor.black.cgColor, UIColor.darkGray.darker(by: 15)!.cgColor]
-        gradient.frame = self.frame
-        self.layer.addSublayer(gradient)
+//        gradient.colors = [UIColor.black.cgColor, UIColor.darkGray.darker(by: 15)!.cgColor]
+//        gradient.frame = self.frame
+//        self.layer.addSublayer(gradient)
         setup()
     }
     
-    override func layoutMarginsDidChange() {
-        super.layoutMarginsDidChange()
-        print("LAYOUT MARGINS DID CHANGE")
-        gradient.frame = self.frame
-    }
+//    override func layoutMarginsDidChange() {
+//        super.layoutMarginsDidChange()
+//        print("LAYOUT MARGINS DID CHANGE")
+//        gradient.frame = self.frame
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setup() {
-        createButton = UIButton()
+        createButton = UIBouncyButton()
         createButton?.translatesAutoresizingMaskIntoConstraints = false
         createButton?.setTitle("Create", for: .normal)
         createButton?.backgroundColor = UIColor.darkGray.darker(by: 15)
@@ -43,10 +43,16 @@ class HomeView: UIView {
         createButton?.titleLabel?.minimumScaleFactor = 0.7
         createButton?.titleLabel?.textColor = .white
         createButton?.layer.cornerRadius = 10
+        
+        createButton?.layer.shadowColor = UIColor.black.cgColor
+        createButton?.layer.shadowOffset = CGSize(width: 0, height: 1)
+        createButton?.layer.shadowOpacity = 1.0
+        createButton?.layer.shadowRadius = 10
+        createButton?.layer.masksToBounds = false
         self.addSubview(createButton!)
         
         
-        managerButton = UIButton()
+        managerButton = UIBouncyButton()
         managerButton?.translatesAutoresizingMaskIntoConstraints = false
         managerButton?.setTitle("Ringtones Manager", for: .normal)
         managerButton?.backgroundColor = UIColor.darkGray.darker(by: 10)
@@ -55,6 +61,12 @@ class HomeView: UIView {
         managerButton?.titleLabel?.minimumScaleFactor = 0.7
         managerButton?.titleLabel?.textColor = .white
         managerButton?.layer.cornerRadius = 10
+        
+        managerButton?.layer.shadowColor = UIColor.black.cgColor
+        managerButton?.layer.shadowOffset = CGSize(width: 0, height: 1)
+        managerButton?.layer.shadowOpacity = 1.0
+        managerButton?.layer.shadowRadius = 10
+        managerButton?.layer.masksToBounds = false
         self.addSubview(managerButton!)
         
         
@@ -63,7 +75,7 @@ class HomeView: UIView {
         
         stackView.alignment = .fill
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 30
         stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(stackView)
@@ -83,7 +95,14 @@ class HomeView: UIView {
         titleLabel?.adjustsFontSizeToFitWidth = true
         titleLabel?.minimumScaleFactor = 0.7
         titleLabel?.layer.cornerRadius = 10
-        titleLabel?.layer.masksToBounds = true
+        
+        titleLabel?.layer.shadowColor = UIColor.red.cgColor
+        titleLabel?.layer.shadowOffset = CGSize(width: 0, height: 1)
+        titleLabel?.layer.shadowOpacity = 1.0
+        titleLabel?.layer.shadowRadius = 10
+        titleLabel?.layer.masksToBounds = false
+
+        
         self.addSubview(titleLabel!)
         
         if #available(iOS 11.0, *) {

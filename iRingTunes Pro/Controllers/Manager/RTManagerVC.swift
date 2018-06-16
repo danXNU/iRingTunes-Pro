@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class RTManagerVC: UIViewController {
     
     let model = RTGenericModel()
@@ -26,8 +27,15 @@ class RTManagerVC: UIViewController {
         navigationItem.setRightBarButton(backButton, animated: true)
         navigationItem.title = "Manager"
         
-        reloadFiles()
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        reloadFiles()
+        reloadTableView()
+    }
+    
 
     let managerView = RTManagerView()
     override func loadView() {
@@ -44,8 +52,10 @@ class RTManagerVC: UIViewController {
         
         
         files = model.getFiles(from: path, withFilter: { (file) -> Bool in
+            //print("FILENAME: \(file)\t\t\t\t\t\t\t\t\t\t->\t\tHas Suffix: \((file.hasSuffix(".m4r")) ? true : false)")
             return (file.hasSuffix(".m4r")) ? true : false
         })
+        files.forEach({print($0)})
         reloadTableView()
     }
 
@@ -78,7 +88,10 @@ extension RTManagerVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = RTManagerSongInfoVC()
+        vc.songName = files[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
