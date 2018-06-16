@@ -19,6 +19,7 @@ class RTManagerVC: UIViewController {
         return b
     }()
     
+    let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         managerView.tableView.delegate = self
@@ -27,13 +28,18 @@ class RTManagerVC: UIViewController {
         navigationItem.setRightBarButton(backButton, animated: true)
         navigationItem.title = "Manager"
         
+        refreshControl.addTarget(self, action: #selector(reloadFiles), for: .valueChanged)
         
+        if #available(iOS 10.0, *) {
+            managerView.tableView.refreshControl = refreshControl
+        } else {
+            managerView.tableView.addSubview(refreshControl)
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         reloadFiles()
-        reloadTableView()
     }
     
 
@@ -47,16 +53,14 @@ class RTManagerVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    private func reloadFiles() {
+    @objc private func reloadFiles() {
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
-        
         files = model.getFiles(from: path, withFilter: { (file) -> Bool in
-            //print("FILENAME: \(file)\t\t\t\t\t\t\t\t\t\t->\t\tHas Suffix: \((file.hasSuffix(".m4r")) ? true : false)")
             return (file.hasSuffix(".m4r")) ? true : false
         })
-        files.forEach({print($0)})
         reloadTableView()
+        refreshControl.endRefreshing()
     }
 
     private func reloadTableView() {
@@ -75,8 +79,8 @@ extension RTManagerVC : UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell()
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = .white
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 23)
-        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        cell.textLabel?.adjustsFontSizeToFitWidth = false
         cell.textLabel?.minimumScaleFactor = 0.6
         cell.textLabel?.text = files[indexPath.row]
         cell.accessoryType = .disclosureIndicator
@@ -93,5 +97,15 @@ extension RTManagerVC : UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let path = model.getPath(fromName: files[indexPath.row])
+            files.remove(at: indexPath.row)
+            model.removeItem(atPath: path)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     
 }

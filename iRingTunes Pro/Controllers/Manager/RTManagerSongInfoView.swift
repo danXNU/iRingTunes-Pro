@@ -22,9 +22,9 @@ class RTManagerSongInfoView: RTBlackView {
     }
     
     let playButton = UIBouncyButton()
-    let shareButton = UIButton()
-    let removeButton = UIButton()
-    let renameButton = UIButton()
+    let shareButton = UIBouncyButton()
+    let removeButton = UIBouncyButton()
+    let renameButton = UIBouncyButton()
     private func loadUI() {
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
