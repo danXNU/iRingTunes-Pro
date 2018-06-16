@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RTManagerView: RTBlackView {
+class RTManagerView: UIView {
 
     let tableView = UITableView()
     override init(frame: CGRect) {
@@ -22,11 +22,15 @@ class RTManagerView: RTBlackView {
     
     
     private func initUI() {
+        self.backgroundColor = .black
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.borderColor = UIColor.white.cgColor
         tableView.layer.borderWidth = 0.1
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView()
+        tableView.separatorInset = .zero
+        tableView.separatorStyle = .none
         self.addSubview(tableView)
         tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true

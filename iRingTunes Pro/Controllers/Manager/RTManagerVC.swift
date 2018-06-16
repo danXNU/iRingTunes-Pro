@@ -35,6 +35,7 @@ class RTManagerVC: UIViewController {
         } else {
             managerView.tableView.addSubview(refreshControl)
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,12 +79,30 @@ extension RTManagerVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.backgroundColor = .clear
-        cell.textLabel?.textColor = .white
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.textLabel?.adjustsFontSizeToFitWidth = false
-        cell.textLabel?.minimumScaleFactor = 0.6
-        cell.textLabel?.text = files[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
+//        cell.textLabel?.textColor = .white
+//        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+//        cell.textLabel?.adjustsFontSizeToFitWidth = false
+//        cell.textLabel?.minimumScaleFactor = 0.6
+//        cell.textLabel?.text = files[indexPath.row]
+//        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
+        
+        let v = TouchView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = UIColor.darkGray.darker(by: 20)
+        v.layer.cornerRadius = 10
+        cell.addSubview(v)
+        v.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 15).isActive = true
+        v.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -15).isActive = true
+        v.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -7).isActive = true
+        v.topAnchor.constraint(equalTo: cell.topAnchor, constant: 7).isActive = true
+        
+        v.layer.shadowColor = UIColor.gray.cgColor
+        v.layer.shadowOffset = CGSize(width: 0, height: 0)
+        v.layer.shadowOpacity = 1.0
+        v.layer.shadowRadius = 10
+        v.layer.masksToBounds = false
+        
         return cell
     }
     
