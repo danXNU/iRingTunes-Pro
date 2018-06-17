@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = HomeVC()
         
+        //TESTING
+//        let vc = UINavigationController(rootViewController: RTManagerSongInfoVC())
+//        window?.rootViewController = vc
         
         return true
     }
