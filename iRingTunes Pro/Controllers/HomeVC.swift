@@ -14,6 +14,10 @@ class HomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
         homeView.createButton?.addTarget(self, action: #selector(createRingtone), for: .touchUpInside)
         homeView.managerButton?.addTarget(self, action: #selector(openManager), for: .touchUpInside)
     }

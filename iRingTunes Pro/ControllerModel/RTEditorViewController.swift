@@ -48,7 +48,7 @@ class RTEditorViewController: UIViewController {
     
     lazy var exportButton : UIBouncyButton = {
         let button = UIBouncyButton()
-        button.setTitle("Export", for: .normal)
+        button.setTitle(t_export, for: .normal)
         button.addTarget(self, action: #selector(export), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10

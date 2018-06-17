@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  iRingTunes Pro
+
+  Created by Dani Tox on 17/06/18.
+  Copyright © 2018 Dani Tox. All rights reserved.
+*/
+"title" = "ENGLISH";
+"msg" = "English Message";
+
+"create" = "Create";
+"manager" = "Ringtones Manager";
+"done" = "Done";
+"cancel" = "Cancel";
+"share" = "Share";
+"rename" = "Rename";
+"remove" = "Remove";
+"ring_start" = "Ringtone Start";
+"ring_duration" = "Ringtone Duration";
+"fade" = "Enable Fade-In";
+"export" = "Export";
+"ringtone" = "Ringtone";
+"error" = "Error";
+"file_error" = "File Error";

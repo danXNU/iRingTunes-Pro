@@ -243,7 +243,7 @@ extension EditorView {
         
         
         let songStartTitle = UILabel()
-        songStartTitle.text = "Inizio suoneria"
+        songStartTitle.text = t_ringstart
         songStartTitle.textColor = .white
         songStartTitle.textAlignment = .center
         songStartTitle.font = UIFont.preferredFont(forTextStyle: .body).withSize(13)
@@ -298,7 +298,7 @@ extension EditorView {
         
         
         let songDurationTitle = UILabel()
-        songDurationTitle.text = "Durata suoneria"
+        songDurationTitle.text = t_ringduration
         songDurationTitle.textColor = .white
         songDurationTitle.textAlignment = .center
         songDurationTitle.font = UIFont.preferredFont(forTextStyle: .body).withSize(13)
@@ -356,7 +356,7 @@ extension EditorView {
         fadeSwitch.centerYAnchor.constraint(equalTo: cellActiveFade.centerYAnchor).isActive = true
         
         let label = UILabel()
-        label.text = "Attiva Fade-In"
+        label.text = t_fade
         label.textColor = .white
         cellActiveFade.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false

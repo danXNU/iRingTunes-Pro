@@ -14,20 +14,12 @@ class HomeView: RTBlackView {
     var managerButton : UIBouncyButton?
     var titleLabel : UILabel?
     
-//    let gradient = CAGradientLayer()
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        gradient.colors = [UIColor.black.cgColor, UIColor.darkGray.darker(by: 15)!.cgColor]
-//        gradient.frame = self.frame
-//        self.layer.addSublayer(gradient)
+
         setup()
     }
     
-//    override func layoutMarginsDidChange() {
-//        super.layoutMarginsDidChange()
-//        print("LAYOUT MARGINS DID CHANGE")
-//        gradient.frame = self.frame
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -36,7 +28,7 @@ class HomeView: RTBlackView {
     private func setup() {
         createButton = UIBouncyButton()
         createButton?.translatesAutoresizingMaskIntoConstraints = false
-        createButton?.setTitle("Create", for: .normal)
+        createButton?.setTitle(t_create, for: .normal)
         createButton?.backgroundColor = UIColor.darkGray.darker(by: 15)
         createButton?.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         createButton?.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -54,7 +46,7 @@ class HomeView: RTBlackView {
         
         managerButton = UIBouncyButton()
         managerButton?.translatesAutoresizingMaskIntoConstraints = false
-        managerButton?.setTitle("Ringtones Manager", for: .normal)
+        managerButton?.setTitle(t_manager, for: .normal)
         managerButton?.backgroundColor = UIColor.darkGray.darker(by: 10)
         managerButton?.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         managerButton?.titleLabel?.adjustsFontSizeToFitWidth = true

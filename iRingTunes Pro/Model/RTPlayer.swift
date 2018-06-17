@@ -107,7 +107,7 @@ class RTPlayer {
     }
     
     @objc private func timerBlock() {
-        print("CURRENT TIME: \(self.audioPlayer?.currentTime.playerValue ?? "nil")\t\tMAX VALUE BEFORE BEING STOPPED: \(self.stopRingtone?.playerValue ?? "nil")")
+        //print("CURRENT TIME: \(self.audioPlayer?.currentTime.playerValue ?? "nil")\t\tMAX VALUE BEFORE BEING STOPPED: \(self.stopRingtone?.playerValue ?? "nil")")
         self.stopIfNeeded()
         self.actionToRepeat?(self.audioPlayer?.currentTime)
     }

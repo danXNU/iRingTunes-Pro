@@ -30,7 +30,7 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Ringtone"
+        navigationItem.title = t_ringtone
         
         managerInfoView.shareButton.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
         managerInfoView.removeButton.addTarget(self, action: #selector(removeAction), for: .touchUpInside)
@@ -76,7 +76,7 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
             }
         } catch {
             print("Error: \(error.localizedDescription)")
-            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            let alert = UIAlertController(title: t_error, message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -94,7 +94,7 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
             present(activityVC, animated: true)
             
         } else {
-            let alert = UIAlertController(title: "Errore", message: "Errore file", preferredStyle: .alert)
+            let alert = UIAlertController(title: t_error, message: t_fileerror, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -147,7 +147,7 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
                 if !newName_d.hasSuffix(".m4r") { newName_d.append(".m4r")}
                 self?.songName = newName_d
             }, errorHandler: { (errorMsg) in
-                let alert = UIAlertController(title: "Error", message: errorMsg, preferredStyle: .alert)
+                let alert = UIAlertController(title: t_error, message: errorMsg, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 DispatchQueue.main.async {
                     self.present(alert, animated: true)
@@ -207,7 +207,7 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
         
         
         if isInEditMode {
-            let rightButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissAll))
+            let rightButton = UIBarButtonItem(title: t_done, style: .done, target: self, action: #selector(dismissAll))
             navigationItem.setRightBarButton(rightButton, animated: true)
         }
     }

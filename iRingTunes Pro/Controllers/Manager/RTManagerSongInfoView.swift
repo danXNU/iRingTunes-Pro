@@ -54,19 +54,19 @@ class RTManagerSongInfoView: RTBlackView {
         playButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         playButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-        shareButton.setTitle("Share", for: .normal)
+        shareButton.setTitle(t_share, for: .normal)
         shareButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         shareButton.titleLabel?.textColor = .white
         shareButton.backgroundColor = UIColor.green.darker()
         addSubview(shareButton)
         
-        removeButton.setTitle("Remove", for: .normal)
+        removeButton.setTitle(t_remove, for: .normal)
         removeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         removeButton.titleLabel?.textColor = .white
         removeButton.backgroundColor = UIColor.red
         addSubview(removeButton)
         
-        renameButton.setTitle("Rename", for: .normal)
+        renameButton.setTitle(t_rename, for: .normal)
         renameButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         renameButton.titleLabel?.textColor = .white
         renameButton.backgroundColor = UIColor.orange.lighter(by: 8)

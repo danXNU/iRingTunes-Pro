@@ -15,7 +15,7 @@ class RTManagerVC: UIViewController {
     var files : [String] = [String]()
     
     lazy var backButton : UIBarButtonItem = {
-        let b = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissVC))
+        let b = UIBarButtonItem(title: t_done, style: .done, target: self, action: #selector(dismissVC))
         return b
     }()
     
