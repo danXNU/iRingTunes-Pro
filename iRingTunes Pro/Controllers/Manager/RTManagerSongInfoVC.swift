@@ -104,7 +104,7 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
     @objc private func renameAction() {
         renameTextField.text = songName
         ycon.isActive = false
-        ycon = renameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
+        ycon = renameTextField.bottomAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
         ycon.isActive = true
         UIView.animate(withDuration: 0.3, animations: {
             self.containerView.alpha = 0.85
