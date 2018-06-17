@@ -126,17 +126,23 @@ class RTEditorViewController: UIViewController {
             }
         }
         rtPlayer?.completionStart = { [weak self] in
-            self?.editorPlayerView?.changeMusicStateButton?.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            DispatchQueue.main.async {
+                self?.editorPlayerView?.changeMusicStateButton?.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            }
         }
         rtPlayer?.completionPause = { [weak self] in
-            self?.editorPlayerView?.changeMusicStateButton?.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            DispatchQueue.main.async {
+                self?.editorPlayerView?.changeMusicStateButton?.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            }
         }
         rtPlayer?.prepare { (code) in
             print("TestVC.mediaPickerDidPick...().player.prepare() ha ritornato il codice: \(code)")
         }
         
         rtPlayer?.timeValuesChanged = { [weak self] (start, stop, duration) in
-            self?.editorPlayerView?.titleLabel.text = "\(start.playerValue) - \(stop.playerValue)"
+            DispatchQueue.main.async {
+                self?.editorPlayerView?.titleLabel.text = "\(start.playerValue) - \(stop.playerValue)"
+            }
         }
         
         rtPlayer?.setRingtoneTime(start: 0, ringtoneDuration: 40)
@@ -194,7 +200,15 @@ class RTEditorViewController: UIViewController {
             case 0:
                 print("Export success")
                 self?.isLoading = false
-        
+                if let fileName = self?.exporter?.fileName {
+                    self?.rtPlayer?.pause()
+                    DispatchQueue.main.async {
+                        let vc = RTManagerSongInfoVC()
+                        vc.isInEditMode = true  
+                        vc.songName = fileName
+                       self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             case 1:
                 print("Generic error/warning: \(message ?? "no message")")
             case -1:

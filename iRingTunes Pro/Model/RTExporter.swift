@@ -22,6 +22,10 @@ class RTExporter {
     private var exporterPrepared : Bool = false     //USATO PER VEDERE SE SELF È GIà STATO PREPARATO
     
     
+    public var fileName : String?      //SETTATA NEL PREPARE() QUANDO SI è SICURI CHE IL NOME è UNIVOCO. QUESTA POI VERRà INVIATA ALL'OGGETTO CHE HA CHIAMATO EXPORT().
+                                        //NON SETTATA ALL'INIT
+    
+    
     //INIZIALIZZA L'EXPORTER CON TUTTI GLI ATTRIBUTI NECESSARI
     init(initialSong: URL, fadeIn: Bool, songAttributes : SongAttributes) {
         self.initialSong = initialSong
@@ -40,20 +44,17 @@ class RTExporter {
         //PRENDO IL NOME DELLA CANZONE DAGLI ATTRIBUTI CON CUI SONO STATO INIZIALIZZATO DALL'ESTERNO
         let nameSong = songAttributes.songName
         
-        //OTTENGO L'OFFSET IN STRINGA DELLA DOCUMENT DIRECTORY
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return }
         
-        //CREO LA PATH STRINGA COMPLETA DI NOME DEL FILE.ESTENSIONE
-        var exportString : String? = path.appending("/\(nameSong).m4r")
-        
-        //ELIMINO L'EVENTUALE FILE SE PRESENTE
-        //deleteFile(atPath: exportString)
-        exportString = createNewNameIfFileAlreadyExist(origName: nameSong)
-        if exportString == nil {
+        //CREO LA PATH STRINGA COMPLETA DI NOME DEL FILE.ESTENSIONE UNIVOCA
+        var exportString : String?
+        var exportFileName : String?
+        (exportString, exportFileName) = createNewNameIfFileAlreadyExist(origName: nameSong)
+        if exportString == nil || exportFileName == nil {
             print("RTExporter.prepare(): Stringa ritornata da createNewName... == nil")
             return
         }
-        
+        self.fileName = exportFileName
+
         
         //SETTO L'EXPORTER (NON LA SESSIONE) OUTPUTH PATH IN FORMATO URL. È NIL ALTRIMENTI VISTO CHE NESSUNO L'HA ANCORA SETTATA
         self.exportPath = URL(fileURLWithPath: exportString!)
@@ -68,7 +69,7 @@ class RTExporter {
         print("URL: \(self.exportPath!)")
         
         //CHECK PER VEDERE SE L'EXPORTER (EXPOSRTSESSION) È NIL
-        if exportSession == nil { print("RTExporter.prepare(): exportSession = nil") }
+        if exportSession == nil { print("RTExporter.prepare(): exportSession = nil"); return }
         
         //SETTO L'OUTPUT PATH DEL VERO EXPORTER (EXPORTSESSION)
         exportSession?.outputURL = self.exportPath!
@@ -163,19 +164,22 @@ class RTExporter {
     }
     
     //TROVA UN PERCORSO FILE UNIVOCO
-    private func createNewNameIfFileAlreadyExist(origName : String) -> String? {
+    private func createNewNameIfFileAlreadyExist(origName : String) -> (String?, String?) {
         let fl = FileManager.default
         
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
+        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return (nil, nil) }
         var newPath = path.appending("/\(origName).m4r")
+        
+        var unicName = ""
         
         var i = 1
         while fl.fileExists(atPath: newPath) {
             newPath = path.appending("/\(origName)\(i).m4r")
+            unicName = "\(origName)\(i).m4r"
             i += 1
         }
         
-        return newPath
+        return (newPath, unicName)
     }
     
     

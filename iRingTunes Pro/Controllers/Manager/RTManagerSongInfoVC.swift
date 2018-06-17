@@ -26,7 +26,7 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
     var ycon = NSLayoutConstraint()
     var containerView : UIVisualEffectView!
     
-    
+    var isInEditMode : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,13 +83,14 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
     }
     
     
-    @objc private func shareAction() {
+    @objc private func shareAction(sender: UIButton) {
         if let name = songName {
             let offset = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
             let path = offset.appending("/\(name)")
             let url = URL(fileURLWithPath: path)
             
             let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = sender
             present(activityVC, animated: true)
             
         } else {
@@ -203,8 +204,16 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
         renameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         ycon = renameTextField.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80)
         ycon.isActive = true
+        
+        
+        if isInEditMode {
+            let rightButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissAll))
+            navigationItem.setRightBarButton(rightButton, animated: true)
+        }
     }
     
-    
+    @objc private func dismissAll() {
+        dismiss(animated: true, completion: nil)
+    }
     
 }

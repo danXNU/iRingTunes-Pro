@@ -15,7 +15,8 @@ class RTManagerVC: UIViewController {
     var files : [String] = [String]()
     
     lazy var backButton : UIBarButtonItem = {
-        let b = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(dismissVC))
+//        let b = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(dismissVC))
+        let b = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissVC))
         return b
     }()
     
@@ -77,7 +78,7 @@ extension RTManagerVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = RTRingtonesListCell()
         cell.backgroundColor = .clear
 //        cell.textLabel?.textColor = .white
 //        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
@@ -86,22 +87,37 @@ extension RTManagerVC : UITableViewDelegate, UITableViewDataSource {
 //        cell.textLabel?.text = files[indexPath.row]
 //        cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
+        cell.songLabel.text = files[indexPath.row]
+        //TODO: AGGIUNGERE IL LABEL DENTRO LA CUSTOM VIEW CON IL NOME DEL FILE
         
-        let v = TouchView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor.darkGray.darker(by: 20)
-        v.layer.cornerRadius = 10
-        cell.addSubview(v)
-        v.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 15).isActive = true
-        v.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -15).isActive = true
-        v.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -7).isActive = true
-        v.topAnchor.constraint(equalTo: cell.topAnchor, constant: 7).isActive = true
+//        let v = TouchView()
+//        v.translatesAutoresizingMaskIntoConstraints = false
+//        v.backgroundColor = UIColor.darkGray.darker(by: 20)
+//        v.layer.cornerRadius = 10
+//        cell.addSubview(v)
+//        v.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 15).isActive = true
+//        v.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -15).isActive = true
+//        v.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -7).isActive = true
+//        v.topAnchor.constraint(equalTo: cell.topAnchor, constant: 7).isActive = true
+//
+//        v.layer.shadowColor = UIColor.gray.cgColor
+//        v.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        v.layer.shadowOpacity = 1.0
+//        v.layer.shadowRadius = 10
+//        v.layer.masksToBounds = false
+//
+//
+//        let songLabel = UILabel()
+//        songLabel.translatesAutoresizingMaskIntoConstraints = false
+//        songLabel.font = UIFont.boldSystemFont(ofSize: 17)
+//        songLabel.text = files[indexPath.row]
+//        songLabel.textColor = .white
+//        v.addSubview(songLabel)
+//        songLabel.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
+//        songLabel.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant: 10).isActive = true
+//        songLabel.trailingAnchor.constraint(equalTo: v.trailingAnchor, constant: -10).isActive = true
+//        songLabel.heightAnchor.constraint(equalTo: v.heightAnchor, multiplier: 0.35).isActive = true
         
-        v.layer.shadowColor = UIColor.gray.cgColor
-        v.layer.shadowOffset = CGSize(width: 0, height: 0)
-        v.layer.shadowOpacity = 1.0
-        v.layer.shadowRadius = 10
-        v.layer.masksToBounds = false
         
         return cell
     }

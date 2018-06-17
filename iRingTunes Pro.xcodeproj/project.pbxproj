@@ -18,6 +18,7 @@
 		DB77520720D4465500B34F9C /* RTManagerSongInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520620D4465500B34F9C /* RTManagerSongInfoVC.swift */; };
 		DB77520920D4468700B34F9C /* RTManagerSongInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520820D4468700B34F9C /* RTManagerSongInfoView.swift */; };
 		DB77520D20D5BC6700B34F9C /* TouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520C20D5BC6700B34F9C /* TouchView.swift */; };
+		DB77520F20D6624F00B34F9C /* RTRingtonesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520E20D6624F00B34F9C /* RTRingtonesListCell.swift */; };
 		DB80C6D82072A8B600E21B24 /* RTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */; };
 		DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F1207A503300F7AD0B /* EditorVC.swift */; };
 		DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F4207A524F00F7AD0B /* HomeVC.swift */; };
@@ -44,6 +45,7 @@
 		DB77520620D4465500B34F9C /* RTManagerSongInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTManagerSongInfoVC.swift; sourceTree = "<group>"; };
 		DB77520820D4468700B34F9C /* RTManagerSongInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTManagerSongInfoView.swift; sourceTree = "<group>"; };
 		DB77520C20D5BC6700B34F9C /* TouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchView.swift; sourceTree = "<group>"; };
+		DB77520E20D6624F00B34F9C /* RTRingtonesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRingtonesListCell.swift; sourceTree = "<group>"; };
 		DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayerView.swift; sourceTree = "<group>"; };
 		DB8536F1207A503300F7AD0B /* EditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC.swift; sourceTree = "<group>"; };
 		DB8536F4207A524F00F7AD0B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				DB5727202034AC3D00B42B86 /* EditorView.swift */,
 				DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */,
 				DB77520C20D5BC6700B34F9C /* TouchView.swift */,
+				DB77520E20D6624F00B34F9C /* RTRingtonesListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				DB443CF82033792800AF702E /* HomeVC_OLD.swift in Sources */,
 				DB77520920D4468700B34F9C /* RTManagerSongInfoView.swift in Sources */,
 				DBED65232014A9ED0078313B /* RTExporter.swift in Sources */,
+				DB77520F20D6624F00B34F9C /* RTRingtonesListCell.swift in Sources */,
 				DB77520220D4212B00B34F9C /* RTManagerView.swift in Sources */,
 				DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */,
 				DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */,

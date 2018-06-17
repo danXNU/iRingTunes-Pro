@@ -29,7 +29,8 @@ class RTBlackView: UIView {
     override func layoutMarginsDidChange() {
         super.layoutMarginsDidChange()
         reloadGradient()
-        
+        print("DID CHANGE")
     }
     
+
 }
