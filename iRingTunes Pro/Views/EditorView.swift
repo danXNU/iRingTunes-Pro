@@ -107,7 +107,7 @@ class EditorView: UIView {
             DispatchQueue.main.async {
                 switch self.state {
                 case .closed:
-                    UIView.animate(withDuration: 0.5, animations: {
+                    UIView.animate(withDuration: 0.3, animations: {
                         self.fadeView.alpha = 0
                     })
                 case .large:
@@ -214,7 +214,7 @@ extension EditorView {
         
         titleLabel = UILabel()
         titleLabel.backgroundColor = UIColor.yellow.darker(by: 15)
-        titleLabel.textColor = .darkGray
+        titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         titleLabel.text = "Test nome"
         titleLabel.layer.masksToBounds = true
@@ -270,7 +270,7 @@ extension EditorView {
         
         songStartTimeSlider = UISlider()
         songStartTimeSlider.addTarget(self, action: #selector(songStartSliderDidMove(sender:)), for: [.touchUpInside, .touchUpOutside])
-        songStartTimeSlider.minimumTrackTintColor = .purple
+        songStartTimeSlider.minimumTrackTintColor = .blue
         songStartContainer.addSubview(songStartTimeSlider)
         songStartTimeSlider.translatesAutoresizingMaskIntoConstraints = false
         songStartTimeSlider.centerYAnchor.constraint(equalTo: songStartContainer.centerYAnchor).isActive = true
@@ -343,8 +343,8 @@ extension EditorView {
         
         //---   INIZIO CELL ACTIVATE FADE   ----\\
         let cellActiveFade = UIView()
-        cellActiveFade.layer.borderColor = UIColor.white.cgColor
-        cellActiveFade.layer.borderWidth = 0.4
+//        cellActiveFade.layer.borderColor = UIColor.white.cgColor
+//        cellActiveFade.layer.borderWidth = 0.4
         self.addSubview(cellActiveFade)
         
         fadeSwitch = UISwitch()
@@ -394,7 +394,7 @@ extension EditorView {
         
         fadeDurationSlider = UISlider()
         fadeDurationSlider.maximumValue = 10
-        fadeDurationSlider.minimumTrackTintColor = .green
+        fadeDurationSlider.minimumTrackTintColor = .blue
         fadeDurationSlider.addTarget(self, action: #selector(fadeDurationSliderDidMove(sender:)), for: .valueChanged)
         cellDurationFade.addSubview(fadeDurationSlider)
         fadeDurationSlider.translatesAutoresizingMaskIntoConstraints = false
@@ -419,8 +419,9 @@ extension EditorView {
         
         fadeView = UIView()
         fadeView.addSubview(stackCells)
-        fadeView.layer.borderColor = UIColor.white.cgColor
-        fadeView.layer.borderWidth = 0.5
+//        fadeView.layer.borderColor = UIColor.white.cgColor
+//        fadeView.layer.borderWidth = 0.5
+        fadeView.alpha = 0
         addSubview(fadeView)
         fadeView.anchor(top: songDurationContainer.bottomAnchor,
                         leading: self.leadingAnchor,

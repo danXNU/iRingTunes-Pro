@@ -117,7 +117,7 @@ extension RTPlayerView {
         
         currentTimeSlider = UISlider()
         currentTimeSlider.setThumbImage(UIImage(), for: .normal)
-        currentTimeSlider.minimumTrackTintColor = .green
+        currentTimeSlider.minimumTrackTintColor = .red
         currentTimeSlider.maximumValue = 10 //TEMP, DA SOSTITUIRE CON LA DURATA DELLA CANZONE
         currentTimeSlider.value = 5         //TEMP
         self.addSubview(currentTimeSlider)

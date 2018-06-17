@@ -21,8 +21,14 @@ class EditorVC : RTEditorViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.setLeftBarButton(backButton, animated: true)
+        
+        editorViewTitleSongColor = UIColor.darkGray
+        editorViewContainerStartSongColor = UIColor.darkGray.darker(by: 10)
+        editorViewContainerDurationSongColor = UIColor.darkGray.darker(by: 10)
+        editorViewColor = UIColor.darkGray.darker(by: 17)
+        editorPlayerViewColor = UIColor.darkGray.darker(by: 17)
+        
         
     }
 }

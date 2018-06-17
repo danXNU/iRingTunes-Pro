@@ -330,7 +330,11 @@ extension RTEditorViewController {
         editorView.viewColor = editorViewColor
         view.addSubview(editorView)
         editorView.translatesAutoresizingMaskIntoConstraints = false
-        
+        editorView.layer.shadowColor = UIColor.blue.cgColor
+        editorView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        editorView.layer.shadowOpacity = 1.0
+        editorView.layer.shadowRadius = 10
+        editorView.layer.masksToBounds = false
         if #available(iOS 11.0, *) {
             editorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         } else {
@@ -356,11 +360,18 @@ extension RTEditorViewController {
         expandViewButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         
+        
+        
         editorPlayerView = RTPlayerView()
         editorPlayerView.backgroundColor = .blue
         editorPlayerView.layer.cornerRadius = 10
         editorPlayerView.delegate = self
         view.addSubview(editorPlayerView)
+        editorPlayerView.layer.shadowColor = UIColor.red.cgColor
+        editorPlayerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        editorPlayerView.layer.shadowOpacity = 1.0
+        editorPlayerView.layer.shadowRadius = 10
+        editorPlayerView.layer.masksToBounds = false
         editorPlayerView.anchor(top: expandViewButton.bottomAnchor,
                                 leading: view.leadingAnchor,
                                 bottom: nil,
@@ -383,6 +394,13 @@ extension RTEditorViewController {
         exportYAnchor.priority = .defaultLow
         exportYAnchor.isActive = true
         exportButton.topAnchor.constraint(greaterThanOrEqualTo: editorPlayerView.bottomAnchor, constant: 10).isActive = true
+
+        exportButton.layer.shadowColor = UIColor.purple.cgColor
+        exportButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        exportButton.layer.shadowOpacity = 1.0
+        exportButton.layer.shadowRadius = 10
+        exportButton.layer.masksToBounds = false
+        
         
         view.addSubview(indicatorView)
         indicatorView.centerYAnchor.constraint(equalTo: exportButton.centerYAnchor).isActive = true

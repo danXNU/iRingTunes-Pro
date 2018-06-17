@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = HomeVC()
         
         //TESTING
-//        let vc = UINavigationController(rootViewController: RTManagerSongInfoVC())
+//        let vc = UINavigationController(rootViewController: EditorVC())
 //        window?.rootViewController = vc
         
         return true
