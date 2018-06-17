@@ -32,6 +32,12 @@ class HomeVC: UIViewController {
         let picker = MPMediaPickerController(mediaTypes: .anyAudio)
         picker.delegate = self
         picker.allowsPickingMultipleItems = false
+        picker.showsCloudItems = true
+        if #available(iOS 9.2, *) {
+            picker.showsItemsWithProtectedAssets = false
+        } else {
+            // Fallback on earlier versions
+        }
         present(picker, animated: true, completion: nil)
     }
 
