@@ -105,21 +105,17 @@ class RTPlayer {
             
         }
     }
+    
     @objc private func timerBlock() {
         print("CURRENT TIME: \(self.audioPlayer?.currentTime.playerValue ?? "nil")\t\tMAX VALUE BEFORE BEING STOPPED: \(self.stopRingtone?.playerValue ?? "nil")")
         self.stopIfNeeded()
         self.actionToRepeat?(self.audioPlayer?.currentTime)
     }
+    
     private func createTimer() {
-        if #available(iOS 10.0, *) {
-            audioPlayerTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] (timer) in
-                self?.timerBlock()
-            })
-            
-        } else {
-            audioPlayerTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timerBlock), userInfo: nil, repeats: true)
-        }
-        
+        audioPlayerTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] (timer) in
+            self?.timerBlock()
+        })
     }
     
     public func destructTimer() {

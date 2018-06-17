@@ -30,11 +30,8 @@ class RTManagerVC: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(reloadFiles), for: .valueChanged)
         
-        if #available(iOS 10.0, *) {
-            managerView.tableView.refreshControl = refreshControl
-        } else {
-            managerView.tableView.addSubview(refreshControl)
-        }
+        managerView.tableView.refreshControl = refreshControl
+        
         
     }
     
