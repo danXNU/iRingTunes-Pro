@@ -23,6 +23,7 @@
 		DB77521520D6990F00B34F9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB77521320D6990F00B34F9C /* Localizable.strings */; };
 		DB77521E20D6F68C00B34F9C /* iRingTunes_ProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77521D20D6F68C00B34F9C /* iRingTunes_ProUITests.swift */; };
 		DB77522620D6F94A00B34F9C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77522520D6F94900B34F9C /* SnapshotHelper.swift */; };
+		DB7B8F2422CD647000673B17 /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7B8F2322CD647000673B17 /* Exceptions.swift */; };
 		DB80C6D82072A8B600E21B24 /* RTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */; };
 		DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F1207A503300F7AD0B /* EditorVC.swift */; };
 		DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F4207A524F00F7AD0B /* HomeVC.swift */; };
@@ -68,6 +69,7 @@
 		DB77521D20D6F68C00B34F9C /* iRingTunes_ProUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iRingTunes_ProUITests.swift; sourceTree = "<group>"; };
 		DB77521F20D6F68C00B34F9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB77522520D6F94900B34F9C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		DB7B8F2322CD647000673B17 /* Exceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
 		DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayerView.swift; sourceTree = "<group>"; };
 		DB8536F1207A503300F7AD0B /* EditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC.swift; sourceTree = "<group>"; };
 		DB8536F4207A524F00F7AD0B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				DB443CF9203381CC00AF702E /* Song.swift */,
 				DBF26CE620727BEC006E2431 /* RTPlayer.swift */,
 				DB77520420D426CA00B34F9C /* RTGenericModel.swift */,
+				DB7B8F2322CD647000673B17 /* Exceptions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */,
 				DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */,
 				DB77520D20D5BC6700B34F9C /* TouchView.swift in Sources */,
+				DB7B8F2422CD647000673B17 /* Exceptions.swift in Sources */,
 				DB80C6D82072A8B600E21B24 /* RTPlayerView.swift in Sources */,
 				DB5727212034AC3D00B42B86 /* EditorView.swift in Sources */,
 				DB77520020D4205900B34F9C /* RTBlackView.swift in Sources */,

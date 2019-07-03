@@ -195,28 +195,22 @@ class RTEditorViewController: UIViewController {
         
         //ESPORTO
         isLoading = true
-        exporter?.export() { [weak self] (code, message) in
-            switch code {
-            case 0:
+        exporter?.export() { [weak self] result in
+            switch result {
+            case .failure(let err):
+                print(err.localizedDescription)
+            case .success(_):
                 print("Export success")
                 self?.isLoading = false
                 if let fileName = self?.exporter?.fileName {
                     self?.rtPlayer?.pause()
                     DispatchQueue.main.async {
                         let vc = RTManagerSongInfoVC()
-                        vc.isInEditMode = true  
+                        vc.isInEditMode = true
                         vc.songName = fileName
-                       self?.navigationController?.pushViewController(vc, animated: true)
+                        self?.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
-            case 1:
-                print("Generic error/warning: \(message ?? "no message")")
-            case -1:
-                print("Errore nell'exporting: \(message ?? "no message")")
-            case 2:
-                print("Warning: \(message ?? "no message")")
-            default:
-                print("Generic error. Default warning message")
             }
         }
     }

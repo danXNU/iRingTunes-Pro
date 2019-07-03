@@ -33,6 +33,7 @@ class RTExporter {
         self.songAttributes = songAttributes
     }
     
+    ///Prepara la sessione per essere esportata. Deve essere chiamato prima di export()
     func prepare() {
         //CREO UN ASSET DA ESPORTARE
         let asset = AVAsset(url: initialSong)
@@ -87,18 +88,28 @@ class RTExporter {
         self.exporterPrepared = true
     }
     
-    func export(completion: ((Int, String?) -> Void)?) {
+    ///Esporta il file audio nell'output selezionato. Ritorna un Result come completion che conterrà eventuali errori oppure nulla se ha avuto successo
+    func export(completion: @escaping ((Result<Void, Error>) -> Void)) {
         //CONTROLLO CHE IO SIA STATO PRIMA PREPARATO
-        if self.exporterPrepared == false { print("RTExporter Error: You have to call prepare() before export()"); return }
+        if self.exporterPrepared == false {
+            completion(.failure(ToxException.devError("RTExporter Error: You have to call prepare() before export()")))
+            return
+        }
         
         //CONTROLLO ANCORA CHE L'OUPUTH PATH NON SIA NIL
         guard let outputPath = self.exportSession?.outputURL?.absoluteString else {
+            completion(.failure(ToxException.runtimeError("C'è stato un errore con il nome del file di output")))
             print("RTExporter.export(): can't get outputPath from exporter?.outputURL?.absolutString")
             return
         }
         
         //CONTROLLO SE ESISTE IL FILE NELLA DESTINAZIONE. SE ESISTE, RITORNO
-        if FileManager.default.fileExists(atPath: outputPath) { print("File exists. Export aborted"); return }
+        if FileManager.default.fileExists(atPath: outputPath) {
+            completion(.failure(ToxException.runtimeError("Il file di output esiste già")))
+            print("File exists. Export aborted");
+            return
+            
+        }
         
         
         //INIZIO L'EXPORTING E MANDO I MESSAGGI AL DELEGATE
@@ -106,15 +117,15 @@ class RTExporter {
             guard let status = self.exportSession?.status else { return }
             switch status {
             case .completed:
-                completion?(0, nil)
-            case .exporting:
-                completion?(2, "Still exporting")
+                completion(.success(()))
+//            case .exporting:
+//                completion?(2, "Still exporting")
             case .failed, .cancelled:
-                let errorMessage = self.exportSession?.error?.localizedDescription
-                completion?(-1, errorMessage)
-                
+                let errorMessage = self.exportSession?.error?.localizedDescription ?? "Generic error"
+                completion(.failure(ToxException.runtimeError(errorMessage)))
+                print(errorMessage)
             default:
-                completion?(1, "Generic error")
+                completion(.failure(ToxException.runtimeError("Errore sconosciuto")))
                 print("RTExporter.export(): È usito default nello switch del risultato dell'export. Errore")
             }
             
