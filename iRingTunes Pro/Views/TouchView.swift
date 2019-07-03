@@ -43,7 +43,7 @@ class TouchView: UIView {
                        delay: 0.0,
                        usingSpringWithDamping: 0.5,
                        initialSpringVelocity: 2.0,
-                       options: UIViewAnimationOptions.allowUserInteraction,
+                       options: UIView.AnimationOptions.allowUserInteraction,
                        animations: { () -> Void in
                         self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }, completion: nil)
@@ -55,7 +55,7 @@ class TouchView: UIView {
                        delay: 0.0,
                        usingSpringWithDamping: 0.2,
                        initialSpringVelocity: 3.0,
-                       options: UIViewAnimationOptions.allowUserInteraction,
+                       options: UIView.AnimationOptions.allowUserInteraction,
                        animations: { () -> Void in
                         self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: nil)

@@ -11,7 +11,7 @@ import UIKit
 class EditorVC : RTEditorViewController {
     
     lazy var backButton : UIBarButtonItem = {
-        let b = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(dismissVC))
+        let b = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(dismissVC))
         return b
     }()
     

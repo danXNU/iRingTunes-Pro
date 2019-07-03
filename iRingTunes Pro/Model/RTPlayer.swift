@@ -41,7 +41,8 @@ class RTPlayer {
         do {
             
             audioSession = AVAudioSession.sharedInstance()
-            try audioSession?.setCategory(AVAudioSessionCategoryPlayback)
+
+            try audioSession?.setCategory(AVAudioSession.Category.playback)
             
             try audioPlayer = AVAudioPlayer(contentsOf: songURL)
             self.prepared = true
@@ -192,8 +193,4 @@ class RTPlayer {
     }
     
 }
-
-
-
-
 

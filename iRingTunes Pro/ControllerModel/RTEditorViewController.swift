@@ -40,7 +40,7 @@ class RTEditorViewController: UIViewController {
     }()
     
     lazy var indicatorView : UIActivityIndicatorView = {
-        let v = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        let v = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         v.hidesWhenStopped = true
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
