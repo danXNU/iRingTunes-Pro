@@ -22,9 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = HomeVC()
         
         //TESTING
-//        let vc = UINavigationController(rootViewController: EditorVC())
-//        window?.rootViewController = vc
-        
+//
+//        let path1 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/Merlin's Arrival at Camelot.m4r")
+//        let path2 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/The tournament begins.m4r")
+//        let path3 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/The Witch's Threat.m4r")
+//        let path4 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/Hunith's Letter to Gaius.m4r")
+//        let paths = [path1, path2, path3, path4]
+//
+//        paths.forEach({ try? FileManager.default.removeItem(atPath: $0) })
+//        paths.forEach({ FileManager.default.createFile(atPath: $0, contents: nil, attributes: nil) })
+//
+//
+//        let vc = RTManagerVC()
+//        let nav = UINavigationController(rootViewController: vc)
+//        window?.rootViewController = nav
         return true
     }
 

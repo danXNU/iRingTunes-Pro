@@ -21,6 +21,8 @@
 		DB77520F20D6624F00B34F9C /* RTRingtonesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77520E20D6624F00B34F9C /* RTRingtonesListCell.swift */; };
 		DB77521120D6975100B34F9C /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77521020D6975100B34F9C /* Translation.swift */; };
 		DB77521520D6990F00B34F9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB77521320D6990F00B34F9C /* Localizable.strings */; };
+		DB77521E20D6F68C00B34F9C /* iRingTunes_ProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77521D20D6F68C00B34F9C /* iRingTunes_ProUITests.swift */; };
+		DB77522620D6F94A00B34F9C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77522520D6F94900B34F9C /* SnapshotHelper.swift */; };
 		DB80C6D82072A8B600E21B24 /* RTPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */; };
 		DB8536F2207A503300F7AD0B /* EditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F1207A503300F7AD0B /* EditorVC.swift */; };
 		DB8536F5207A524F00F7AD0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8536F4207A524F00F7AD0B /* HomeVC.swift */; };
@@ -34,6 +36,16 @@
 		DBF26CE720727BEC006E2431 /* RTPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF26CE620727BEC006E2431 /* RTPlayer.swift */; };
 		DBF3A04920D2F66E0051BD97 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF3A04820D2F66E0051BD97 /* HomeView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB77522020D6F68C00B34F9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBD628EA1F0ED7EC00307B67 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBD628F11F0ED7ED00307B67;
+			remoteInfo = "iRingTunes Pro";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DB443CF72033792800AF702E /* HomeVC_OLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC_OLD.swift; sourceTree = "<group>"; };
@@ -52,6 +64,10 @@
 		DB77521220D698C200B34F9C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DB77521420D6990F00B34F9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DB77521620D6992E00B34F9C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DB77521B20D6F68C00B34F9C /* iRingTunes ProUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iRingTunes ProUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB77521D20D6F68C00B34F9C /* iRingTunes_ProUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iRingTunes_ProUITests.swift; sourceTree = "<group>"; };
+		DB77521F20D6F68C00B34F9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB77522520D6F94900B34F9C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		DB80C6D72072A8B600E21B24 /* RTPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayerView.swift; sourceTree = "<group>"; };
 		DB8536F1207A503300F7AD0B /* EditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC.swift; sourceTree = "<group>"; };
 		DB8536F4207A524F00F7AD0B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -69,6 +85,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DB77521820D6F68C00B34F9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DBD628EF1F0ED7ED00307B67 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -88,6 +111,16 @@
 				DB77520820D4468700B34F9C /* RTManagerSongInfoView.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		DB77521C20D6F68C00B34F9C /* iRingTunes ProUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DB77522520D6F94900B34F9C /* SnapshotHelper.swift */,
+				DB77521D20D6F68C00B34F9C /* iRingTunes_ProUITests.swift */,
+				DB77521F20D6F68C00B34F9C /* Info.plist */,
+			);
+			path = "iRingTunes ProUITests";
 			sourceTree = "<group>";
 		};
 		DB8536EE207A4EA100F7AD0B /* ControllerModel */ = {
@@ -112,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				DBD628F41F0ED7ED00307B67 /* iRingTunes Pro */,
+				DB77521C20D6F68C00B34F9C /* iRingTunes ProUITests */,
 				DBD628F31F0ED7ED00307B67 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				DBD628F21F0ED7ED00307B67 /* iRingTunes Pro.app */,
+				DB77521B20D6F68C00B34F9C /* iRingTunes ProUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +223,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DB77521A20D6F68C00B34F9C /* iRingTunes ProUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB77522420D6F68C00B34F9C /* Build configuration list for PBXNativeTarget "iRingTunes ProUITests" */;
+			buildPhases = (
+				DB77521720D6F68C00B34F9C /* Sources */,
+				DB77521820D6F68C00B34F9C /* Frameworks */,
+				DB77521920D6F68C00B34F9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB77522120D6F68C00B34F9C /* PBXTargetDependency */,
+			);
+			name = "iRingTunes ProUITests";
+			productName = "iRingTunes ProUITests";
+			productReference = DB77521B20D6F68C00B34F9C /* iRingTunes ProUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		DBD628F11F0ED7ED00307B67 /* iRingTunes Pro */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBD629041F0ED7EF00307B67 /* Build configuration list for PBXNativeTarget "iRingTunes Pro" */;
@@ -211,10 +264,15 @@
 		DBD628EA1F0ED7EC00307B67 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Dani Tox";
 				TargetAttributes = {
+					DB77521A20D6F68C00B34F9C = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = DBD628F11F0ED7ED00307B67;
+					};
 					DBD628F11F0ED7ED00307B67 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0920;
@@ -236,11 +294,19 @@
 			projectRoot = "";
 			targets = (
 				DBD628F11F0ED7ED00307B67 /* iRingTunes Pro */,
+				DB77521A20D6F68C00B34F9C /* iRingTunes ProUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DB77521920D6F68C00B34F9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DBD628F01F0ED7ED00307B67 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,6 +320,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DB77521720D6F68C00B34F9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB77521E20D6F68C00B34F9C /* iRingTunes_ProUITests.swift in Sources */,
+				DB77522620D6F94A00B34F9C /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DBD628EE1F0ED7ED00307B67 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,6 +361,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DB77522120D6F68C00B34F9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBD628F11F0ED7ED00307B67 /* iRingTunes Pro */;
+			targetProxy = DB77522020D6F68C00B34F9C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		DB77521320D6990F00B34F9C /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -308,6 +391,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DB77522220D6F68C00B34F9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5WYV8U42F;
+				INFOPLIST_FILE = "iRingTunes ProUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danitox.iRingTunes-ProUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "iRingTunes Pro";
+			};
+			name = Debug;
+		};
+		DB77522320D6F68C00B34F9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5WYV8U42F;
+				INFOPLIST_FILE = "iRingTunes ProUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danitox.iRingTunes-ProUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "iRingTunes Pro";
+			};
+			name = Release;
+		};
 		DBD629021F0ED7EF00307B67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -425,7 +542,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q5WYV8U42F;
+				DEVELOPMENT_TEAM = R779A64KR9;
 				INFOPLIST_FILE = "iRingTunes Pro/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -441,7 +558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q5WYV8U42F;
+				DEVELOPMENT_TEAM = R779A64KR9;
 				INFOPLIST_FILE = "iRingTunes Pro/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -456,6 +573,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DB77522420D6F68C00B34F9C /* Build configuration list for PBXNativeTarget "iRingTunes ProUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB77522220D6F68C00B34F9C /* Debug */,
+				DB77522320D6F68C00B34F9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DBD628ED1F0ED7EC00307B67 /* Build configuration list for PBXProject "iRingTunes Pro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

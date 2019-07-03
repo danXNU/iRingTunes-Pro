@@ -349,7 +349,7 @@ extension RTEditorViewController {
         bottomCon.isActive = true
         
         editorView.delegate = self
-        editorView.songName = "Test musica da VC"
+        editorView.songName = "Merlin's Arrival at Camelot"
         
         expandViewButton.backgroundColor = editorView.backgroundColor
         view.addSubview(expandViewButton)
