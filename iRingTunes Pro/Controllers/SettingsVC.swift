@@ -175,6 +175,10 @@ class SettingsVC: UIViewController {
         fadeDuration = Int(sender.value)
     }
     
+    @objc func sliderReleased() {
+        print("CALLED")
+        dismissView()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -185,6 +189,8 @@ class SettingsVC: UIViewController {
         slider?.maximumValue = 10
         slider?.minimumValue = 0
         slider?.addTarget(self, action: #selector(changeFadeSliderValue(sender:)), for: .valueChanged)
+        slider?.addTarget(self, action: #selector(sliderReleased), for: [.touchUpInside, .touchUpOutside])
+        
         
         fadeIndicatorLabel = UILabel(frame: CGRect(x: Int(view.center.x), y: Int((slider?.center.y)! - 80), width: 100, height: 50))
         fadeIndicatorLabel?.center.x = view.center.x

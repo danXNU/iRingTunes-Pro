@@ -19,22 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = ViewController()
+        window?.rootViewController = HomeVC()
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        
-        if launchedBefore {
-            print("It's not the frst launch")
-        }
-        else {
-            print("It's the first launch so I set the Fade duration to 3 seconds")
-            UserDefaults.standard.set(3, forKey: "fadeInDuration")
-            print("Now i set the default of Fade Status to OFF")
-            UserDefaults.standard.set(false, forKey: "isFadeInActivated")
-            print("Now I set that the first launch is done. So next time this won't happen again.")
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-        }
-        
+        //TESTING
+//
+//        let path1 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/Merlin's Arrival at Camelot.m4r")
+//        let path2 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/The tournament begins.m4r")
+//        let path3 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/The Witch's Threat.m4r")
+//        let path4 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/Hunith's Letter to Gaius.m4r")
+//        let paths = [path1, path2, path3, path4]
+//
+//        paths.forEach({ try? FileManager.default.removeItem(atPath: $0) })
+//        paths.forEach({ FileManager.default.createFile(atPath: $0, contents: nil, attributes: nil) })
+//
+//
+//        let vc = RTManagerVC()
+//        let nav = UINavigationController(rootViewController: vc)
+//        window?.rootViewController = nav
         return true
     }
 

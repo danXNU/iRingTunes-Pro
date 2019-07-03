@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  iRingTunes Pro
+
+  Created by Dani Tox on 17/06/18.
+  Copyright © 2018 Dani Tox. All rights reserved.
+*/
+
+"title" = "ITALIANO";
+"msg" = "Messaggio Italiano";
+
+"create" = "Crea Suoneria";
+"manager" = "Le tue suonerie";
+"done" = "Fine";
+"cancel" = "Annulla";
+"share" = "Condividi";
+"rename" = "Rinomina";
+"remove" = "Rimuovi";
+"ring_start" = "Inizio suoneria";
+"ring_duration" = "Durata suoneria";
+"fade" = "Attiva il Fade-In";
+"export" = "Esporta";
+"ringtone" = "Suoneria";
+"error" = "Errore";
+"file_error" = "Errore file";
