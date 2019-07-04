@@ -54,7 +54,12 @@ class RTExporter {
             print("RTExporter.prepare(): Stringa ritornata da createNewName... == nil")
             return
         }
-        self.fileName = exportFileName
+        
+        var fullName: String = exportFileName!
+        if !fullName.hasSuffix(".m4r") {
+            fullName.append(".m4r")
+        }
+        self.fileName = fullName
 
         
         //SETTO L'EXPORTER (NON LA SESSIONE) OUTPUTH PATH IN FORMATO URL. È NIL ALTRIMENTI VISTO CHE NESSUNO L'HA ANCORA SETTATA
