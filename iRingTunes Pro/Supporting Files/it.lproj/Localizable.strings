@@ -23,3 +23,7 @@
 "ringtone" = "Suoneria";
 "error" = "Errore";
 "file_error" = "Errore file";
+"files" = "File";
+"music_lib" = "Libreria Musicale";
+"source_title" = "Seleziona la sorgente";
+"source_msg" = "Da dove puoi prendere la canzone?";

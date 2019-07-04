@@ -22,5 +22,8 @@ let t_export = NSLocalizedString("export", comment: "")
 let t_ringtone = NSLocalizedString("ringtone", comment: "")
 let t_error = NSLocalizedString("error", comment: "")
 let t_fileerror = NSLocalizedString("file_error", comment: "")
-
+let t_sourcetitle = NSLocalizedString("source_title", comment: "")
+let t_sourcemsg = NSLocalizedString("source_msg", comment: "")
+let t_filesApp = NSLocalizedString("files", comment: "")
+let t_musiclib = NSLocalizedString("music_lib", comment: "")
 

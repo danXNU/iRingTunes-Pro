@@ -31,11 +31,11 @@ class HomeVC: UIViewController {
     
     @objc private func createButtonPressed(_ sender: UIButton) {
         //DA LOCALIZZARE
-        let alert = UIAlertController(title: "Source", message: "Da qualche sorgente vuoi prendere la musica?", preferredStyle: .actionSheet)
-        let action1 = UIAlertAction(title: "Files", style: .default) { (action) in
+        let alert = UIAlertController(title: t_sourcetitle, message: t_sourcemsg, preferredStyle: .actionSheet)
+        let action1 = UIAlertAction(title: t_filesApp, style: .default) { (action) in
             self.showFilesViewer()
         }
-        let action2 = UIAlertAction(title: "Music Library", style: .default) { (action) in
+        let action2 = UIAlertAction(title: t_musiclib, style: .default) { (action) in
             DispatchQueue.main.async {
                 self.showMusicPicker()
             }
@@ -43,7 +43,7 @@ class HomeVC: UIViewController {
         
         alert.addAction(action1)
         alert.addAction(action2)
-        alert.addAction(UIAlertAction(title: "Annulla", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: t_cancel, style: .cancel, handler: nil))
         
         alert.popoverPresentationController?.sourceView = sender
         alert.popoverPresentationController?.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.minY, width: 0, height: 0)

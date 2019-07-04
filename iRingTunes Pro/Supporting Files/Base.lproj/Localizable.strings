@@ -22,3 +22,7 @@
 "ringtone" = "Ringtone";
 "error" = "Error";
 "file_error" = "File Error";
+"files" = "Files";
+"music_lib" = "Music Library";
+"source_title" = "Select the source";
+"source_msg" = "Which music source do you want to use?";
