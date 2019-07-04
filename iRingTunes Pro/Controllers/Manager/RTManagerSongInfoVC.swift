@@ -14,19 +14,22 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
     let managerInfoView = RTManagerSongInfoView()
     let model = RTGenericModel()
     
-    var songName : String? {
-        didSet {
-            if let name = songName {
-                managerInfoView.titleLabel.text = name
-            }
-        }
-    }
+    var isInEditMode : Bool
+    var songName : String 
     
     let renameTextField = UITextField()
     var ycon = NSLayoutConstraint()
     var containerView : UIVisualEffectView!
     
-    var isInEditMode : Bool = false
+    init(songTitle: String, editMode: Bool = false) {
+        self.songName = songTitle
+        self.isInEditMode = editMode
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +43,12 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
         initUI()
         
         createPlayer()
+        
+        managerInfoView.titleLabel.text = songName
     }
     
     private func createPlayer() {
-        guard let songTitle = songName else { return }
-        let url = URL(fileURLWithPath: model.getPath(fromName: songTitle))
+        let url = URL(fileURLWithPath: model.getPath(fromName: songName))
         audioPlayer = try? AVAudioPlayer(contentsOf: url)
         audioPlayer?.delegate = self
         audioPlayer?.prepareToPlay()
@@ -67,7 +71,7 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
     
     @objc private func removeAction() {
         let offset = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let path = offset.appending("/\(songName ?? "")")
+        let path = offset.appending("/\(songName)")
         let fl = FileManager.default
         do {
             try fl.removeItem(atPath: path)
@@ -84,20 +88,20 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
     
     
     @objc private func shareAction(sender: UIButton) {
-        if let name = songName {
+//        if let name = songName {
             let offset = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-            let path = offset.appending("/\(name)")
+            let path = offset.appending("/\(songName)")
             let url = URL(fileURLWithPath: path)
             
             let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             activityVC.popoverPresentationController?.sourceView = sender
             present(activityVC, animated: true)
             
-        } else {
-            let alert = UIAlertController(title: t_error, message: t_fileerror, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+//        } else {
+//            let alert = UIAlertController(title: t_error, message: t_fileerror, preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
         
     }
 
@@ -141,7 +145,8 @@ class RTManagerSongInfoVC: UIViewController, UITextFieldDelegate, AVAudioPlayerD
     }
     
     private func realRenameAction() {
-        if let newName = renameTextField.text, let origName = songName {
+        let origName = songName
+        if let newName = renameTextField.text {
             model.rename(file: origName, with: newName, completion: { [weak self] in
                 var newName_d = newName
                 if !newName_d.hasSuffix(".m4r") { newName_d.append(".m4r")}

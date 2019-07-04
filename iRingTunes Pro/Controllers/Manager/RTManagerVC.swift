@@ -86,8 +86,8 @@ extension RTManagerVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = RTManagerSongInfoVC()
-        vc.songName = files[indexPath.row]
+        let songName = files[indexPath.row]
+        let vc = RTManagerSongInfoVC(songTitle: songName)
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }

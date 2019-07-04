@@ -190,6 +190,10 @@ class RTExporter {
             i += 1
         }
         
+        if unicName.isEmpty {
+            unicName = origName
+        }
+        
         return (newPath, unicName)
     }
     

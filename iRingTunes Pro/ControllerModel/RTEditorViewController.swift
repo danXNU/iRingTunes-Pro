@@ -205,9 +205,7 @@ class RTEditorViewController: UIViewController {
                 if let fileName = self?.exporter?.fileName {
                     self?.rtPlayer?.pause()
                     DispatchQueue.main.async {
-                        let vc = RTManagerSongInfoVC()
-                        vc.isInEditMode = true
-                        vc.songName = fileName
+                        let vc = RTManagerSongInfoVC(songTitle: fileName, editMode: true)
                         self?.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
