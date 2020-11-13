@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44249399255F422A0004F3DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44249398255F422A0004F3DE /* Assets.xcassets */; };
+		442493CD255F42C40004F3DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493B4255F42C30004F3DE /* ContentView.swift */; };
+		442493CE255F42C40004F3DE /* SignalProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493B6255F42C30004F3DE /* SignalProcessing.swift */; };
+		442493CF255F42C40004F3DE /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493B7255F42C30004F3DE /* AudioManager.swift */; };
+		442493D0255F42C40004F3DE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493B8255F42C30004F3DE /* Errors.swift */; };
+		442493D1255F42C40004F3DE /* AudioReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493B9255F42C30004F3DE /* AudioReader.swift */; };
+		442493D2255F42C40004F3DE /* ExportAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493BA255F42C30004F3DE /* ExportAgent.swift */; };
+		442493D3255F42C40004F3DE /* RingtoneWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493BB255F42C30004F3DE /* RingtoneWave.swift */; };
+		442493D4255F42C40004F3DE /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493BC255F42C40004F3DE /* EditorView.swift */; };
+		442493D5255F42C40004F3DE /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493BE255F42C40004F3DE /* Properties.swift */; };
+		442493D7255F42C40004F3DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 442493C2255F42C40004F3DE /* Preview Assets.xcassets */; };
+		442493D9255F42C40004F3DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493C5255F42C40004F3DE /* AppDelegate.swift */; };
+		442493DB255F42C40004F3DE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493C7255F42C40004F3DE /* HomeView.swift */; };
+		442493DC255F42C40004F3DE /* ExportingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493C8255F42C40004F3DE /* ExportingView.swift */; };
+		442493DD255F42C40004F3DE /* ExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493CA255F42C40004F3DE /* ExportManager.swift */; };
+		442493DE255F42C40004F3DE /* AudioWaveAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493CB255F42C40004F3DE /* AudioWaveAgent.swift */; };
+		442493DF255F42C40004F3DE /* ViewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442493CC255F42C40004F3DE /* ViewsManager.swift */; };
+		442493F0255F43920004F3DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 442493EF255F43920004F3DE /* Main.storyboard */; };
 		DB443CF82033792800AF702E /* HomeVC_OLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CF72033792800AF702E /* HomeVC_OLD.swift */; };
 		DB443CFA203381CC00AF702E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CF9203381CC00AF702E /* Song.swift */; };
 		DB443CFC203382CB00AF702E /* EditorVC_OLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB443CFB203382CB00AF702E /* EditorVC_OLD.swift */; };
@@ -47,6 +65,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44249392255F42280004F3DE /* iRingTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRingTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44249398255F422A0004F3DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4424939D255F422A0004F3DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4424939E255F422A0004F3DE /* iRingTunes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iRingTunes.entitlements; sourceTree = "<group>"; };
+		442493B4255F42C30004F3DE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		442493B6255F42C30004F3DE /* SignalProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalProcessing.swift; sourceTree = "<group>"; };
+		442493B7255F42C30004F3DE /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		442493B8255F42C30004F3DE /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		442493B9255F42C30004F3DE /* AudioReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioReader.swift; sourceTree = "<group>"; };
+		442493BA255F42C30004F3DE /* ExportAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportAgent.swift; sourceTree = "<group>"; };
+		442493BB255F42C30004F3DE /* RingtoneWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingtoneWave.swift; sourceTree = "<group>"; };
+		442493BC255F42C40004F3DE /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		442493BE255F42C40004F3DE /* Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
+		442493C2255F42C40004F3DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		442493C5255F42C40004F3DE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		442493C7255F42C40004F3DE /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		442493C8255F42C40004F3DE /* ExportingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportingView.swift; sourceTree = "<group>"; };
+		442493CA255F42C40004F3DE /* ExportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportManager.swift; sourceTree = "<group>"; };
+		442493CB255F42C40004F3DE /* AudioWaveAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioWaveAgent.swift; sourceTree = "<group>"; };
+		442493CC255F42C40004F3DE /* ViewsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewsManager.swift; sourceTree = "<group>"; };
+		442493EF255F43920004F3DE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DB443CF72033792800AF702E /* HomeVC_OLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC_OLD.swift; sourceTree = "<group>"; };
 		DB443CF9203381CC00AF702E /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DB443CFB203382CB00AF702E /* EditorVC_OLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVC_OLD.swift; sourceTree = "<group>"; };
@@ -82,6 +121,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4424938F255F42280004F3DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB77521820D6F68C00B34F9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,6 +145,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44249393255F42280004F3DE /* iRingTunes */ = {
+			isa = PBXGroup;
+			children = (
+				442493B4255F42C30004F3DE /* ContentView.swift */,
+				442493BC255F42C40004F3DE /* EditorView.swift */,
+				442493C8255F42C40004F3DE /* ExportingView.swift */,
+				442493C7255F42C40004F3DE /* HomeView.swift */,
+				442493B5255F42C30004F3DE /* Model */,
+				442493BD255F42C40004F3DE /* Other */,
+				442493BB255F42C30004F3DE /* RingtoneWave.swift */,
+				442493C9255F42C40004F3DE /* ViewModel */,
+			);
+			path = iRingTunes;
+			sourceTree = "<group>";
+		};
+		442493B5255F42C30004F3DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				442493B6255F42C30004F3DE /* SignalProcessing.swift */,
+				442493B7255F42C30004F3DE /* AudioManager.swift */,
+				442493B8255F42C30004F3DE /* Errors.swift */,
+				442493B9255F42C30004F3DE /* AudioReader.swift */,
+				442493BA255F42C30004F3DE /* ExportAgent.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		442493BD255F42C40004F3DE /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				44249398255F422A0004F3DE /* Assets.xcassets */,
+				442493EF255F43920004F3DE /* Main.storyboard */,
+				4424939D255F422A0004F3DE /* Info.plist */,
+				4424939E255F422A0004F3DE /* iRingTunes.entitlements */,
+				442493BE255F42C40004F3DE /* Properties.swift */,
+				442493C1255F42C40004F3DE /* Preview Content */,
+				442493C5255F42C40004F3DE /* AppDelegate.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		442493C1255F42C40004F3DE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				442493C2255F42C40004F3DE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		442493C9255F42C40004F3DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				442493CA255F42C40004F3DE /* ExportManager.swift */,
+				442493CB255F42C40004F3DE /* AudioWaveAgent.swift */,
+				442493CC255F42C40004F3DE /* ViewsManager.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DB7751FC20D41F9C00B34F9C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				DBD628F41F0ED7ED00307B67 /* iRingTunes Pro */,
+				44249393255F42280004F3DE /* iRingTunes */,
 				DBD628F31F0ED7ED00307B67 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,6 +247,7 @@
 			children = (
 				DBD628F21F0ED7ED00307B67 /* iRingTunes Pro.app */,
 				DB77521B20D6F68C00B34F9C /* iRingTunes ProUITests.xctest */,
+				44249392255F42280004F3DE /* iRingTunes.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,6 +317,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		44249391255F42280004F3DE /* iRingTunes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4424939F255F422A0004F3DE /* Build configuration list for PBXNativeTarget "iRingTunes" */;
+			buildPhases = (
+				4424938E255F42280004F3DE /* Sources */,
+				4424938F255F42280004F3DE /* Frameworks */,
+				44249390255F42280004F3DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iRingTunes;
+			productName = iRingTunes;
+			productReference = 44249392255F42280004F3DE /* iRingTunes.app */;
+			productType = "com.apple.product-type.application";
+		};
 		DB77521A20D6F68C00B34F9C /* iRingTunes ProUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB77522420D6F68C00B34F9C /* Build configuration list for PBXNativeTarget "iRingTunes ProUITests" */;
@@ -251,10 +375,15 @@
 		DBD628EA1F0ED7EC00307B67 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Dani Tox";
 				TargetAttributes = {
+					44249391255F42280004F3DE = {
+						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
+						ProvisioningStyle = Automatic;
+					};
 					DB77521A20D6F68C00B34F9C = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1020;
@@ -283,11 +412,22 @@
 			targets = (
 				DBD628F11F0ED7ED00307B67 /* iRingTunes Pro */,
 				DB77521A20D6F68C00B34F9C /* iRingTunes ProUITests */,
+				44249391255F42280004F3DE /* iRingTunes */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		44249390255F42280004F3DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				442493F0255F43920004F3DE /* Main.storyboard in Resources */,
+				442493D7255F42C40004F3DE /* Preview Assets.xcassets in Resources */,
+				44249399255F422A0004F3DE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB77521920D6F68C00B34F9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,6 +448,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4424938E255F42280004F3DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				442493D5255F42C40004F3DE /* Properties.swift in Sources */,
+				442493D0255F42C40004F3DE /* Errors.swift in Sources */,
+				442493CF255F42C40004F3DE /* AudioManager.swift in Sources */,
+				442493CE255F42C40004F3DE /* SignalProcessing.swift in Sources */,
+				442493D2255F42C40004F3DE /* ExportAgent.swift in Sources */,
+				442493DB255F42C40004F3DE /* HomeView.swift in Sources */,
+				442493D1255F42C40004F3DE /* AudioReader.swift in Sources */,
+				442493DD255F42C40004F3DE /* ExportManager.swift in Sources */,
+				442493D4255F42C40004F3DE /* EditorView.swift in Sources */,
+				442493DF255F42C40004F3DE /* ViewsManager.swift in Sources */,
+				442493D3255F42C40004F3DE /* RingtoneWave.swift in Sources */,
+				442493DC255F42C40004F3DE /* ExportingView.swift in Sources */,
+				442493DE255F42C40004F3DE /* AudioWaveAgent.swift in Sources */,
+				442493D9255F42C40004F3DE /* AppDelegate.swift in Sources */,
+				442493CD255F42C40004F3DE /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB77521720D6F68C00B34F9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,6 +540,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		442493A0255F422A0004F3DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = iRingTunes/Other/iRingTunes.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R779A64KR9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = iRingTunes/Other/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaniTox.RingTunesPro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		442493A1255F422A0004F3DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = iRingTunes/Other/iRingTunes.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R779A64KR9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = iRingTunes/Other/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaniTox.RingTunesPro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		DB77522220D6F68C00B34F9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -385,7 +595,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q5WYV8U42F;
 				INFOPLIST_FILE = "iRingTunes ProUITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danitox.iRingTunes-ProUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -402,7 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q5WYV8U42F;
 				INFOPLIST_FILE = "iRingTunes ProUITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danitox.iRingTunes-ProUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -438,6 +648,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -463,7 +674,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -498,6 +709,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -517,7 +729,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -531,7 +743,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R779A64KR9;
 				INFOPLIST_FILE = "iRingTunes Pro/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DaniTox.RingTunesPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -546,7 +758,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R779A64KR9;
 				INFOPLIST_FILE = "iRingTunes Pro/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DaniTox.RingTunesPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -558,6 +770,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4424939F255F422A0004F3DE /* Build configuration list for PBXNativeTarget "iRingTunes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				442493A0255F422A0004F3DE /* Debug */,
+				442493A1255F422A0004F3DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DB77522420D6F68C00B34F9C /* Build configuration list for PBXNativeTarget "iRingTunes ProUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
