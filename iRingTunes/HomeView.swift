@@ -15,15 +15,22 @@ struct HomeView: View, DropDelegate {
         VStack {
             Text("iRingTunes")
                 .font(.largeTitle)
-                .foregroundColor(.orange)
+//                .foregroundColor(.orange)
                 .bold()
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.red)
+                        .shadow(color: .red, radius: 10, x: 0, y: 0)
+                )
             
             Spacer()
             
             VStack(spacing: 20) {
                 VStack(spacing: 10) {
-                    Image(systemName: "music.note")
-                        .font(.largeTitle)
+                    Image("Icon")
+                        .resizable()
+                        .frame(width: 52, height: 52)
                         .foregroundColor(.red)
                     
                     Text("Drag a song here")
