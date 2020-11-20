@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,26 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)        
+        
+        let vc = UIHostingController(rootView: ContentView())
+        window?.rootViewController = vc
+        
         window?.makeKeyAndVisible()
-        
-        window?.rootViewController = HomeVC()
-        
-        //TESTING
-//
-//        let path1 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/Merlin's Arrival at Camelot.m4r")
-//        let path2 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/The tournament begins.m4r")
-//        let path3 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/The Witch's Threat.m4r")
-//        let path4 = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/Hunith's Letter to Gaius.m4r")
-//        let paths = [path1, path2, path3, path4]
-//
-//        paths.forEach({ try? FileManager.default.removeItem(atPath: $0) })
-//        paths.forEach({ FileManager.default.createFile(atPath: $0, contents: nil, attributes: nil) })
-//
-//
-//        let vc = RTManagerVC()
-//        let nav = UINavigationController(rootViewController: vc)
-//        window?.rootViewController = nav
         return true
     }
 

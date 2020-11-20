@@ -45,7 +45,13 @@ class ViewsManager: ObservableObject {
         exportManager = nil
         
         if askReview && alreadyAskedForReview == false {
+            #if os(macOS)
             SKStoreReviewController.requestReview()
+            #else
+            if let windowScene = UIApplication.shared.windows.first?.windowScene {
+                SKStoreReviewController.requestReview(in: windowScene)
+            }
+            #endif
             
             alreadyAskedForReview = true
         }
