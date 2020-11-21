@@ -12,6 +12,7 @@ import UniformTypeIdentifiers
 struct ContentView: View, DropDelegate {
     
     @State var sheetSelected : SheetType?
+//    @StateObject var viewManager = HomeViewManager()
     
     var body: some View {
         VStack {
@@ -55,14 +56,20 @@ struct ContentView: View, DropDelegate {
         }
         .padding()
         .onDrop(of: [UTType.fileURL, UTType.audio], delegate: self)
-        .sheet(item: $sheetSelected) { type in
+        .fullScreenCover(item: $sheetSelected) { type in
             switch type {
             case .musicLibrary:
                 MusicLibraryView(files: libraryFilesBinding)
             case .fileImporter:
                 DocumentImporter(allowedTypes: [UTType.audio], selectedURLs: urlsBinding)
+            case .editor(let manager):
+                NavigationView {
+                    EditorView(manager: manager)
+                }
+                .navigationViewStyle(StackNavigationViewStyle())
             }
         }
+        
     }
     
     func performDrop(info: DropInfo) -> Bool {
@@ -74,15 +81,21 @@ struct ContentView: View, DropDelegate {
             }
             guard let realURL = url as? NSURL else { return }
             DispatchQueue.main.async {
-//                viewsManager.setInput(url: realURL as URL)
+                self.selectFile(url: realURL as URL)
             }
         })
         return true
     }
     
     func selectFile(name: String? = nil, url: URL) {
-        print("SelectedName: \(name ?? url.lastPathComponent)")
+        let title = name ?? url.lastPathComponent
+        print("SelectedName: \(title)")
         print("Selected file: \(url)")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            if let manager = try? AudioManager(url: url) {
+                self.sheetSelected = .editor(manager)
+            }
+        }
     }
     
 }
@@ -113,6 +126,7 @@ extension ContentView {
     enum SheetType: Identifiable {
         case fileImporter
         case musicLibrary
+        case editor(AudioManager)
         
         var id: String {
             String(describing: self)

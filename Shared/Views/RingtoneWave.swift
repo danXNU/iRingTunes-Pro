@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct RingtoneWave: View {    
+struct RingtoneWave: View {
     var wave: [Float]
+    var mutliplierHeight : Float = 1000
     var currentLineIndex: Int
     var ringtoneEndLineIndex: Int
     
@@ -22,7 +23,7 @@ struct RingtoneWave: View {
                     LazyHStack(spacing: 5) {
                         ForEach(0..<wave.count, id: \.self) { index in
                             RoundedRectangle(cornerRadius: 5)
-                                .frame(width: 10, height: CGFloat(wave[index] * 1000))
+                                .frame(width: 10, height: CGFloat(wave[index] * mutliplierHeight))
                                 .id(index)
                                 .foregroundColor(currentLineIndex == index ? .blue : .primary)
                                 .overlay(
