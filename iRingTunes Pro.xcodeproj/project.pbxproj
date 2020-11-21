@@ -38,6 +38,10 @@
 		4432BF7A2567383E007BE291 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4432BF792567383E007BE291 /* ContentView.swift */; };
 		4432BF8025673B34007BE291 /* OSButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4432BF7F25673B34007BE291 /* OSButtonStyle.swift */; };
 		4432BF8125673B34007BE291 /* OSButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4432BF7F25673B34007BE291 /* OSButtonStyle.swift */; };
+		446C8FFD25696B05007517E9 /* DocumentImporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C8FFC25696B05007517E9 /* DocumentImporterView.swift */; };
+		446C8FFE25696B05007517E9 /* DocumentImporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C8FFC25696B05007517E9 /* DocumentImporterView.swift */; };
+		446C900325696E05007517E9 /* MusicLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C900225696E05007517E9 /* MusicLibraryView.swift */; };
+		446C900A256971E8007517E9 /* LibraryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C9009256971E8007517E9 /* LibraryFile.swift */; };
 		DB77521120D6975100B34F9C /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77521020D6975100B34F9C /* Translation.swift */; };
 		DB77521520D6990F00B34F9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB77521320D6990F00B34F9C /* Localizable.strings */; };
 		DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */; };
@@ -79,6 +83,9 @@
 		442493EF255F43920004F3DE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4432BF792567383E007BE291 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4432BF7F25673B34007BE291 /* OSButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSButtonStyle.swift; sourceTree = "<group>"; };
+		446C8FFC25696B05007517E9 /* DocumentImporterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentImporterView.swift; sourceTree = "<group>"; };
+		446C900225696E05007517E9 /* MusicLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibraryView.swift; sourceTree = "<group>"; };
+		446C9009256971E8007517E9 /* LibraryFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryFile.swift; sourceTree = "<group>"; };
 		DB77521020D6975100B34F9C /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		DB77521220D698C200B34F9C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DB77521420D6990F00B34F9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -187,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				442493BB255F42C30004F3DE /* RingtoneWave.swift */,
+				446C8FFC25696B05007517E9 /* DocumentImporterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +213,15 @@
 				4432BF7F25673B34007BE291 /* OSButtonStyle.swift */,
 			);
 			path = "Button Styles";
+			sourceTree = "<group>";
+		};
+		446C9008256971D6007517E9 /* Model-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				446C900225696E05007517E9 /* MusicLibraryView.swift */,
+				446C9009256971E8007517E9 /* LibraryFile.swift */,
+			);
+			path = "Model-iOS";
 			sourceTree = "<group>";
 		};
 		DBD628E91F0ED7EC00307B67 = {
@@ -230,6 +247,7 @@
 		DBD628F41F0ED7ED00307B67 /* iRingTunes Pro */ = {
 			isa = PBXGroup;
 			children = (
+				446C9008256971D6007517E9 /* Model-iOS */,
 				4432BF782567380F007BE291 /* Views-iOS */,
 				DBED65212014A8C50078313B /* Supporting Files */,
 				DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */,
@@ -395,6 +413,7 @@
 				442493DB255F42C40004F3DE /* HomeView.swift in Sources */,
 				442493D1255F42C40004F3DE /* AudioReader.swift in Sources */,
 				442493DD255F42C40004F3DE /* ExportManager.swift in Sources */,
+				446C8FFE25696B05007517E9 /* DocumentImporterView.swift in Sources */,
 				442493D4255F42C40004F3DE /* EditorView.swift in Sources */,
 				442493DF255F42C40004F3DE /* ViewsManager.swift in Sources */,
 				442493D3255F42C40004F3DE /* RingtoneWave.swift in Sources */,
@@ -419,16 +438,19 @@
 			files = (
 				DB77521120D6975100B34F9C /* Translation.swift in Sources */,
 				4432BF58256736CD007BE291 /* AudioReader.swift in Sources */,
+				446C900325696E05007517E9 /* MusicLibraryView.swift in Sources */,
 				4432BF5C256736D0007BE291 /* ExportAgent.swift in Sources */,
 				4432BF60256736ED007BE291 /* ExportManager.swift in Sources */,
 				4432BF68256736F2007BE291 /* ViewsManager.swift in Sources */,
 				4432BF57256736CA007BE291 /* Errors.swift in Sources */,
+				446C8FFD25696B05007517E9 /* DocumentImporterView.swift in Sources */,
 				4432BF7425673749007BE291 /* RingtoneWave.swift in Sources */,
 				DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */,
 				4432BF53256736C8007BE291 /* AudioManager.swift in Sources */,
 				4432BF8025673B34007BE291 /* OSButtonStyle.swift in Sources */,
 				4432BF6F25673730007BE291 /* Properties.swift in Sources */,
 				4432BF7A2567383E007BE291 /* ContentView.swift in Sources */,
+				446C900A256971E8007517E9 /* LibraryFile.swift in Sources */,
 				4432BF4F256736C5007BE291 /* SignalProcessing.swift in Sources */,
 				4432BF64256736EF007BE291 /* AudioWaveAgent.swift in Sources */,
 			);

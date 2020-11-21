@@ -38,3 +38,25 @@ struct OSSetupButtonStyle: ButtonStyle {
     }
     
 }
+
+struct OSLabelModifier: ViewModifier {
+    @State var backgroundColor: Color = Color.blue
+    
+    func body(content: Content) -> some View {
+        content
+        .font(Font.body.bold())
+        .foregroundColor(Color.white)
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(self.backgroundColor)
+        )
+    }
+}
+
+extension View {
+    func osLabelStyle(color: Color = .blue) -> some View {
+        self.modifier(OSLabelModifier(backgroundColor: color))
+    }
+}

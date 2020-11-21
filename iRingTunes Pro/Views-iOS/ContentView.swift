@@ -11,6 +11,8 @@ import UniformTypeIdentifiers
 
 struct ContentView: View, DropDelegate {
     
+    @State var sheetSelected : SheetType?
+    
     var body: some View {
         VStack {
             Text("iRingTunes")
@@ -33,12 +35,16 @@ struct ContentView: View, DropDelegate {
                     .foregroundColor(.red)
             
                 
-                Button(action: {}) {
-                    Text("Crea suonerie")
+                Menu {
+                    Button("From Music library") { sheetSelected = .musicLibrary }
+                    Button("From Files") { sheetSelected = .fileImporter }
+                } label: {
+                    Text("Crea suoneria")
                         .font(.headline)
+                        .osLabelStyle()
+                        .frame(maxWidth: 200)
                 }
-                .buttonStyle(OSSetupButtonStyle())
-                .frame(maxWidth: 200)
+                
             }
             
             Spacer()
@@ -49,6 +55,14 @@ struct ContentView: View, DropDelegate {
         }
         .padding()
         .onDrop(of: [UTType.fileURL, UTType.audio], delegate: self)
+        .sheet(item: $sheetSelected) { type in
+            switch type {
+            case .musicLibrary:
+                MusicLibraryView(files: libraryFilesBinding)
+            case .fileImporter:
+                DocumentImporter(allowedTypes: [UTType.audio], selectedURLs: urlsBinding)
+            }
+        }
     }
     
     func performDrop(info: DropInfo) -> Bool {
@@ -66,8 +80,42 @@ struct ContentView: View, DropDelegate {
         return true
     }
     
-    func chooseFile() {
-        
+    func selectFile(name: String? = nil, url: URL) {
+        print("SelectedName: \(name ?? url.lastPathComponent)")
+        print("Selected file: \(url)")
     }
     
+}
+
+extension ContentView {
+    var libraryFilesBinding: Binding<[LibraryFile]> {
+        Binding {
+            []
+        } set: {
+            if let file = $0.first {
+                selectFile(name: file.title, url: file.assetURL)
+            }
+        }
+    }
+    
+    var urlsBinding: Binding<[URL]> {
+        Binding {
+            []
+        } set: {
+            if let url = $0.first {
+                selectFile(url: url)
+            }
+        }
+    }
+}
+
+extension ContentView {
+    enum SheetType: Identifiable {
+        case fileImporter
+        case musicLibrary
+        
+        var id: String {
+            String(describing: self)
+        }
+    }
 }
