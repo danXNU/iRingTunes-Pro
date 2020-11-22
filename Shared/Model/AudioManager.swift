@@ -128,6 +128,12 @@ class AudioManager: ObservableObject {
         player.play()
     }
     
+    func resume() {
+        isPlaying = true
+        player.play()
+        createTimer()
+    }
+    
     func pause() {
         isPlaying = false
         player.pause()

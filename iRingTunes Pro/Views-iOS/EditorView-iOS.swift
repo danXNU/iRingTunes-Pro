@@ -159,9 +159,18 @@ struct EditorView: View {
         }
         .alert(isPresented: $isError) {
             Alert(title: Text("Error"),
-                  message: Text("File already exist with that name"),
-                  dismissButton: Alert.Button.default(Text("Ok")))
+                  message: Text("File already exist with that name. Do you want to overwrite it?"),
+                  primaryButton: Alert.Button.default(Text("Overwrite"), action: exportAction),
+                  secondaryButton: Alert.Button.cancel())
         }
+        .onChange(of: isError, perform: { value in
+            if value {
+                manager.pause()
+            } else {
+                manager.resume()
+            }
+            print("isError: \(value)")
+        })
     }
 
     func start() {
@@ -171,11 +180,15 @@ struct EditorView: View {
     }
     
     func export() {
-//        if FileManager.default.fileExists(atPath: editorStateManager.outputURL.path) {
-//            isError = true
-//            return
-//        }
+        if FileManager.default.fileExists(atPath: editorStateManager.outputURL.path) {
+            isError = true
+            return
+        }
         
+        exportAction()
+    }
+    
+    private func exportAction() {
         let settings = ExportSettings(inputFileURL: manager.fileURL,
                                       outputFileURL: editorStateManager.outputURL,
                                       fadeIn: manager.isFadeInActive, fadeOut: manager.isFadeOutActive,
