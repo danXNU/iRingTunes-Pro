@@ -9,6 +9,14 @@ import Foundation
 import MediaPlayer
 import Combine
 
+struct ExportSettings {
+    var inputFileURL: URL
+    var outputFileURL: URL
+    var fadeIn: Bool
+    var fadeOut: Bool
+    var timeRange: (start: Double, end: Double)
+}
+
 class ExportAgent {
     
     private var exportSession: AVAssetExportSession!

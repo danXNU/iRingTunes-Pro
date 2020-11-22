@@ -9,16 +9,17 @@
 import SwiftUI
 
 struct EditorView: View {
-    @ObservedObject var manager : AudioManager
     @Environment(\.presentationMode) var presentationMode
     
+    @ObservedObject var manager : AudioManager
+    @StateObject var editorStateManager = EditorStateManager()
+    
     @State var popoverSelected: Bool = false
-    @State var isExporting: Bool = false
-    @State var exportName: String = ""
     
     var body: some View {
         ScrollView {
-            NavigationLink(destination: Text("Exporting..."), isActive: $isExporting) {
+            NavigationLink(destination: ExportingView(exportManager: editorStateManager.exportManager),
+                           isActive: $editorStateManager.isExporting) {
                 EmptyView()
             }
             
@@ -122,7 +123,7 @@ struct EditorView: View {
                             HStack {
                                 Text("File name")
                                 Spacer()
-                                TextField("File name", text: $exportName)
+                                TextField("File name", text: $editorStateManager.exportName)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .labelsHidden()
                                     .frame(maxWidth: 200)
@@ -143,7 +144,7 @@ struct EditorView: View {
         }
         .onAppear {
             start()
-            exportName = title
+            editorStateManager.exportName = title
         }
         .navigationBarTitle("\(title)", displayMode: .inline)
         .toolbar {
@@ -163,7 +164,13 @@ struct EditorView: View {
     }
     
     func export() {
-        isExporting = true
+        let settings = ExportSettings(inputFileURL: <#T##URL#>,
+                                      outputFileURL: <#T##URL#>,
+                                      fadeIn: <#T##Bool#>, fadeOut: <#T##Bool#>,
+                                      timeRange: <#T##(start: Double, end: Double)#>)
+        editorStateManager.exportManager.setSettings(settings)
+        
+        editorStateManager.isExporting = true
     }
 }
 

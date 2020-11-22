@@ -70,11 +70,3 @@ class ViewsManager: ObservableObject {
         case exporting(ExportManager)
     }
 }
-
-struct ExportSettings {
-    var inputFileURL: URL
-    var outputFileURL: URL
-    var fadeIn: Bool
-    var fadeOut: Bool
-    var timeRange: (start: Double, end: Double)
-}

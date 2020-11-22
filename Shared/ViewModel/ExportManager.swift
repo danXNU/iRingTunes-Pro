@@ -9,17 +9,17 @@ import Foundation
 
 class ExportManager: ObservableObject {
     
-    private var settings: ExportSettings
-    private var agent: ExportAgent
+    private var settings: ExportSettings!
+//    private var agent: ExportAgent
     
     @Published public var progress: Float = 0
     @Published public var isFinished: Bool = false
     @Published public var isError: Bool = false
     public var errorMsg: String = ""
     
-    init(settings: ExportSettings) {
+    init(settings: ExportSettings? = nil) {
         self.settings = settings
-        self.agent = ExportAgent(settings: settings)
+//        self.agent = ExportAgent(settings: settings)
         
         print("ExportManager init: \(String(describing: self))")
     }
@@ -28,15 +28,28 @@ class ExportManager: ObservableObject {
         print("ExportManager deinit: \(String(describing: self))")
     }
     
+    func setSettings(_ settings: ExportSettings) {
+        self.settings = settings
+    }
+    
     func export() {
-        self.agent.updateProgressHandler = { [weak self] newValue in
+        guard let settings = self.settings else {
+            #if DEBUG
+            fatalError("You must set (or init with) settings in ExportManager before export()")
+            #else
+            return
+            #endif
+        }
+        
+        let agent = ExportAgent(settings: settings)
+        agent.updateProgressHandler = { [weak self] newValue in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.progress = newValue
             }
         }
         
-        self.agent.export { (result) in
+        agent.export { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
