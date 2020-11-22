@@ -17,6 +17,8 @@ class ExportManager: ObservableObject {
     @Published public var isError: Bool = false
     public var errorMsg: String = ""
     
+    private var agent: ExportAgent?
+    
     init(settings: ExportSettings? = nil) {
         self.settings = settings
 //        self.agent = ExportAgent(settings: settings)
@@ -41,15 +43,15 @@ class ExportManager: ObservableObject {
             #endif
         }
         
-        let agent = ExportAgent(settings: settings)
-        agent.updateProgressHandler = { [weak self] newValue in
+        agent = ExportAgent(settings: settings)
+        agent?.updateProgressHandler = { [weak self] newValue in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.progress = newValue
             }
         }
         
-        agent.export { (result) in
+        agent?.export { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):

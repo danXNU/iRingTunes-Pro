@@ -16,9 +16,11 @@ struct EditorView: View {
     
     @State var popoverSelected: Bool = false
     
+    @State var isError: Bool = false
+    
     var body: some View {
         ScrollView {
-            NavigationLink(destination: ExportingView(exportManager: editorStateManager.exportManager),
+            NavigationLink(destination: exportingView,
                            isActive: $editorStateManager.isExporting) {
                 EmptyView()
             }
@@ -155,6 +157,11 @@ struct EditorView: View {
                 }
             }
         }
+        .alert(isPresented: $isError) {
+            Alert(title: Text("Error"),
+                  message: Text("File already exist with that name"),
+                  dismissButton: Alert.Button.default(Text("Ok")))
+        }
     }
 
     func start() {
@@ -164,13 +171,28 @@ struct EditorView: View {
     }
     
     func export() {
-        let settings = ExportSettings(inputFileURL: <#T##URL#>,
-                                      outputFileURL: <#T##URL#>,
-                                      fadeIn: <#T##Bool#>, fadeOut: <#T##Bool#>,
-                                      timeRange: <#T##(start: Double, end: Double)#>)
+//        if FileManager.default.fileExists(atPath: editorStateManager.outputURL.path) {
+//            isError = true
+//            return
+//        }
+        
+        let settings = ExportSettings(inputFileURL: manager.fileURL,
+                                      outputFileURL: editorStateManager.outputURL,
+                                      fadeIn: manager.isFadeInActive, fadeOut: manager.isFadeOutActive,
+                                      timeRange: (start: manager.ringtoneStartTime,
+                                                  end: (manager.ringtoneStartTime + manager.ringtoneDuration)
+                                      ))
         editorStateManager.exportManager.setSettings(settings)
         
         editorStateManager.isExporting = true
+    }
+}
+
+extension EditorView {
+    var exportingView: some View {
+        ExportingView(exportManager: editorStateManager.exportManager,
+                      presentationMode: presentationMode)
+            .environmentObject(manager)
     }
 }
 

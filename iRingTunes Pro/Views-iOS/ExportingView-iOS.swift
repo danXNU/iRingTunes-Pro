@@ -10,6 +10,9 @@ import SwiftUI
 
 struct ExportingView: View {
     @ObservedObject var exportManager: ExportManager
+    @Binding var presentationMode: PresentationMode
+    
+    @EnvironmentObject var audioManager: AudioManager
     
     var body: some View {
         VStack(spacing: 15) {
@@ -22,8 +25,11 @@ struct ExportingView: View {
                     .foregroundColor(.green)
                 
                 Button("Done") {
-
+                    audioManager.stop()
+                    presentationMode.dismiss()
                 }
+                .buttonStyle(OSSetupButtonStyle())
+                .frame(maxWidth: 200)
             case .exporting:
                 ProgressView("Exporting...", value: exportManager.progress)
                     .frame(maxWidth: 300)

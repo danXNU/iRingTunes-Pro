@@ -58,7 +58,12 @@ class ExportAgent {
             }
             exportSession?.audioMix = audioMix
         }
-                
+           
+        print("ExportAgent init: \(Unmanaged.passUnretained(self).toOpaque())")
+    }
+    
+    deinit {
+        print("ExportAgent deinit: \(Unmanaged.passUnretained(self).toOpaque())")
     }
     
     func export(completion: @escaping (Result<Int, ExportError>) -> Void) {

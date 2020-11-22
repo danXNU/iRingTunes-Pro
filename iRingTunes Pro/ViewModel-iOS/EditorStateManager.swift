@@ -10,17 +10,13 @@ import Foundation
 
 class EditorStateManager: ObservableObject {
     @Published var exportName: String = ""
-    @Published var isExporting: Bool = false
-//    @Published var exportState: ExportState?
+    @Published var isExporting: Bool = false    
     
     var exportManager: ExportManager = ExportManager()
     
+    var outputURL: URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(exportName).m4r")
+    }
     
-//    enum ExportState: Identifiable {
-//        case exporting(ExportManager)
-//
-//        var id: String {
-//            String(describing: self)
-//        }
-//    }
+    
 }
