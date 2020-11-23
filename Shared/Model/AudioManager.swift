@@ -165,7 +165,10 @@ class AudioManager: ObservableObject {
         timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { [weak self] (_) in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.currentLineIndex = Int(self.player.currentTime * self.linesPerSecond)
+                let newIndex = Int(self.player.currentTime * self.linesPerSecond)
+                if self.currentLineIndex != newIndex {
+                    self.currentLineIndex = newIndex
+                }                
             }
             if self.playsOnlyRingtoneRange {
                 let ringtonteEndTime = min(self.ringtoneStartTime + self.ringtoneDuration, self.player.duration)
