@@ -35,8 +35,6 @@ struct EditorView: View {
                                      ringtoneStartLineIndex: ringStartLine,
                                      selectedPlayerTimeLineIndex: playerTimeLine)
                         
-                        ZoomButton
-                        
                         VStack {
                             HStack {
                                 Circle()
@@ -60,8 +58,8 @@ struct EditorView: View {
                     .frame(height: 200)
                     
                     Group {
-                        Text("Click").bold().underline() + Text(" on a line to set the player current time.")
-                        Text("Right click").bold().underline() + Text(" a line to set it as a starting point for the ringtone")
+                        Text("Tap").bold().underline() + Text(" on a line to set the player current time.")
+                        Text("Hold").bold().underline() + Text(" a line to set it as a starting point for the ringtone")
                     }
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -119,14 +117,14 @@ struct EditorView: View {
                                 
                                 Divider()
                                 
-                                HStack {
+                                VStack {
                                     Toggle("Activate Fade-In", isOn: $manager.isFadeInActive)
-                                    Spacer()
+//                                    Spacer()
                                     Toggle("Activate Fade-Out", isOn: $manager.isFadeOutActive)
                                 }//.padding(.vertical)
                                 
                             }
-                            .padding()
+                            .padding(.top)
                         }
                         
                         GroupBox(label: Label("Export", systemImage: "doc.circle")) {
@@ -136,7 +134,7 @@ struct EditorView: View {
                                 TextField("File name", text: $editorStateManager.exportName)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .labelsHidden()
-                                    .frame(maxWidth: 200)
+//                                    .frame(maxWidth: 200)
                             }
                         }
                     }
