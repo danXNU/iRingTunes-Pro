@@ -23,7 +23,13 @@ class AudioLoader {
     }
     
     func decodeFile(zoomLevel: Int = 100, completion: @escaping AudioWaveCompletion) {
-        let file = try! AVAudioFile(forReading: fileURL)
+        guard let file = try? AVAudioFile(forReading: fileURL) else {
+            #if DEBUG
+            fatalError()
+            #else
+            return
+            #endif
+        }
         let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: file.fileFormat.sampleRate, channels: file.fileFormat.channelCount, interleaved: false)!
         
         let buf = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: UInt32(file.length))!

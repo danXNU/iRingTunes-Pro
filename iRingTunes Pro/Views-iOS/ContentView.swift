@@ -81,13 +81,13 @@ struct ContentView: View, DropDelegate {
             }
             guard let realURL = url as? NSURL else { return }
             DispatchQueue.main.async {
-                self.selectFile(url: realURL as URL)
+                self.selectAsset(url: realURL as URL)
             }
         })
         return true
     }
     
-    func selectFile(name: String? = nil, url: URL) {
+    func selectAsset(name: String? = nil, url: URL) {
         let title = name ?? url.lastPathComponent
         print("SelectedName: \(title)")
         print("Selected file: \(url)")
@@ -98,6 +98,18 @@ struct ContentView: View, DropDelegate {
         }
     }
     
+    func selectFile(url: URL) {
+        guard let tmp = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { return }
+        let newURL = tmp.appendingPathComponent(url.lastPathComponent)
+        if FileManager.default.fileExists(atPath: newURL.path) {
+            try? FileManager.default.removeItem(at: newURL)
+        }
+        try? FileManager.default.copyItem(at: url, to: newURL)
+        
+        self.selectAsset(url: newURL)        
+    }
+
+    
 }
 
 extension ContentView {
@@ -106,7 +118,7 @@ extension ContentView {
             []
         } set: {
             if let file = $0.first {
-                selectFile(name: file.title, url: file.assetURL)
+                selectAsset(name: file.title, url: file.assetURL)
             }
         }
     }

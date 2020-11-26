@@ -61,7 +61,7 @@ class AudioManager: ObservableObject {
         
         let zoomSubscriber = $zoomLevel
             .dropFirst()
-            .debounce(for: 0.1, scheduler: RunLoop.main)
+            .debounce(for: 0.3, scheduler: RunLoop.main)
             .sink { (newValue) in
                 self.prepare(zoomLevel: Int(newValue))
             }

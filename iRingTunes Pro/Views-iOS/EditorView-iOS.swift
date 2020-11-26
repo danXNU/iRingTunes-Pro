@@ -68,6 +68,14 @@ struct EditorView: View {
                     
                     
                     VStack {
+                        GroupBox(label: Label("Zoom", systemImage: "magnifyingglass")) {
+                            VStack {                                
+                                Text(zoomLevelString)
+                                
+                                Slider(value: $manager.zoomLevel, in: 50...Float(MAX_ZOOM))
+                            }
+                        }
+                        
                         GroupBox(label: Label("Player", systemImage: "play.circle")) {
                             VStack {
                                 HStack(spacing: 20) {
