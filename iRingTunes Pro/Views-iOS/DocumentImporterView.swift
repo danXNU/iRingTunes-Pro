@@ -15,7 +15,7 @@ struct DocumentImporter: UIViewControllerRepresentable {
     @Binding var selectedURLs: [URL]
     
     func makeUIViewController(context: Context) -> some UIViewController {
-        let vc = UIDocumentPickerViewController(forOpeningContentTypes: allowedTypes)
+        let vc = UIDocumentPickerViewController(forOpeningContentTypes: allowedTypes, asCopy: true)
         vc.allowsMultipleSelection = true
         vc.delegate = context.coordinator
         return vc
