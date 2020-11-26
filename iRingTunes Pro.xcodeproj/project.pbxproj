@@ -44,6 +44,9 @@
 		446C9013256974F9007517E9 /* HomeViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C9012256974F9007517E9 /* HomeViewManager.swift */; };
 		448382D125697A8F00B1B509 /* EditorView-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448382D025697A8F00B1B509 /* EditorView-iOS.swift */; };
 		448382E1256992FE00B1B509 /* ExportingView-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448382E0256992FE00B1B509 /* ExportingView-iOS.swift */; };
+		44AFB29E2570093B00378B79 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB29D2570093B00378B79 /* LibraryView.swift */; };
+		44AFB2A325700A6B00378B79 /* LibraryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB2A225700A6B00378B79 /* LibraryListModel.swift */; };
+		44AFB2A825700BB400378B79 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB2A725700BB400378B79 /* LibraryViewModel.swift */; };
 		DB77521120D6975100B34F9C /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77521020D6975100B34F9C /* Translation.swift */; };
 		DB77521520D6990F00B34F9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB77521320D6990F00B34F9C /* Localizable.strings */; };
 		DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */; };
@@ -92,6 +95,9 @@
 		446C9012256974F9007517E9 /* HomeViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewManager.swift; sourceTree = "<group>"; };
 		448382D025697A8F00B1B509 /* EditorView-iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditorView-iOS.swift"; sourceTree = "<group>"; };
 		448382E0256992FE00B1B509 /* ExportingView-iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExportingView-iOS.swift"; sourceTree = "<group>"; };
+		44AFB29D2570093B00378B79 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		44AFB2A225700A6B00378B79 /* LibraryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListModel.swift; sourceTree = "<group>"; };
+		44AFB2A725700BB400378B79 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		DB77521020D6975100B34F9C /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		DB77521220D698C200B34F9C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DB77521420D6990F00B34F9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				4432BF792567383E007BE291 /* ContentView.swift */,
 				448382D025697A8F00B1B509 /* EditorView-iOS.swift */,
 				448382E0256992FE00B1B509 /* ExportingView-iOS.swift */,
+				44AFB29D2570093B00378B79 /* LibraryView.swift */,
 			);
 			path = "Views-iOS";
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			children = (
 				446C900225696E05007517E9 /* MusicLibraryView.swift */,
 				446C9009256971E8007517E9 /* LibraryFile.swift */,
+				44AFB2A225700A6B00378B79 /* LibraryListModel.swift */,
 			);
 			path = "Model-iOS";
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 			children = (
 				446C9012256974F9007517E9 /* HomeViewManager.swift */,
 				444E40652569FF6C00FCE149 /* EditorStateManager.swift */,
+				44AFB2A725700BB400378B79 /* LibraryViewModel.swift */,
 			);
 			path = "ViewModel-iOS";
 			sourceTree = "<group>";
@@ -456,10 +465,13 @@
 				DB77521120D6975100B34F9C /* Translation.swift in Sources */,
 				4432BF58256736CD007BE291 /* AudioReader.swift in Sources */,
 				446C900325696E05007517E9 /* MusicLibraryView.swift in Sources */,
+				44AFB2A325700A6B00378B79 /* LibraryListModel.swift in Sources */,
 				4432BF5C256736D0007BE291 /* ExportAgent.swift in Sources */,
 				4432BF60256736ED007BE291 /* ExportManager.swift in Sources */,
+				44AFB2A825700BB400378B79 /* LibraryViewModel.swift in Sources */,
 				4432BF57256736CA007BE291 /* Errors.swift in Sources */,
 				446C8FFD25696B05007517E9 /* DocumentImporterView.swift in Sources */,
+				44AFB29E2570093B00378B79 /* LibraryView.swift in Sources */,
 				4432BF7425673749007BE291 /* RingtoneWave.swift in Sources */,
 				DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */,
 				4432BF53256736C8007BE291 /* AudioManager.swift in Sources */,

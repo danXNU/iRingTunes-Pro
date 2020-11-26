@@ -15,46 +15,53 @@ struct ContentView: View, DropDelegate {
 //    @StateObject var viewManager = HomeViewManager()
     
     var body: some View {
-        VStack {
-            Text("iRingTunes")
-                .font(.largeTitle)
-//                .foregroundColor(.orange)
-                .bold()
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.red)
-                        .shadow(color: .red, radius: 10, x: 0, y: 0)
-                )
-            
-            Spacer()
-            
-            VStack(spacing: 30) {
-                Image("Icon")
-                    .resizable()
-                    .frame(width: 128, height: 128)
-                    .foregroundColor(.red)
-            
+        NavigationView {
+            VStack {
+                Text("iRingTunes")
+                    .font(.largeTitle)
+    //                .foregroundColor(.orange)
+                    .bold()
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.red)
+                            .shadow(color: .red, radius: 10, x: 0, y: 0)
+                    )
                 
-                Menu {
-                    Button("From Music library") { sheetSelected = .musicLibrary }
-                    Button("From Files") { sheetSelected = .fileImporter }
-                } label: {
-                    Text("Crea suoneria")
-                        .font(.headline)
-                        .osLabelStyle()
-                        .frame(maxWidth: 200)
+                Spacer()
+                
+                VStack(spacing: 30) {
+                    Image("Icon")
+                        .resizable()
+                        .frame(width: 128, height: 128)
+                        .foregroundColor(.red)
+                
+                    
+                    Menu {
+                        Button("From Music library") { sheetSelected = .musicLibrary }
+                        Button("From Files") { sheetSelected = .fileImporter }
+                    } label: {
+                        Text("Crea suoneria")
+                            .font(.headline)
+                            .osLabelStyle()
+                            .frame(maxWidth: 200)
+                    }
+                    
+                }
+                
+                Spacer()
+                
+                NavigationLink(destination: LibraryView()) {
+                    Text("Le tue sonerie")
+                        .foregroundColor(.blue)
                 }
                 
             }
-            
-            Spacer()
-            
-            Button("Le tue sonerie") {
-                
-            }
+            .padding()
+            .navigationTitle(Text("Home"))
+            .navigationBarHidden(true)
         }
-        .padding()
+        .navigationViewStyle(StackNavigationViewStyle())
         .onDrop(of: [UTType.fileURL, UTType.audio], delegate: self)
         .fullScreenCover(item: $sheetSelected) { type in
             switch type {

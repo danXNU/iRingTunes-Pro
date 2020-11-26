@@ -12,3 +12,8 @@ struct LibraryFile {
     var title: String
     var assetURL: URL
 }
+
+struct LibraryObject {
+    var url: URL
+    var modificationDate: Date
+}
