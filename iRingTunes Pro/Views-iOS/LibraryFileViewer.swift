@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct LibraryFileViewer: View {
     
@@ -54,7 +55,12 @@ struct LibraryFileViewer: View {
             }
             .padding()
         }
+        .onAppear {
+            try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try? AVAudioSession.sharedInstance().setActive(true)
+        }
         .onDisappear {
+//            try? AVAudioSession.sharedInstance().setActive(false)
             viewModel.stop()
         }
         .toolbar {

@@ -74,6 +74,9 @@ class AudioManager: ObservableObject {
         observers.append(playingObserver)
         observers.append(zoomSubscriber)
         
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        
         print("AudioManager init: \(String(describing: self))")
     }
     
@@ -81,6 +84,8 @@ class AudioManager: ObservableObject {
         removeTimer()
         player.stop()
         observers.removeAll()
+        
+//        try? AVAudioSession.sharedInstance().setActive(false)
     }
     
     deinit {
