@@ -43,6 +43,16 @@ class LibraryFileViewerModel: ObservableObject {
         self.player?.stop()
     }
     
+    public func forward10() {
+        let currentTime = self.player?.currentTime ?? 0
+        self.setPlayerTime(min(currentTime + 10, self.duration))
+    }
+    
+    public func backward10() {
+        let currentTime = self.player?.currentTime ?? 0
+        self.setPlayerTime(max(currentTime - 10, 0))
+    }
+    
     private func createPlayer() {
         guard let player = try? AVAudioPlayer(contentsOf: file.url) else { return }
         self.player = player
@@ -63,12 +73,12 @@ class LibraryFileViewerModel: ObservableObject {
     
     private func createTimer() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { [weak self] (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] (timer) in
             guard let self = self else { return }
             if let currentTime = self.player?.currentTime {
                 if self.currentTime != currentTime {
                     DispatchQueue.main.async {
-                        self.currentTime = currentTime
+                        self.currentTime = currentTime                        
                     }
                 }
             }

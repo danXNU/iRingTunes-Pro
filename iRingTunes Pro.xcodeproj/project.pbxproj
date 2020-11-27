@@ -49,6 +49,7 @@
 		44AFB2A825700BB400378B79 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB2A725700BB400378B79 /* LibraryViewModel.swift */; };
 		44AFB2AD2570277700378B79 /* LibraryFileViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB2AC2570277700378B79 /* LibraryFileViewer.swift */; };
 		44AFB2B2257027C600378B79 /* LibraryFileViewerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB2B1257027C600378B79 /* LibraryFileViewerModel.swift */; };
+		44D4E78B25716971002E1C18 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D4E78A25716971002E1C18 /* ShareSheetView.swift */; };
 		DB77521120D6975100B34F9C /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77521020D6975100B34F9C /* Translation.swift */; };
 		DB77521520D6990F00B34F9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB77521320D6990F00B34F9C /* Localizable.strings */; };
 		DBD628F61F0ED7ED00307B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD628F51F0ED7ED00307B67 /* AppDelegate.swift */; };
@@ -102,6 +103,7 @@
 		44AFB2A725700BB400378B79 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		44AFB2AC2570277700378B79 /* LibraryFileViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryFileViewer.swift; sourceTree = "<group>"; };
 		44AFB2B1257027C600378B79 /* LibraryFileViewerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryFileViewerModel.swift; sourceTree = "<group>"; };
+		44D4E78A25716971002E1C18 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		DB77521020D6975100B34F9C /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		DB77521220D698C200B34F9C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DB77521420D6990F00B34F9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				448382E0256992FE00B1B509 /* ExportingView-iOS.swift */,
 				44AFB29D2570093B00378B79 /* LibraryView.swift */,
 				44AFB2AC2570277700378B79 /* LibraryFileViewer.swift */,
+				44D4E78A25716971002E1C18 /* ShareSheetView.swift */,
 			);
 			path = "Views-iOS";
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				44AFB2A325700A6B00378B79 /* LibraryListModel.swift in Sources */,
 				4432BF5C256736D0007BE291 /* ExportAgent.swift in Sources */,
 				4432BF60256736ED007BE291 /* ExportManager.swift in Sources */,
+				44D4E78B25716971002E1C18 /* ShareSheetView.swift in Sources */,
 				44AFB2A825700BB400378B79 /* LibraryViewModel.swift in Sources */,
 				4432BF57256736CA007BE291 /* Errors.swift in Sources */,
 				446C8FFD25696B05007517E9 /* DocumentImporterView.swift in Sources */,
