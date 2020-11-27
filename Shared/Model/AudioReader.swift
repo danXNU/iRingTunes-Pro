@@ -30,7 +30,11 @@ class AudioLoader {
             return
             #endif
         }
-        let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: file.fileFormat.sampleRate, channels: file.fileFormat.channelCount, interleaved: false)!
+        guard let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: file.fileFormat.sampleRate, channels: file.fileFormat.channelCount, interleaved: false)
+        else {
+            completion(.failure(.assetLoading))
+            return
+        }
         
         let buf = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: UInt32(file.length))!
         do {

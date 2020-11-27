@@ -25,6 +25,8 @@ class LibraryFileViewerModel: ObservableObject {
         self.file = file
         
         createPlayer()
+        
+        print("LibraryFileViewerModel init: \(Unmanaged.passUnretained(self).toOpaque())")
     }
     
     private func play() {
@@ -93,6 +95,7 @@ class LibraryFileViewerModel: ObservableObject {
     
     deinit {
         self.stop()
+        print("LibraryFileViewerModel deinit: \(Unmanaged.passUnretained(self).toOpaque())")
     }
     
     var durationString: String {
