@@ -40,7 +40,7 @@ struct EditorView: View {
                                 Circle()
                                     .fill(Color.orange)
                                     .frame(width: 10, height: 10)
-                                Text("Ringtone range")
+                                Text(t_ringtone_range)
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                                 
@@ -49,7 +49,7 @@ struct EditorView: View {
                             Spacer()
                             
                             if manager.warningOnlyRingtoneRangePlayingActive {
-                                Text("You've set to only play the ringtone range. Deselect it in the player section below to play the full track")
+                                Text(t_play_only_ringtone_range_warning)
                                     .font(.caption)
                                     .foregroundColor(.red)
                             }
@@ -58,8 +58,8 @@ struct EditorView: View {
                     .frame(height: 200)
                     
                     Group {
-                        Text("Tap").bold().underline() + Text(" on a line to set the player current time.")
-                        Text("Hold").bold().underline() + Text(" a line to set it as a starting point for the ringtone")
+                        Text(t_tap).bold().underline() + Text(t_tap_set_player_time)
+                        Text(t_hold).bold().underline() + Text(t_hold_set_ringtone_time)
                     }
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -101,7 +101,7 @@ struct EditorView: View {
                                 .frame(height: 50)
                                 .frame(maxWidth: .infinity)
                                 
-                                Toggle("Play only the ringtone range", isOn: $manager.playsOnlyRingtoneRange)
+                                Toggle(t_play_only_ringtone_range, isOn: $manager.playsOnlyRingtoneRange)
                             }
                         }
                         
@@ -118,16 +118,16 @@ struct EditorView: View {
                                 Divider()
                                 
                                 VStack {
-                                    Toggle("Activate Fade-In", isOn: $manager.isFadeInActive)
+                                    Toggle(t_activate_fadein, isOn: $manager.isFadeInActive)
 //                                    Spacer()
-                                    Toggle("Activate Fade-Out", isOn: $manager.isFadeOutActive)
+                                    Toggle(t_activate_fadeout, isOn: $manager.isFadeOutActive)
                                 }//.padding(.vertical)
                                 
                             }
                             .padding(.top)
                         }
                         
-                        GroupBox(label: Label("Export", systemImage: "doc.circle")) {
+                        GroupBox(label: Label(t_export, systemImage: "doc.circle")) {
                             HStack {
                                 Text("File name")
                                 Spacer()
@@ -141,7 +141,7 @@ struct EditorView: View {
                     .padding()
                 }
                 
-                Button("Export") {
+                Button(t_export) {
                     export()
                 }
                 .buttonStyle(OSSetupButtonStyle())
@@ -157,16 +157,16 @@ struct EditorView: View {
         .navigationBarTitle("\(title)", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                Button("Cancel") {
+                Button(t_cancel) {
                     manager.stop()
                     presentationMode.wrappedValue.dismiss()
                 }
             }
         }
         .alert(isPresented: $isError) {
-            Alert(title: Text("Error"),
-                  message: Text("File already exist with that name. Do you want to overwrite it?"),
-                  primaryButton: Alert.Button.default(Text("Overwrite"), action: exportAction),
+            Alert(title: Text(t_error),
+                  message: Text(t_file_already_exist),
+                  primaryButton: Alert.Button.default(Text(t_overwrite), action: exportAction),
                   secondaryButton: Alert.Button.cancel())
         }
         .onChange(of: isError, perform: { value in
@@ -234,7 +234,7 @@ extension EditorView {
     var ringtoneStartTimeView: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                Text("Start time: \(getTime(from: manager.ringtoneStartTime))")
+                Text("\(t_start_time): \(getTime(from: manager.ringtoneStartTime))")
                 
                 Slider(value: $manager.ringtoneStartTime, in: 0...manager.playerDuration, minimumValueLabel: Text("0:00"), maximumValueLabel: Text("\(getTime(from: manager.playerDuration))")) {
                     Text("")
@@ -248,7 +248,7 @@ extension EditorView {
     var ringtoneDurationView: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                Text("Duration: \(Int(manager.ringtoneDuration))")
+                Text("\(t_ringduration): \(Int(manager.ringtoneDuration))")
                 
                 Slider(value: $manager.ringtoneDuration, in: 10...40, minimumValueLabel: Text("10s"), maximumValueLabel: Text("40s")) {
                     Text("")

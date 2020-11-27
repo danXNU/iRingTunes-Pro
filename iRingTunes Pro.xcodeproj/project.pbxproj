@@ -104,6 +104,7 @@
 		44AFB2AC2570277700378B79 /* LibraryFileViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryFileViewer.swift; sourceTree = "<group>"; };
 		44AFB2B1257027C600378B79 /* LibraryFileViewerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryFileViewerModel.swift; sourceTree = "<group>"; };
 		44D4E78A25716971002E1C18 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
+		44D4E79225717C02002E1C18 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DB77521020D6975100B34F9C /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		DB77521220D698C200B34F9C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DB77521420D6990F00B34F9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -516,6 +517,7 @@
 			children = (
 				DB77521420D6990F00B34F9C /* Base */,
 				DB77521620D6992E00B34F9C /* it */,
+				44D4E79225717C02002E1C18 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -38,10 +38,10 @@ struct ContentView: View, DropDelegate {
                 
                     
                     Menu {
-                        Button("From Music library") { sheetSelected = .musicLibrary }
-                        Button("From Files") { sheetSelected = .fileImporter }
+                        Button(t_musiclib) { sheetSelected = .musicLibrary }
+                        Button(t_filesApp) { sheetSelected = .fileImporter }
                     } label: {
-                        Text("Crea suoneria")
+                        Text(t_create)
                             .font(.headline)
                             .osLabelStyle()
                             .frame(maxWidth: 200)
@@ -52,7 +52,7 @@ struct ContentView: View, DropDelegate {
                 Spacer()
                 
                 NavigationLink(destination: LibraryView()) {
-                    Text("Le tue sonerie")
+                    Text(t_manager)
                         .foregroundColor(.blue)
                 }
                 

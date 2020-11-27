@@ -23,7 +23,20 @@
 "ringtone" = "Suoneria";
 "error" = "Errore";
 "file_error" = "Errore file";
-"files" = "File";
-"music_lib" = "Libreria Musicale";
+"files" = "Da un File";
+"music_lib" = "Dalla Libreria Musicale";
 "source_title" = "Seleziona la sorgente";
 "source_msg" = "Da dove puoi prendere la canzone?";
+
+"ringtone_range" = "Ringtone range";
+"play_only_ringtone_range_warning" = "You've set to only play the ringtone range. Deselect it in the player section below to play the full track";
+"play_only_ringtone_range" = "Play only the ringtone range";
+"tap" = "Tap";
+"hold" = "Hold";
+"tap_set_player_time" = " on a line to set the player current time.";
+"hold_set_ringtone_time" = " a line to set it as a starting point for the ringtone";
+"activate_fadein" = "Activate Fade-In";
+"activate_fadeout" = "Activate Fade-Out";
+"file_already_exist" = "File already exist with that name. Do you want to overwrite it?";
+"overwrite" = "Overwrite";
+"start_time" = "Start time";
