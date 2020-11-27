@@ -15,7 +15,9 @@ struct LibraryView: View {
     var body: some View {
         List {
             ForEach(libraryViewModel.items, id: \.url) { file in
-                LibraryViewCell(file: file)
+                NavigationLink(destination: LibraryFileViewer(file: file)) {
+                    LibraryViewCell(file: file)
+                }
             }
             .onDelete(perform: self.removeFiles)
         }

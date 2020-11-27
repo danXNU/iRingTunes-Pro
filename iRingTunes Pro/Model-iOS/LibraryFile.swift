@@ -16,4 +16,8 @@ struct LibraryFile {
 struct LibraryObject {
     var url: URL
     var modificationDate: Date
+    
+    var name: String {
+        url.lastPathComponent
+    }
 }
