@@ -1,0 +1,89 @@
+
+/*
+  Localizable.strings
+  iRingTunes Pro
+
+  Created by Dani Tox on 17/06/18.
+  Copyright © 2018 Dani Tox. All rights reserved.
+*/
+"title" = "ENGLISH";
+"msg" = "English Message";
+
+"create" = "Create Ringtone";
+"manager" = "Your ringtones";
+"done" = "Done";
+"cancel" = "Cancel";
+"share" = "Share";
+"rename" = "Rename";
+"remove" = "Remove";
+"ring_start" = "Ringtone Start";
+"ring_duration" = "Ringtone Duration";
+"fade" = "Enable Fade-In";
+"export" = "Export";
+"ringtone" = "Ringtone";
+"error" = "Error";
+"file_error" = "File Error";
+"files" = "From Files";
+"music_lib" = "From Music Library";
+"source_title" = "Select the source";
+"source_msg" = "Which music source do you want to use?";
+
+"ringtone_range" = "Ringtone range";
+"play_only_ringtone_range_warning" = "You've set to only play the ringtone range. Deselect it in the player section below to play the full track";
+"play_only_ringtone_range" = "Play only the ringtone range";
+"tap" = "Tap";
+"hold" = "Hold";
+"tap_set_player_time" = " on a line to set the player current time.";
+"hold_set_ringtone_time" = " a line to set it as a starting point for the ringtone";
+"activate_fadein" = "Activate Fade-In";
+"activate_fadeout" = "Activate Fade-Out";
+"file_already_exist" = "File already exist with that name. Do you want to overwrite it?";
+"overwrite" = "Overwrite";
+"start_time" = "Start time";
+
+
+
+/*
+  Localizable.strings
+  iRingTunes Pro
+
+  Created by Dani Tox on 17/06/18.
+  Copyright © 2018 Dani Tox. All rights reserved.
+*/
+
+"title" = "ITALIANO";
+"msg" = "Messaggio Italiano";
+
+"create" = "Crea Suoneria";
+"manager" = "Le tue suonerie";
+"done" = "Fine";
+"cancel" = "Annulla";
+"share" = "Condividi";
+"rename" = "Rinomina";
+"remove" = "Rimuovi";
+"ring_start" = "Inizio suoneria";
+"ring_duration" = "Durata suoneria";
+"fade" = "Attiva il Fade-In";
+"export" = "Esporta";
+"ringtone" = "Suoneria";
+"error" = "Errore";
+"file_error" = "Errore file";
+"files" = "Da un File";
+"music_lib" = "Dalla Libreria Musicale";
+"source_title" = "Seleziona la sorgente";
+"source_msg" = "Da dove puoi prendere la canzone?";
+
+
+"ringtone_range" = "Ringtone range";
+"play_only_ringtone_range_warning" = "Hai impostato l'opzione di ascoltare solo il range della suoneria. Disattivalo qui sotto per poter ascoltare tutta la traccia.";
+"play_only_ringtone_range" = "Ascolta solo il range della suoneria";
+"tap" = "Touch";
+"hold" = "Tieni premuto";
+"tap_set_player_time" = " on a line to set the player current time.";
+"hold_set_ringtone_time" = " una linea per impostare l'inizio della suoneria";
+"activate_fadein" = "Attiva Fade-In";
+"activate_fadeout" = "Attiva Fade-Out";
+"file_already_exist" = "Un file con questo nome esiste già. Vuoi sovrascriverlo?";
+"overwrite" = "Sovrascrivi";
+"start_time" = "Inizio";
+
