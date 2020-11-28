@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct ExportingView: View {
     @ObservedObject var exportManager: ExportManager
@@ -27,6 +28,15 @@ struct ExportingView: View {
                 Button("Done") {
                     audioManager.stop()
                     presentationMode.dismiss()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        if alreadyAskedForReview == false {
+                            if let windowScene = UIApplication.shared.windows.first?.windowScene {
+                                SKStoreReviewController.requestReview(in: windowScene)
+                                alreadyAskedForReview = true
+                            }                            
+                        }
+                    }
                 }
                 .buttonStyle(OSSetupButtonStyle())
                 .frame(maxWidth: 200)
@@ -45,7 +55,8 @@ struct ExportingView: View {
                 
                 
                 Button("Done") {
-
+                    audioManager.stop()
+                    presentationMode.dismiss()
                 }
             }
         }
