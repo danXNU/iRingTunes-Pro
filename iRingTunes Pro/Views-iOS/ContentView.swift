@@ -62,7 +62,7 @@ struct ContentView: View, DropDelegate {
             .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onDrop(of: [UTType.fileURL, UTType.audio], delegate: self)
+//        .onDrop(of: [UTType.fileURL, UTType.audio], delegate: self)
         .fullScreenCover(item: $sheetSelected) { type in
             switch type {
             case .musicLibrary:
@@ -88,7 +88,7 @@ struct ContentView: View, DropDelegate {
             }
             guard let realURL = url as? NSURL else { return }
             DispatchQueue.main.async {
-                self.selectAsset(url: realURL as URL)
+                self.selectFile(url: realURL as URL)
             }
         })
         return true
