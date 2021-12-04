@@ -29,6 +29,7 @@ struct EditorView: View {
                                  ringtoneEndLineIndex: manager.ringtoneEndIndex,
                                  ringtoneStartLineIndex: ringStartLine,
                                  selectedPlayerTimeLineIndex: playerTimeLine)
+                        .blur(radius: manager.isLoadingWave ? 10 : 0)
                     
                     ZoomButton
                     
@@ -51,6 +52,12 @@ struct EditorView: View {
                                 .foregroundColor(.red)
                         }
                     }
+                    
+                    
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .foregroundColor(.orange)
+                        .opacity(manager.isLoadingWave ? 1 : 0)
                 }
                 .frame(height: 200)
                 

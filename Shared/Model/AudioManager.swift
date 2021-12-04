@@ -61,16 +61,24 @@ class AudioManager: ObservableObject {
         
         let zoomSubscriber = $zoomLevel
             .dropFirst()
-            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .debounce(for: 0.1, scheduler: RunLoop.main)
             .sink { (newValue) in
                 self.prepare(zoomLevel: Int(newValue))
             }
+        
+        let loadingBar = $zoomLevel
+            .dropFirst()
+            .sink { newVal in
+                self.isLoadingWave = true
+            }
+        
 
         let playingObserver = $isPlaying.sink { (newValue) in
             if newValue { self.player.play() }
             else { self.player.pause() }
         }
             
+        observers.append(loadingBar)
         observers.append(playingObserver)
         observers.append(zoomSubscriber)
         
