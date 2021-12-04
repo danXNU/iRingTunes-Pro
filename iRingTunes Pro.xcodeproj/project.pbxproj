@@ -49,6 +49,7 @@
 		44AFB2A825700BB400378B79 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB2A725700BB400378B79 /* LibraryViewModel.swift */; };
 		44AFB2AD2570277700378B79 /* LibraryFileViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB2AC2570277700378B79 /* LibraryFileViewer.swift */; };
 		44AFB2B2257027C600378B79 /* LibraryFileViewerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFB2B1257027C600378B79 /* LibraryFileViewerModel.swift */; };
+		44C5C68F275BF1EF00083187 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5C68E275BF1EF00083187 /* App.swift */; };
 		44D4E78B25716971002E1C18 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D4E78A25716971002E1C18 /* ShareSheetView.swift */; };
 		44D4E79725717D9C002E1C18 /* temp in Resources */ = {isa = PBXBuildFile; fileRef = 44D4E79625717D9C002E1C18 /* temp */; };
 		44D4E7A325717E30002E1C18 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44D4E7A525717E30002E1C18 /* Localizable.strings */; };
@@ -104,6 +105,7 @@
 		44AFB2A725700BB400378B79 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		44AFB2AC2570277700378B79 /* LibraryFileViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryFileViewer.swift; sourceTree = "<group>"; };
 		44AFB2B1257027C600378B79 /* LibraryFileViewerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryFileViewerModel.swift; sourceTree = "<group>"; };
+		44C5C68E275BF1EF00083187 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		44D4E78A25716971002E1C18 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		44D4E79625717D9C002E1C18 /* temp */ = {isa = PBXFileReference; lastKnownFileType = text; path = temp; sourceTree = "<group>"; };
 		44D4E7A425717E30002E1C18 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				4424939E255F422A0004F3DE /* iRingTunes.entitlements */,
 				442493C1255F42C40004F3DE /* Preview Content */,
 				442493C5255F42C40004F3DE /* AppDelegate.swift */,
+				44C5C68E275BF1EF00083187 /* App.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -368,7 +371,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "Dani Tox";
 				TargetAttributes = {
 					44249391255F42280004F3DE = {
@@ -452,6 +455,7 @@
 				442493D2255F42C40004F3DE /* ExportAgent.swift in Sources */,
 				442493DB255F42C40004F3DE /* HomeView.swift in Sources */,
 				442493D1255F42C40004F3DE /* AudioReader.swift in Sources */,
+				44C5C68F275BF1EF00083187 /* App.swift in Sources */,
 				442493DD255F42C40004F3DE /* ExportManager.swift in Sources */,
 				442493D4255F42C40004F3DE /* EditorView.swift in Sources */,
 				442493DF255F42C40004F3DE /* ViewsManager.swift in Sources */,
@@ -544,8 +548,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = iRingTunes/Other/iRingTunes.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = R779A64KR9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iRingTunes/Other/Info.plist;
@@ -570,8 +576,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = iRingTunes/Other/iRingTunes.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = R779A64KR9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iRingTunes/Other/Info.plist;

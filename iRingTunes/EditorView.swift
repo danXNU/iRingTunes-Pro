@@ -10,6 +10,7 @@ import SwiftUI
 struct EditorView: View {
     @ObservedObject var manager : AudioManager
     @EnvironmentObject var viewsManager: ViewsManager
+    @EnvironmentObject var sharedStorage: SharedStorage
     
     @State var popoverSelected: Bool = false
     
@@ -76,6 +77,8 @@ struct EditorView: View {
                                     Image(systemName: manager.isPlaying ? "pause" : "play")
                                         .font(.largeTitle)
                                 }
+                                .frame(minWidth: 40)
+                                .keyboardShortcut(KeyEquivalent.space, modifiers: [])
                                 .buttonStyle(PlainButtonStyle())
                                 .disabled(!manager.isReady)
                                 
@@ -123,16 +126,74 @@ struct EditorView: View {
             Button("Export") {
                 export()
             }
+            .keyboardShortcut(.defaultAction)
             
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear {
             start()
+            
+            sharedStorage.isZoomInDisabled = false
+            sharedStorage.isZoomOutDisabled = false
+            
+            sharedStorage.isPrevBarDisabled = false
+            sharedStorage.isNextBarDisabled = false
         }
-        
+        .onDisappear {
+            sharedStorage.isZoomInDisabled = true
+            sharedStorage.isZoomOutDisabled = true
+            
+            sharedStorage.isPrevBarDisabled = true
+            sharedStorage.isNextBarDisabled = true
+        }
+        .onReceive(nextPub) { _ in
+            var hasStopped = false
+            if manager.isPlaying {
+                manager.isPlaying.toggle()
+                hasStopped = true
+            }
+            playerTimeLine.wrappedValue += 1
+            if hasStopped {
+                manager.isPlaying = true
+            }
+        }
+        .onReceive(prevPub) { _ in
+            var hasStopped = false
+            if manager.isPlaying {
+                manager.isPlaying.toggle()
+                hasStopped = true
+            }
+            playerTimeLine.wrappedValue -= 1
+            if hasStopped {
+                manager.isPlaying = true
+            }
+        }
+        .onReceive(zoomInPub) { _ in
+            let stepValue = Float(MAX_ZOOM - MIN_ZOOM) / 10
+            let newValue = manager.zoomLevel + Float(stepValue)
+            
+            manager.zoomLevel = min(newValue, Float(MAX_ZOOM))
+        }
+        .onReceive(zoomOutPub) { _ in
+            let stepValue = Float(MAX_ZOOM - MIN_ZOOM) / 10
+            let newValue = manager.zoomLevel - Float(stepValue)
+            
+            manager.zoomLevel = max(newValue, Float(MIN_ZOOM))
+        }
+        .onChange(of: manager.zoomLevel) { newValue in
+            sharedStorage.isZoomInDisabled = newValue >= Float(MAX_ZOOM)
+            sharedStorage.isZoomOutDisabled = newValue <= Float(MIN_ZOOM)
+        }
+            
     }
-
+    private let nextPub = NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationKeys.nextBar.rawValue))
+    private let prevPub = NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationKeys.prevBar.rawValue))
+    
+    private let zoomInPub = NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationKeys.zoomIn.rawValue))
+    private let zoomOutPub = NotificationCenter.default.publisher(for: Notification.Name(rawValue: NotificationKeys.zoomOut.rawValue))
+                   
+                   
     func start() {
         manager.prepare(zoomLevel: Int(manager.zoomLevel)) {
             manager.start()

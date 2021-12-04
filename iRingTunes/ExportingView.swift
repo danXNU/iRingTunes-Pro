@@ -16,14 +16,22 @@ struct ExportingView: View {
             
             switch viewType {
             case .success:
-                Image(systemName: "checkmark.circle.fill")
-                    .resizable()
-                    .frame(maxWidth: 100, maxHeight: 100)
-                    .foregroundColor(.green)
+                VStack {
+                    Image(systemName: "checkmark.circle.fill")
+                        .resizable()
+                        .frame(maxWidth: 100, maxHeight: 100)
+                        .foregroundColor(.green)
+                    
+                    Text("Export finished!")
+                        .bold()
+                        .font(.title)
+                }
                 
                 Button("Done") {
                     viewsManager.finishedExporting(askReview: true)
                 }
+                .keyboardShortcut(.defaultAction)
+                .padding(.top)
             case .exporting:
                 ProgressView("Exporting...", value: exportManager.progress)
                     .frame(maxWidth: 300)
@@ -41,6 +49,7 @@ struct ExportingView: View {
                 Button("Done") {
                     viewsManager.reset()
                 }
+                .keyboardShortcut(.defaultAction)
             }
         }
         .onAppear {

@@ -45,6 +45,7 @@ struct HomeView: View, DropDelegate {
                 Button("Select file") {
                     chooseFile()
                 }
+                .keyboardShortcut(.defaultAction)
                 
             }
             Spacer()
